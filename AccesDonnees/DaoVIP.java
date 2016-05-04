@@ -69,4 +69,43 @@ public class DaoVIP {
         pstmt.executeUpdate();
         pstmt.close();
     }
+    public boolean existe(int numVip) throws SQLException {
+        int nb=0;
+        String requete = "select numVip from vip where numVip=?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, numVip);
+        ResultSet rset = pstmt.executeQuery(requete);
+        while (rset.next()) {   
+                nb = rset.getInt(1);
+            }
+        if(nb==1){
+            return true;
+        }
+        return false;
+        }
+
+
+    public boolean estMarier(int numVip) throws SQLException {
+        String code="";
+        String requete = "select codeStatut from vip where numVip=?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, numVip);
+        ResultSet rset = pstmt.executeQuery(requete);
+        while (rset.next()) {   
+                code = rset.getString(1);
+            }
+        if(code.equalsIgnoreCase("mar")){
+            return true;
+        }
+        return false;
+    }
+    public void updateStatut(int numVip,int i) throws SQLException {
+        String requete = "update  vip set codeStatut=? where numVip = ?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(2, numVip);
+        pstmt.setInt(1, i);
+        pstmt.executeUpdate();
+        pstmt.close();
+    }
 }
+
