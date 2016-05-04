@@ -14,18 +14,18 @@ import java.util.Date;
 public class VIP {
     
     private int idVip;
-    private String nomVIP;
+    private String nomVip;
     private String prenomVip;
     private String civilite;
     private Date dateNaiss;
     private String lieuNaiss;
-    private String codeRole;
-    private String codeStatut;
+    private String codeRole;//rea,act
+    private String codeStatut;//mar,ceb,div
     private String nomPays;
 
     public VIP(int idVip, String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, String codeRole, String codeStatut, String nomPays) {
         this.idVip = idVip;
-        this.nomVIP = nomVIP;
+        this.nomVip = nomVIP;
         this.prenomVip = prenomVip;
         this.civilite = civilite;
         this.dateNaiss = dateNaiss;
@@ -39,8 +39,8 @@ public class VIP {
         return idVip;
     }
 
-    public String getNomVIP() {
-        return nomVIP;
+    public String getNomVip() {
+        return nomVip;
     }
 
     public String getPrenomVip() {
@@ -76,7 +76,7 @@ public class VIP {
     }
 
     public void setNomVIP(String nomVIP) {
-        this.nomVIP = nomVIP;
+        this.nomVip = nomVIP;
     }
 
     public void setPrenomVip(String prenomVip) {
@@ -109,7 +109,7 @@ public class VIP {
 
     @Override
     public String toString() {
-        return "VIP{" + "idVip=" + idVip + ", nomVIP=" + nomVIP + ", prenomVip=" + prenomVip + ", civilite=" + civilite + ", dateNaiss=" + dateNaiss + ", lieuNaiss=" + lieuNaiss + ", codeRole=" + codeRole + ", codeStatut=" + codeStatut + ", nomPays=" + nomPays + '}';
+        return "VIP{" + "idVip=" + idVip + ", nomVIP=" + nomVip + ", prenomVip=" + prenomVip + ", civilite=" + civilite + ", dateNaiss=" + dateNaiss + ", lieuNaiss=" + lieuNaiss + ", codeRole=" + codeRole + ", codeStatut=" + codeStatut + ", nomPays=" + nomPays + '}';
     }
     
     

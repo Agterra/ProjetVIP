@@ -7,6 +7,7 @@ package AccesDonnees;
 
 import ProjetVIP.Metier.VIP;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,8 +31,15 @@ public class DaoVIP {
         while (rset.next()) {       // traitement du résulat
             int num = rset.getInt(1);
             String nom = rset.getString(2);
-            String job = rset.getString(3);
-            VIP temp = new VIP(num, nom, job);
+            String prenom = rset.getString(3);
+            String civ = rset.getString(4);
+            Date dateNaiss = rset.getDate(5);
+            String lieu = rset.getString(6);
+            String codeR = rset.getString(7);
+            String codeS = rset.getString(8);
+            String pays = rset.getString(9);
+         
+            VIP temp = new VIP(num, nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
             lesVips.add(temp);
         }
         rset.close();
@@ -47,11 +55,17 @@ public class DaoVIP {
     }
 
     public void insererVip(VIP leVip) throws SQLException {
-        String requete = "insert into vip (empno, ename, job) values(?,?,?)";
+        String requete = "insert into vip values(?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, leVip.getNumEmp());
-        pstmt.setString(2, leVip.getNomEmp());
-        pstmt.setString(3, leVip.getJobEmp());
+        pstmt.setInt(1, leVip.getIdVip());
+        pstmt.setString(2, leVip.getNomVip());
+        pstmt.setString(3, leVip.getPrenomVip());
+        pstmt.setString(4, leVip.getCivilite());
+        pstmt.setDate(5, (Date) leVip.getDateNaiss());
+        pstmt.setString(6, leVip.getLieuNaiss());
+        pstmt.setString(7, leVip.getCodeRole());
+        pstmt.setString(8, leVip.getCodeStatut());
+        pstmt.setString(9, leVip.getNomPays());
         pstmt.executeUpdate();
         pstmt.close();
     }
