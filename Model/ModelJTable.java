@@ -35,17 +35,17 @@ public class ModelJTable extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        VIP levip = leConteneur.get(row);
+        VIP leVip = leConteneur.get(row);
         if (column == 0) {
-            return levip.getIdVip();
+            return leVip.getIdVip();
         }else if (column == 1){
-            return levip.getNomVIP();
+            return leVip.getNomVip();
         }else if (column == 2){
-            return levip.getPrenomVip();
+            return leVip.getPrenomVip();
         }else if (column == 3){
-            return levip.getCodeRole();
+            return leVip.getCodeRole();
         }else{
-            return levip.getCodeStatut();
+            return leVip.getCodeStatut();
         }
     }
 
