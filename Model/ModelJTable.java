@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import Metier.VIP;
+import ProjetVIP.Metier.VIP;
 
 public class ModelJTable extends AbstractTableModel {
     
@@ -54,15 +54,15 @@ public class ModelJTable extends AbstractTableModel {
         return titre[column];
     }
 
-    public void insererVip(VIP levip) throws SQLException {
-        leDaoVIP.insererVip(levip);
-        leConteneur.add(levip);
+    public void insererVip(VIP leVip) throws SQLException {
+        leDaoVIP.insererVip(leVip);
+        leConteneur.add(leVip);
         this.fireTableDataChanged();
     }
 
     public void supprimerVip(int ligne) throws SQLException {
         int idVip = (int) getValueAt(ligne, 0);
-        leDaoVIP.supprimerVip(numEmp);
+        leDaoVIP.supprimerVip(idVip);
         leConteneur.remove(ligne);
         this.fireTableDataChanged();
     }
