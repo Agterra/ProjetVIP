@@ -106,6 +106,11 @@ public class VIP {
     public void setNomPays(String nomPays) {
         this.nomPays = nomPays;
     }
+
+    @Override
+    public String toString() {
+        return "VIP{" + "idVip=" + idVip + ", nomVIP=" + nomVIP + ", prenomVip=" + prenomVip + ", civilite=" + civilite + ", dateNaiss=" + dateNaiss + ", lieuNaiss=" + lieuNaiss + ", codeRole=" + codeRole + ", codeStatut=" + codeStatut + ", nomPays=" + nomPays + '}';
+    }
     
     
     
