@@ -22,7 +22,10 @@ public class VIP {
     private String codeRole;//rea,act
     private String codeStatut;//mar,ceb,div
     private String nomPays;
-
+    
+    public VIP(){
+        
+    }
     public VIP(int idVip, String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, String codeRole, String codeStatut, String nomPays) {
         this.idVip = idVip;
         this.nomVip = nomVIP;

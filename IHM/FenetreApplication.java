@@ -9,6 +9,7 @@ import Model.ModelJTable;
 import ProjetVIP.Metier.VIP;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +44,13 @@ public class FenetreApplication extends javax.swing.JFrame {
         btInserer = new javax.swing.JButton();
         btSuppr = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Les VIPs");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         laTable.setModel(leModele);
         jScrollPane1.setViewportView(laTable);
@@ -112,6 +119,13 @@ public class FenetreApplication extends javax.swing.JFrame {
             System.out.println("Exception à la suppression : " + e.getMessage());
         }
     }//GEN-LAST:event_btSupprActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int reponse = JOptionPane.showConfirmDialog(this, "Voulez vraiment sortir ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (reponse == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
