@@ -20,7 +20,7 @@ public class DaoEvent {
         this.connexion = connexion;     
     }
      //en cours de réalisation....
-     public void sontMarie(int numVip1, int numVip2) throws SQLException {
+     public void sontMarier(int numVip1, int numVip2) throws SQLException {
         String requete = "select idVip,idVip2 from Event where idVip = ? and idVip2 = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip1);
