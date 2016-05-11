@@ -17,23 +17,25 @@ public class DaoEvent {
 
     private final Connection connexion;
     private DaoVIP daoVip;
-
+    private final Date div = new Date(0000, 00, 00);
     public DaoEvent(Connection connexion) throws SQLException {
         this.connexion = connexion;
     }
 
-    public boolean sontMarie(int numVip1, int numVip2) throws SQLException {
+    public Date sontMarie(int numVip1, int numVip2) throws SQLException {
         int conjoint;
+        Date mar;
         Date div = new Date(0000, 00, 00);
-        String requete = "select idVip2 from Event where idVip = ? and dateDiv=?";
+        String requete = "select idVip2,dateMar from Event where idVip = ? and dateDiv=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip1);
         pstmt.setDate(2, (Date) div);
         ResultSet rset = pstmt.executeQuery(requete);
         while (rset.next()) {
             conjoint = rset.getInt(1);
+             mar = rset.getDate(2);
             if (conjoint == numVip2) {
-                return true;
+                return mar;
             }
         }
         requete = "select idVip2 from Event where idVip = ? and dateDiv=?";
@@ -43,18 +45,19 @@ public class DaoEvent {
         rset = pstmt.executeQuery(requete);
         while (rset.next()) {
             conjoint = rset.getInt(1);
+            mar = rset.getDate(2);
             if (conjoint == numVip1) {
-                return true;
+                return mar;
             }
         }
         pstmt.close();
-        return false;
+        return div;
     }
 
     public void addMariage(int numVip1, int numVip2, Date dateMar, String Lieu) throws Exception {
-        int evip1;
+        
         if (numVip1 == numVip2) {
-
+            throw new Exception(" Meme vip");
         }
 
         daoVip = new DaoVIP(connexion);
@@ -85,4 +88,28 @@ public class DaoEvent {
             System.out.println(e.getMessage());
         }
     }
+     public void addDivorce(int numVip1, int numVip2, Date dateDiv) throws Exception{
+         Date DateMar=sontMarie(numVip1,numVip2);
+         if (DateMar==div){
+             throw new Exception("Ne sont pas marier");
+         }
+         if (DateMar.after(dateDiv)){
+             throw new Exception("Divorcer avant de se marier");
+         }
+      //modfi de la date de div
+         try{
+          String requete = "update  Event set dateDiv=? where numVip1 = ? && dateMar= ? OR numVip1=? && dateMar= ?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, numVip1);
+        pstmt.setInt(3, numVip2);
+        pstmt.setDate(2, DateMar);
+        pstmt.setDate(4, DateMar);
+        pstmt.executeUpdate();
+        daoVip.updateStatut(numVip2, "div");
+        daoVip.updateStatut(numVip1, "div");
+        pstmt.close();
+         }catch(Exception e){
+              System.out.println(e.getMessage());
+         }
+     }
 }
