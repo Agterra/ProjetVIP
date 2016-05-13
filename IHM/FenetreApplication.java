@@ -6,7 +6,7 @@
 package IHM;
 
 import Model.ModelJTable;
-import ProjetVIP.Metier.VIP;
+import Metier.VIP;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;

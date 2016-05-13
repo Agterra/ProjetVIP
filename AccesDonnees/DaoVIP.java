@@ -5,7 +5,7 @@
  */
 package AccesDonnees;
 
-import ProjetVIP.Metier.VIP;
+import Metier.VIP;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -25,7 +25,7 @@ public class DaoVIP {
     }
 
     public void lireLesVip(List<VIP> lesVips) throws SQLException {    
-        String requete = "select * from vip";
+        String requete = "select * from Vip";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
         while (rset.next()) {       // traitement du résulat

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import ProjetVIP.Metier.VIP;
+import Metier.VIP;
 
 public class ModelJTable extends AbstractTableModel {
     
@@ -30,7 +30,7 @@ public class ModelJTable extends AbstractTableModel {
     
     @Override
      public int getColumnCount() {
-        return titre.length;
+        return 9;
     }
 
     @Override
@@ -43,10 +43,20 @@ public class ModelJTable extends AbstractTableModel {
         }else if (column == 2){
             return leVip.getPrenomVip();
         }else if (column == 3){
+            return leVip.getCivilite();
+        }else if(column == 4){
+            return leVip.getDateNaiss();
+        }else if(column == 5){
+            return leVip.getLieuNaiss();
+        }else if(column ==6){
             return leVip.getCodeRole();
-        }else{
-            return leVip.getCodeStatut();
+        }else if(column == 7){
+          return leVip.getCodeStatut();  
+        }else {
+            return leVip.getNomPays();
         }
+         
+        
     }
 
     @Override

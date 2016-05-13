@@ -5,7 +5,8 @@
  */
 package IHM;
 
-import ProjetVIP.Metier.VIP;
+import Metier.VIP;
+import Metier.VIP;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
