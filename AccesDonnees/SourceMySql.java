@@ -30,6 +30,7 @@ public class SourceMySql {
         ds.setServerName(props.getProperty("serveur"));
         ds.setUser(user);
         ds.setPassword(pwd);
+        System.out.println("Connecté(e)"+ds);
         return ds;
     }
 }

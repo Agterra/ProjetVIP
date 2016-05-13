@@ -6,8 +6,11 @@
 package Application;
 
 import AccesDonnees.DaoVIP;
+import AccesDonnees.SourceMySql;
 import IHM.FenetreApplication;
+import IHM.FenetreSaisie;
 import Model.ModelJTable;
+import java.net.PasswordAuthentication;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
@@ -36,10 +39,10 @@ public class Appli {
         }
 
         // Etablissement de la connexion à la base MySql avec affichage de la fenetre d'identification 
-       /* boolean etat = false;
-         do {
-         FenetreSaisie fs = new FenetreIdentification(null);
-         PasswordAuthentication login = fi.identifier();
+        boolean etat = false;
+       
+        
+         PasswordAuthentication login = null;
          try {
          laSourceDeDonnees = SourceMySql.getSource(login);
          laConnexion = laSourceDeDonnees.getConnection();
@@ -48,8 +51,8 @@ public class Appli {
          JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
          "avertissement", JOptionPane.WARNING_MESSAGE);
          }
-         } while (etat == false);
-         */
+     
+         
         // Instanciation des objets nécessaires à l'application
         try {
             // les DAO nécessaires
