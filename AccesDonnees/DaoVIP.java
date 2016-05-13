@@ -25,7 +25,7 @@ public class DaoVIP {
     }
 
     public void lireLesVip(List<VIP> lesVips) throws SQLException {    
-        String requete = "select * from Vip";
+        String requete = "select * from vip";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
         while (rset.next()) {       // traitement du résulat
@@ -47,7 +47,7 @@ public class DaoVIP {
     }
 
     public void supprimerVip(int numVip) throws SQLException {
-        String requete = "delete from vip where numVip = ?";
+        String requete = "delete from vip where idVip = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip);
         pstmt.executeUpdate();
@@ -71,7 +71,7 @@ public class DaoVIP {
     }
     public boolean existe(int numVip) throws SQLException {
         int nb=0;
-        String requete = "select numVip from vip where numVip=?";
+        String requete = "select numVip from vip where idVip=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip);
         ResultSet rset = pstmt.executeQuery(requete);
@@ -87,7 +87,7 @@ public class DaoVIP {
 
     public boolean estMarier(int numVip) throws SQLException {
         String code="";
-        String requete = "select codeStatut from vip where numVip=?";
+        String requete = "select codeStatut from vip where idVip=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip);
         ResultSet rset = pstmt.executeQuery(requete);
@@ -100,7 +100,7 @@ public class DaoVIP {
         return false;
     }
     public void updateStatut(int numVip,String i) throws SQLException {
-        String requete = "update  vip set codeStatut=? where numVip = ?";
+        String requete = "update  vip set codeStatut=? where idVip = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(2, numVip);
         pstmt.setString(1, i);

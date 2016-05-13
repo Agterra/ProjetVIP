@@ -98,7 +98,7 @@ public class DaoEvent {
          }
       //modfi de la date de div
          try{
-          String requete = "update  Event set dateDiv=? where numVip1 = ? && dateMar= ? OR numVip1=? && dateMar= ?";
+          String requete = "update  Event set dateDiv=? where idVip = ? && dateMar= ? OR idVip2=? && dateMar= ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip1);
         pstmt.setInt(3, numVip2);

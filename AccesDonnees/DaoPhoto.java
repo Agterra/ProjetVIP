@@ -5,7 +5,7 @@
  */
 package AccesDonnees;
 
-import ProjetVIP.Metier.Photo;
+import Metier.Photo;
 import Metier.VIP;
 import java.sql.Connection;
 import java.sql.Date;
@@ -32,7 +32,7 @@ public class DaoPhoto {
          if(this.existIDPhoto(img.getIdPhoto())==true){
              throw new Exception("La photo existe deja");
          }
-        String requete = "insert into vip values(?,?,?)";
+        String requete = "insert into Photo values(?,?,?)";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, img.getIdPhoto());
         pstmt.setInt(2, img.getIdPhoto());
@@ -43,7 +43,7 @@ public class DaoPhoto {
     }
      
      public void supprimerPhoto(int img) throws SQLException {
-        String requete = "delete from photo where idphoto = ?";
+        String requete = "delete from Photo where idphoto = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, img);
         pstmt.executeUpdate();
@@ -52,7 +52,7 @@ public class DaoPhoto {
      
      public boolean existIDPhoto(int id) throws SQLException {
         int nb=0;
-        String requete = "select idPhoto from photo where idPhoto=?";
+        String requete = "select idphoto from Photo where idphoto=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, id);
         ResultSet rset = pstmt.executeQuery(requete);
