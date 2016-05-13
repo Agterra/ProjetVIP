@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProjetVIP.AccesDonnees;
+package AccesDonnees;
 
 import ProjetVIP.Metier.Photo;
-import ProjetVIP.Metier.VIP;
+import Metier.VIP;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

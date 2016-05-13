@@ -43,7 +43,6 @@
                   <Component id="txtNomVIP" max="32767" attributes="0"/>
                   <Component id="txtPrenomVIP" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtCivVIP" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtDateNaiss" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtLieuNaiss" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtCodeRole" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtPaysVIP" alignment="0" max="32767" attributes="0"/>
@@ -82,10 +81,7 @@
                   <Component id="txtCivVIP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlbDateNaiss" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDateNaiss" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jlbDateNaiss" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlbLieuNaiss" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -108,7 +104,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jbtnSoumettre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -166,8 +162,6 @@
     <Component class="javax.swing.JTextField" name="txtPrenomVIP">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCivVIP">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDateNaiss">
     </Component>
     <Component class="javax.swing.JTextField" name="txtLieuNaiss">
     </Component>

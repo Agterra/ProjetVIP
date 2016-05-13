@@ -6,9 +6,9 @@
 package IHM;
 
 import Metier.VIP;
-import Metier.VIP;
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import jDateChooser.*;
 
 /**
  *
@@ -48,7 +48,6 @@ public class FenetreSaisie extends javax.swing.JDialog {
         txtNomVIP = new javax.swing.JTextField();
         txtPrenomVIP = new javax.swing.JTextField();
         txtCivVIP = new javax.swing.JTextField();
-        txtDateNaiss = new javax.swing.JTextField();
         txtLieuNaiss = new javax.swing.JTextField();
         txtCodeRole = new javax.swing.JTextField();
         txtPaysVIP = new javax.swing.JTextField();
@@ -105,7 +104,6 @@ public class FenetreSaisie extends javax.swing.JDialog {
                     .addComponent(txtNomVIP)
                     .addComponent(txtPrenomVIP)
                     .addComponent(txtCivVIP)
-                    .addComponent(txtDateNaiss)
                     .addComponent(txtLieuNaiss)
                     .addComponent(txtCodeRole)
                     .addComponent(txtPaysVIP)
@@ -136,9 +134,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
                     .addComponent(jlbCivVIP)
                     .addComponent(txtCivVIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbDateNaiss)
-                    .addComponent(txtDateNaiss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jlbDateNaiss)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbLieuNaiss)
@@ -157,7 +153,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
                     .addComponent(txtCodeStatut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtnSoumettre)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,7 +228,6 @@ public class FenetreSaisie extends javax.swing.JDialog {
     private javax.swing.JTextField txtCivVIP;
     private javax.swing.JTextField txtCodeRole;
     private javax.swing.JTextField txtCodeStatut;
-    private javax.swing.JTextField txtDateNaiss;
     private javax.swing.JTextField txtLieuNaiss;
     private javax.swing.JTextField txtNomVIP;
     private javax.swing.JTextField txtNumVIP;
