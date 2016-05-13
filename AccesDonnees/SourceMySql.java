@@ -16,10 +16,10 @@ import javax.sql.DataSource;
  * @author Louis
  */
 public class SourceMySql {
-     public static DataSource getSource(PasswordAuthentication login) throws Exception {
+     public static DataSource getSource() throws Exception {
         // récupération des informations d'authentification
-        String user = login.getUserName();
-        String pwd = new String(login.getPassword());
+        String user = "p1422645";
+        String pwd = "234452";
         // création d'un objet Properties à parir du fichier 
         Properties props = new Properties();
         FileInputStream fichier = new FileInputStream("src/connexion.properties");

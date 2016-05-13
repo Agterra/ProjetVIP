@@ -8,7 +8,6 @@ package Application;
 import AccesDonnees.DaoVIP;
 import AccesDonnees.SourceMySql;
 import IHM.FenetreApplication;
-import IHM.FenetreSaisie;
 import Model.ModelJTable;
 import java.net.PasswordAuthentication;
 import java.sql.Connection;
@@ -42,9 +41,9 @@ public class Appli {
         boolean etat = false;
        
         
-         PasswordAuthentication login = null;
+ //        PasswordAuthentication login = new PasswordAuthentication("p1422645",234452);
          try {
-         laSourceDeDonnees = SourceMySql.getSource(login);
+         laSourceDeDonnees = SourceMySql.getSource();
          laConnexion = laSourceDeDonnees.getConnection();
          etat = true;
          } catch (Exception ex) {
