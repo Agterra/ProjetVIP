@@ -171,7 +171,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
             if(txtCodeRole.getText().isEmpty()){
                 throw new Exception("Champ code rôle vide!");
             }
-            vip.setCodeRole(txtCodeRole.getText());
+            vip.setCodeRole(Integer.parseInt(txtCodeRole.getText()));
             if(txtDateNaiss.getText().isEmpty()){
                 throw new Exception("Champ date de naissance vide!");
             }
@@ -199,7 +199,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
             if(txtCodeStatut.getText().isEmpty()){
                 throw new Exception("Champ code statut vide!");
             }
-            vip.setCodeStatut(txtCodeStatut.getText());
+            vip.setCodeStatut(Integer.parseInt(txtCodeStatut.getText()));
             etatSortie=true;
             this.dispose();
             
