@@ -24,7 +24,7 @@ public class DaoPays {
     public DaoPays(Connection connexion) throws SQLException {
         this.connexion = connexion;     
     }
-     public void SelectPays(List<Pays> lesPays) throws Exception {
+     public void SelectPays(List<String> lesPays) throws Exception {
          
         String requete = "Select * from pays";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -34,7 +34,7 @@ public class DaoPays {
             String nom = rset.getString(1);
                     
             Pays temp = new Pays(nom);
-            lesPays.add(temp);
+            lesPays.add(temp.getNom());
         }
         rset.close();
         pstmt.close();
