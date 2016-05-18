@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,25 +20,27 @@ import java.util.List;
  */
 public class DaoPays {
      private final Connection connexion;
-   
+     private List<String> lesPays;
      
     public DaoPays(Connection connexion) throws SQLException {
         this.connexion = connexion;     
     }
-     public void SelectPays(List<String> lesPays) throws Exception {
-         
-        String requete = "Select * from pays";
+     public List<String> SelectPays() throws Exception {
+        lesPays= new ArrayList();
+        String requete = "Select * from pays";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
+        
         System.out.println(rset);
         while (rset.next()) {// traitement du résulat
             String nom = rset.getString(1);
                     
-            Pays temp = new Pays(nom);
-            lesPays.add(temp.getNom());
+          //Pays temp = new Pays(nom);
+            lesPays.add(nom);
         }
         rset.close();
         pstmt.close();
+        return lesPays;
      }
    
 }

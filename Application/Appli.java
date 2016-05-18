@@ -61,16 +61,11 @@ public class Appli {
             leDaoPays = new DaoPays(laConnexion);
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModelJTable leModele = new ModelJTable(daoVip);
-<<<<<<< HEAD
+
             final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
             final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
             final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
-=======
-            final ModeleComboBoxCR crCB = new ModeleComboBoxCR();
-            final ModeleComboBoxCS csCB = new ModeleComboBoxCS();
 
-            final ModeleComboBoxPays paysCB = new ModeleComboBoxPays(leDaoPays);
->>>>>>> origin/master
 
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {

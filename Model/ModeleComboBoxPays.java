@@ -24,7 +24,7 @@ public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
     public ModeleComboBoxPays(DaoPays daoPays) throws Exception {
         super();
         //pour test
-        daoPays.SelectPays(listeItems);
+        listeItems=daoPays.SelectPays();
         for(String nom : listeItems){
             System.out.println(nom);
         }
