@@ -8,6 +8,8 @@ package IHM;
 import Metier.VIP;
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import Model.ModeleComboBoxCR;
+import Model.ModeleComboBoxCS;
 
 /**
  *
@@ -16,12 +18,20 @@ import javax.swing.JOptionPane;
 public class FenetreSaisie extends javax.swing.JDialog {
     private VIP vip;
     private boolean etatSortie;
+    private ModeleComboBoxCR crCM;
+    private ModeleComboBoxCS csCM;
     
     public FenetreSaisie(java.awt.Frame parent, VIP vip) {
         super(parent, true);
         this.vip=vip;
         etatSortie=false;
+           this.crCM= new ModeleComboBoxCR();
+        this.csCM=new ModeleComboBoxCS();
+        
         initComponents();
+        
+    
+        
     }
 
     /**
@@ -81,9 +91,9 @@ public class FenetreSaisie extends javax.swing.JDialog {
             }
         });
 
-        jcbCodeRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCodeRole.setModel(crCM);
 
-        jcbCodeStatut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCodeStatut.setModel(csCM);
 
         jcbPays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -178,7 +188,11 @@ public class FenetreSaisie extends javax.swing.JDialog {
             if(jcbCodeRole.getSelectedItem().toString().isEmpty()){
                 throw new Exception("Champ code rôle vide!");
             }
-            vip.setCodeRole(Integer.parseInt(jcbCodeRole.getSelectedItem().toString()));
+            if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("acteur")){
+                vip.setCodeRole(1);
+            }else{
+                vip.setCodeRole(0);
+            }
             if(txtDateNaiss.getText().isEmpty()){
                 throw new Exception("Champ date de naissance vide!");
             }
@@ -206,7 +220,13 @@ public class FenetreSaisie extends javax.swing.JDialog {
             if(jcbCodeStatut.getSelectedItem().toString().isEmpty()){
                 throw new Exception("Champ code statut vide!");
             }
-            vip.setCodeStatut(Integer.parseInt(jcbCodeStatut.getSelectedItem().toString()));
+            if(jcbCodeStatut.getSelectedItem().toString().equalsIgnoreCase("Célibataire")){
+                vip.setCodeStatut(0);
+            }else if(jcbCodeStatut.getSelectedItem().toString().equalsIgnoreCase("Divorcé")){
+                vip.setCodeStatut(-1);
+            }else{
+                vip.setCodeStatut(1);
+            }
             etatSortie=true;
             this.dispose();
             
