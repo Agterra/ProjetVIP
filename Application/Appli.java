@@ -43,19 +43,17 @@ public class Appli {
 
         // Etablissement de la connexion à la base MySql avec affichage de la fenetre d'identification 
         boolean etat = false;
-       
-        
- //        PasswordAuthentication login = new PasswordAuthentication("p1422645",234452);
-         try {
-         laSourceDeDonnees = SourceMySql.getSource();
-         laConnexion = laSourceDeDonnees.getConnection();
-         etat = true;
-         } catch (Exception ex) {
-         JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
-         "avertissement", JOptionPane.WARNING_MESSAGE);
-         }
-     
-         
+
+        //        PasswordAuthentication login = new PasswordAuthentication("p1422645",234452);
+        try {
+            laSourceDeDonnees = SourceMySql.getSource();
+            laConnexion = laSourceDeDonnees.getConnection();
+            etat = true;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
+                    "avertissement", JOptionPane.WARNING_MESSAGE);
+        }
+
         // Instanciation des objets nécessaires à l'application
         try {
             // les DAO nécessaires
@@ -63,22 +61,29 @@ public class Appli {
             leDaoPays = new DaoPays(laConnexion);
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModelJTable leModele = new ModelJTable(daoVip);
+<<<<<<< HEAD
             final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
             final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
             final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
+=======
+            final ModeleComboBoxCR crCB = new ModeleComboBoxCR();
+            final ModeleComboBoxCS csCB = new ModeleComboBoxCS();
+
+            final ModeleComboBoxPays paysCB = new ModeleComboBoxPays(leDaoPays);
+>>>>>>> origin/master
 
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FenetreApplication(leModele,crCB,csCB,paysCB).setVisible(true);
+                    new FenetreApplication(leModele, crCB, csCB, paysCB).setVisible(true);
                 }
             });
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "problème dans la création des objets nécessaires" + ex.getMessage(),
                     "avertissement", JOptionPane.WARNING_MESSAGE);
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "erreur:" + e.getMessage(),
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erreur:" + e.getMessage(),
                     "avertissement", JOptionPane.WARNING_MESSAGE);
         }
     }

@@ -31,6 +31,7 @@ public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
        
     }
 
+    @Override
     public void addElement(String uneChaine) {
         super.addElement(uneChaine);
     }
