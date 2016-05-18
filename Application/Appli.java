@@ -65,7 +65,6 @@ public class Appli {
             final ModelJTable leModele = new ModelJTable(daoVip);
             final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
             final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
-
             final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
 
             // la fenetre principale de l'application qui tourne dans l'EDT

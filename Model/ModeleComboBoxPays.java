@@ -18,12 +18,17 @@ import javax.swing.DefaultComboBoxModel;
 public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;
-   // private String[] noms ;
+    private String[] noms ;
    // private DaoPays daoPays;
 
     public ModeleComboBoxPays(DaoPays daoPays) throws Exception {
         super();
+        //pour test
         daoPays.SelectPays(listeItems);
+        for(String nom : listeItems){
+            System.out.println(nom);
+        }
+       
     }
 
     public void addElement(String uneChaine) {
@@ -39,6 +44,8 @@ public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
     public int getSize() {
         return listeItems.size();
     }
+    
+    
 
 }
 
