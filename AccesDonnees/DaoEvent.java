@@ -82,8 +82,8 @@ public class DaoEvent {
         pstmt.setInt(5, numVip2);
         pstmt.executeUpdate();
         pstmt.close();
-        daoVip.updateStatut(numVip2, "mar");
-        daoVip.updateStatut(numVip1, "mar");
+        daoVip.updateStatut(numVip2, 1);
+        daoVip.updateStatut(numVip1, 1);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -105,8 +105,8 @@ public class DaoEvent {
         pstmt.setDate(2, DateMar);
         pstmt.setDate(4, DateMar);
         pstmt.executeUpdate();
-        daoVip.updateStatut(numVip2, "div");
-        daoVip.updateStatut(numVip1, "div");
+        daoVip.updateStatut(numVip2,-1);
+        daoVip.updateStatut(numVip1, -1);
         pstmt.close();
          }catch(Exception e){
               System.out.println(e.getMessage());

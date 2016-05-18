@@ -36,8 +36,8 @@ public class DaoVIP {
             String civ = rset.getString(4);
             Date dateNaiss = rset.getDate(5);
             String lieu = rset.getString(6);
-            String codeR = rset.getString(7);
-            String codeS = rset.getString(8);
+            int codeR = rset.getInt(7);
+            int codeS = rset.getInt(8);
             String pays = rset.getString(9);
          
             VIP temp = new VIP(num, nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
@@ -64,8 +64,8 @@ public class DaoVIP {
         pstmt.setString(4, leVip.getCivilite());
         pstmt.setDate(5, (Date) leVip.getDateNaiss());
         pstmt.setString(6, leVip.getLieuNaiss());
-        pstmt.setString(7, leVip.getCodeRole());
-        pstmt.setString(8, leVip.getCodeStatut());
+        pstmt.setInt(7, leVip.getCodeRole());
+        pstmt.setInt(8, leVip.getCodeStatut());
         pstmt.setString(9, leVip.getNomPays());
         pstmt.executeUpdate();
         pstmt.close();
@@ -87,24 +87,24 @@ public class DaoVIP {
 
 
     public boolean estMarier(int numVip) throws SQLException {
-        String code="";
+        int code=-3;
         String requete = "select codeStatut from vip where idVip=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, numVip);
         ResultSet rset = pstmt.executeQuery(requete);
         while (rset.next()) {   
-                code = rset.getString(1);
+                code = rset.getInt(1);
             }
-        if(code.equalsIgnoreCase("mar")){
+        if(code==1){
             return true;
         }
         return false;
     }
-    public void updateStatut(int numVip,String i) throws SQLException {
+    public void updateStatut(int numVip,int i) throws SQLException {
         String requete = "update  vip set codeStatut=? where idVip = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(2, numVip);
-        pstmt.setString(1, i);
+        pstmt.setInt(1, i);
         pstmt.executeUpdate();
         pstmt.close();
     }

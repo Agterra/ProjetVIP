@@ -19,14 +19,14 @@ public class VIP {
     private String civilite;
     private Date dateNaiss;
     private String lieuNaiss;
-    private String codeRole;//rea,act
-    private String codeStatut;//mar,ceb,div
+    private int codeRole;//rea,act
+    private int codeStatut;//mar,ceb,div
     private String nomPays;
     
     public VIP(){
         
     }
-    public VIP(int idVip, String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, String codeRole, String codeStatut, String nomPays) {
+    public VIP(int idVip, String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
         this.idVip = idVip;
         this.nomVip = nomVIP;
         this.prenomVip = prenomVip;
@@ -62,11 +62,11 @@ public class VIP {
         return lieuNaiss;
     }
 
-    public String getCodeRole() {
+    public int getCodeRole() {
         return codeRole;
     }
 
-    public String getCodeStatut() {
+    public int getCodeStatut() {
         return codeStatut;
     }
 
@@ -98,11 +98,11 @@ public class VIP {
         this.lieuNaiss = lieuNaiss;
     }
 
-    public void setCodeRole(String codeRole) {
+    public void setCodeRole(int codeRole) {
         this.codeRole = codeRole;
     }
 
-    public void setCodeStatut(String codeStatut) {
+    public void setCodeStatut(int codeStatut) {
         this.codeStatut = codeStatut;
     }
 
