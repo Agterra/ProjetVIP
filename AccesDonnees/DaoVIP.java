@@ -62,7 +62,7 @@ public class DaoVIP {
         pstmt.setString(2, leVip.getNomVip());
         pstmt.setString(3, leVip.getPrenomVip());
         pstmt.setString(4, leVip.getCivilite());
-        pstmt.setDate(5, (Date) leVip.getDateNaiss());
+        pstmt.setDate(5, (Date)leVip.getDateNaiss());
         pstmt.setString(6, leVip.getLieuNaiss());
         pstmt.setInt(7, leVip.getCodeRole());
         pstmt.setInt(8, leVip.getCodeStatut());
