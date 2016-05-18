@@ -5,11 +5,14 @@
  */
 package IHM;
 
+import AccesDonnees.DaoPays;
 import Metier.VIP;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
+import Model.ModeleComboBoxPays;
+
 
 /**
  *
@@ -18,15 +21,19 @@ import Model.ModeleComboBoxCS;
 public class FenetreSaisie extends javax.swing.JDialog {
     private VIP vip;
     private boolean etatSortie;
-    private ModeleComboBoxCR crCM;
-    private ModeleComboBoxCS csCM;
+    private ModeleComboBoxCS csCB;
+    private ModeleComboBoxCR crCB;
+    private ModeleComboBoxPays paysCB;
+  
     
-    public FenetreSaisie(java.awt.Frame parent, VIP vip) {
+    public FenetreSaisie(java.awt.Frame parent, VIP vip,ModeleComboBoxCS csCB,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
         super(parent, true);
         this.vip=vip;
         etatSortie=false;
-           this.crCM= new ModeleComboBoxCR();
-        this.csCM=new ModeleComboBoxCS();
+        this.crCB=crCB;
+        this.csCB=csCB;
+        this.paysCB=paysCB;
+      
         
         initComponents();
         
@@ -91,11 +98,11 @@ public class FenetreSaisie extends javax.swing.JDialog {
             }
         });
 
-        jcbCodeRole.setModel(crCM);
+        jcbCodeRole.setModel(crCB);
 
-        jcbCodeStatut.setModel(csCM);
+        jcbCodeStatut.setModel(csCB);
 
-        jcbPays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbPays.setModel(paysCB);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

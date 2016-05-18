@@ -5,8 +5,12 @@
  */
 package IHM;
 
+import AccesDonnees.DaoPays;
 import Model.ModelJTable;
 import Metier.VIP;
+import Model.ModeleComboBoxCR;
+import Model.ModeleComboBoxCS;
+import Model.ModeleComboBoxPays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,9 +22,15 @@ import javax.swing.JOptionPane;
 public class FenetreApplication extends javax.swing.JFrame {
 
     private ModelJTable leModele;
+    private ModeleComboBoxCS csCB;
+    private ModeleComboBoxCR crCB;
+    private ModeleComboBoxPays paysCB;
 
-    public FenetreApplication(ModelJTable leModele) {
+    public FenetreApplication(ModelJTable leModele,ModeleComboBoxCR crCB,ModeleComboBoxCS csCB,ModeleComboBoxPays paysCB) {
         this.leModele = leModele;
+        this.crCB=crCB;
+        this.csCB=csCB;
+        this.paysCB=paysCB;
 
         initComponents();
         try {
@@ -103,7 +113,7 @@ public class FenetreApplication extends javax.swing.JFrame {
     private void btInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInsererActionPerformed
        try {
             VIP vip = new VIP();
-            FenetreSaisie laSaisie = new FenetreSaisie(this, vip);
+            FenetreSaisie laSaisie = new FenetreSaisie(this, vip,csCB,crCB,paysCB);
             if (laSaisie.doModal() == true) {
                 leModele.insererVip(vip);
             }
