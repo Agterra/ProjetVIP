@@ -26,6 +26,7 @@ public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
         daoPays.SelectPays(listeItems);
     }
 
+    @Override
     public void addElement(String uneChaine) {
         super.addElement(uneChaine);
     }
