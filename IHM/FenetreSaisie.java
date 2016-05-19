@@ -219,6 +219,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
             if(jcbPays.getSelectedItem().toString().isEmpty()){
                 throw new Exception("Champ pays vide!");
             }
+            
             vip.setNomPays(jcbPays.getSelectedItem().toString());
             if(txtPrenomVIP.getText().isEmpty()){
                 throw new Exception("Champ prénom vide!");
@@ -227,6 +228,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
             if(jcbCodeStatut.getSelectedItem().toString().isEmpty()){
                 throw new Exception("Champ code statut vide!");
             }
+           
             if(jcbCodeStatut.getSelectedItem().toString().equalsIgnoreCase("Célibataire")){
                 vip.setCodeStatut(0);
             }else if(jcbCodeStatut.getSelectedItem().toString().equalsIgnoreCase("Divorcé")){
@@ -234,11 +236,12 @@ public class FenetreSaisie extends javax.swing.JDialog {
             }else{
                 vip.setCodeStatut(1);
             }
+           
             etatSortie=true;
             this.dispose();
             
         }catch(Exception e){
-                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this,"a"+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed

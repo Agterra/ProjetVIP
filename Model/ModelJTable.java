@@ -45,7 +45,7 @@ public class ModelJTable extends AbstractTableModel {
         }else if (column == 3){
             return leVip.getCivilite();
         }else if(column == 4){
-            return leVip.getDateNaiss();
+            return String.valueOf(leVip.getDateNaiss());
         }else if(column == 5){
             return leVip.getLieuNaiss();
         }else if(column ==6){
