@@ -5,12 +5,13 @@
  */
 package IHM;
 
-import AccesDonnees.DaoPays;
+import Metier.Event;
 import Model.ModelJTable;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxPays;
+import Model.ModeleComboBoxVIP;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,12 +26,14 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleComboBoxCS csCB;
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
+    private ModeleComboBoxVIP mvCB;
 
-    public FenetreApplication(ModelJTable leModele,ModeleComboBoxCR crCB,ModeleComboBoxCS csCB,ModeleComboBoxPays paysCB) {
+    public FenetreApplication(ModelJTable leModele,ModeleComboBoxCR crCB,ModeleComboBoxCS csCB,ModeleComboBoxPays paysCB,ModeleComboBoxVIP mvCB) {
         this.leModele = leModele;
         this.crCB=crCB;
         this.csCB=csCB;
         this.paysCB=paysCB;
+        this.mvCB=mvCB;
 
         initComponents();
         try {
@@ -54,6 +57,9 @@ public class FenetreApplication extends javax.swing.JFrame {
         laTable = new javax.swing.JTable();
         btInserer = new javax.swing.JButton();
         btSuppr = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Les VIPs");
@@ -80,31 +86,50 @@ public class FenetreApplication extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Gestionnaire événements");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Gestionnaire photos");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1323.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btInserer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btInserer, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
-                .addComponent(btSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btInserer)
-                    .addComponent(btSuppr))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(btSuppr)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(btInserer))
+                .addContainerGap())
         );
 
         pack();
@@ -113,7 +138,7 @@ public class FenetreApplication extends javax.swing.JFrame {
     private void btInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInsererActionPerformed
        try {
             VIP vip = new VIP();
-            FenetreSaisie laSaisie = new FenetreSaisie(this, vip,csCB,crCB,paysCB);
+            FenetreSaisieVIP laSaisie = new FenetreSaisieVIP(this, vip,csCB,crCB,paysCB);
             if (laSaisie.doModal() == true) {
                 leModele.insererVip(vip);
             }
@@ -138,6 +163,18 @@ public class FenetreApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Event event = new Event();
+            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, event , mvCB);
+            if(laSaisie.doModal()){
+                
+            }
+        } catch (Exception e) {
+            System.out.println("Exception à l'insertion : " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -145,6 +182,9 @@ public class FenetreApplication extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btInserer;
     private javax.swing.JButton btSuppr;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable laTable;
     // End of variables declaration//GEN-END:variables

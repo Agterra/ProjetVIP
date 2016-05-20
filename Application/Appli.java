@@ -13,6 +13,7 @@ import Model.ModelJTable;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxPays;
+import Model.ModeleComboBoxVIP;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
@@ -65,13 +66,14 @@ public class Appli {
             final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
             final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
             final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
+            final ModeleComboBoxVIP mvCB = new ModeleComboBoxVIP(daoVip);
 
 
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FenetreApplication(leModele, crCB, csCB, paysCB).setVisible(true);
+                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB).setVisible(true);
                 }
             });
         } catch (SQLException ex) {

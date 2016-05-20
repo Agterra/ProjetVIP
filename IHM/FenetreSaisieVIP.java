@@ -18,7 +18,7 @@ import Model.ModeleComboBoxPays;
  *
  * @author Louis
  */
-public class FenetreSaisie extends javax.swing.JDialog {
+public class FenetreSaisieVIP extends javax.swing.JDialog {
     private VIP vip;
     private boolean etatSortie;
     private ModeleComboBoxCS csCB;
@@ -26,7 +26,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
     private ModeleComboBoxPays paysCB;
   
     
-    public FenetreSaisie(java.awt.Frame parent, VIP vip,ModeleComboBoxCS csCB,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
+    public FenetreSaisieVIP(java.awt.Frame parent, VIP vip,ModeleComboBoxCS csCB,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
         super(parent, true);
         this.vip=vip;
         etatSortie=false;
@@ -103,6 +103,11 @@ public class FenetreSaisie extends javax.swing.JDialog {
         jcbCodeStatut.setModel(csCB);
 
         jcbPays.setModel(paysCB);
+        jcbPays.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbPaysActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,6 +250,10 @@ public class FenetreSaisie extends javax.swing.JDialog {
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
+
+    private void jcbPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPaysActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbPaysActionPerformed
 
     public boolean doModal() {
         setVisible(true);
