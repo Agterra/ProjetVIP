@@ -13,6 +13,7 @@ import java.sql.Date;
  */
 public class VIP {
     
+    private static int incrIdVip=0;
     private int idVip;
     private String nomVip;
     private String prenomVip;
@@ -26,8 +27,8 @@ public class VIP {
     public VIP(){
         
     }
-    public VIP(int idVip, String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
-        this.idVip = idVip;
+    public VIP(String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
+        this.idVip = incrIdVip;
         this.nomVip = nomVIP;
         this.prenomVip = prenomVip;
         this.civilite = civilite;
@@ -36,6 +37,7 @@ public class VIP {
         this.codeRole = codeRole;
         this.codeStatut = codeStatut;
         this.nomPays = nomPays;
+        this.incrIdVip++;
     }
 
     public int getIdVip() {

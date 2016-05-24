@@ -5,8 +5,11 @@
  */
 package IHM;
 
-import Metier.Event;
-import Model.ModeleComboBoxVIP;
+import Metier.Evenements;
+import Model.ModeleComboBoxVIP1;
+import Model.ModeleComboBoxVIP2;
+import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,16 +18,16 @@ import Model.ModeleComboBoxVIP;
 public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private boolean etatSortie;
-    private Event event;
-    private ModeleComboBoxVIP leModeleVip1,leModeleVip2;
+    private Evenements evenement;
+    private ModeleComboBoxVIP1 leModeleVip1;
+    private ModeleComboBoxVIP2 leModeleVip2;
     
-    public FenetreSaisieEvents(java.awt.Frame parent, Event event, ModeleComboBoxVIP leModeleVip) {
-        super(parent, true);
-        etatSortie=false;
-        this.leModeleVip1=leModeleVip;
-        this.leModeleVip2=leModeleVip;
-        
-        initComponents();
+    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1 leModeleVip1, ModeleComboBoxVIP2 leModeleVip2) {
+        this.etatSortie = false;
+        this.evenement = evenement;
+        this.leModeleVip1 = leModeleVip1;
+        this.leModeleVip2 = leModeleVip2;
+
     }
 
     /**
@@ -46,7 +49,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         jtxtDateMariage = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jtxtLieuMariage = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jbtValiderMariage = new javax.swing.JButton();
         jpDivorce = new javax.swing.JPanel();
         jcbVip5 = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
@@ -76,10 +79,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
         jLabel4.setText("Lieu du mariage:");
 
-        jButton1.setText("Valider le mariage");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtValiderMariage.setText("Valider le mariage");
+        jbtValiderMariage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtValiderMariageActionPerformed(evt);
             }
         });
 
@@ -110,7 +113,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                         .addComponent(jcbVip2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpMariageLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbtValiderMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jpMariageLayout.setVerticalGroup(
@@ -131,7 +134,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(jtxtLieuMariage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jbtValiderMariage)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -222,22 +225,48 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        etatSortie=true;
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtValiderMariageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtValiderMariageActionPerformed
+        try {
+            if (jcbVip1.getSelectedItem().toString().isEmpty()) {
+                throw new Exception("Champs Vip 1 vide!");
+            }
+            String nomVip1 = jcbVip1.getSelectedItem().toString();
+            if (jcbVip2.getSelectedItem().toString().isEmpty()) {
+                throw new Exception("Champs Vip 2 vide!");
+            }
+            String nomVip2 = jcbVip2.getSelectedItem().toString();
+            if (jtxtDateMariage.getText().isEmpty()) {
+                throw new Exception("Champs Date Mariage vide!");
+            }
+            Date dateMariage = Date.valueOf(jtxtDateMariage.getText());
+            if (jtxtLieuMariage.getText().isEmpty()) {
+                throw new Exception("Champs Lieu Mariage");
+            }
+            String lieuMariage = jtxtLieuMariage.getText();
+
+            evenement.setIdVip1(leModeleVip1.getIndexOf(nomVip1));
+            evenement.setIdVip2(leModeleVip2.getIndexOf(nomVip2));
+            evenement.setDateMar(dateMariage);
+            evenement.setLieuMariage(lieuMariage);
+
+            etatSortie = true;
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "a" + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtValiderMariageActionPerformed
 
     private void jcbVip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVip1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbVip1ActionPerformed
+    
     public boolean doModal() {
         setVisible(true);
         return etatSortie;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -247,6 +276,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton jbtValiderMariage;
     private javax.swing.JComboBox jcbVip1;
     private javax.swing.JComboBox jcbVip2;
     private javax.swing.JComboBox jcbVip5;

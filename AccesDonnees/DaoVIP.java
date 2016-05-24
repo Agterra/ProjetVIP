@@ -20,14 +20,14 @@ import java.util.List;
  */
 public class DaoVIP {
      private final Connection connexion;
-     private List<String> listeNomsVIP;
+     private List<String> listeNomsIdVIP;
 
     public DaoVIP(Connection connexion) throws SQLException {
         this.connexion = connexion;     
     }
     
     public List<String> SelectVIP() throws Exception {
-        listeNomsVIP= new ArrayList();
+        listeNomsIdVIP= new ArrayList();
         String requete = "Select * from vip";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
@@ -35,13 +35,14 @@ public class DaoVIP {
         System.out.println(rset);
         while (rset.next()) {// traitement du résulat
             String nom = rset.getString(2);
+            
                     
           //Pays temp = new Pays(nom);
-            listeNomsVIP.add(nom);
+            listeNomsIdVIP.add(nom);
         }
         rset.close();
         pstmt.close();
-        return listeNomsVIP;
+        return listeNomsIdVIP;
      }
 
     public void lireLesVip(List<VIP> lesVips) throws SQLException {    
@@ -60,7 +61,7 @@ public class DaoVIP {
             int codeS = rset.getInt(8);
             String pays = rset.getString(9);
          
-            VIP temp = new VIP(num, nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
+            VIP temp = new VIP(nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
             lesVips.add(temp);
         }
         rset.close();

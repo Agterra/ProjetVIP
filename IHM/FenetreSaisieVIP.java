@@ -217,10 +217,7 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
                 throw new Exception("Champ nom vide!");
             }
             vip.setNomVIP(txtNomVIP.getText());
-            if(txtNumVIP.getText().isEmpty()){
-                throw new Exception("Champ numéro vide!");
-            }
-            vip.setIdVip(Integer.parseInt(txtNumVIP.getText()));
+            
             if(jcbPays.getSelectedItem().toString().isEmpty()){
                 throw new Exception("Champ pays vide!");
             }

@@ -11,23 +11,24 @@ import java.sql.Date;
  *
  * @author nan c'est pas moi
  */
-public class Event {
+public class Evenements {
     
     private int idVip1,idVip2;
     private String lieuMariage;
     private Date dateDiv=null,dateMar=null;
 
-    public Event() {
+    public Evenements() {
+        
     }
 
-    public Event(int idVip1, int idVip2, String lieuMariage, Date dateMar) {
+    public Evenements(int idVip1, int idVip2, String lieuMariage, Date dateMar) {
         this.idVip1 = idVip1;
         this.idVip2 = idVip2;
         this.lieuMariage = lieuMariage;
         this.dateMar = dateMar;
     }
 
-    public Event(int idVip1, int idVip2, Date dateDiv) {
+    public Evenements(int idVip1, int idVip2, Date dateDiv) {
         this.idVip1 = idVip1;
         this.idVip2 = idVip2;
         this.dateDiv = dateDiv;

@@ -5,7 +5,7 @@
  */
 package AccesDonnees;
 
-import Metier.Event;
+import Metier.Evenements;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,6 +18,7 @@ public class DaoEvent {
     private final Connection connexion;
     private DaoVIP daoVip;
     private final Date div = new Date(0000, 00, 00);
+    
     public DaoEvent(Connection connexion) throws SQLException {
         this.connexion = connexion;
     }
