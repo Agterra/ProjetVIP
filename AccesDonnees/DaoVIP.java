@@ -122,7 +122,7 @@ public class DaoVIP {
         return false;
     }
     public void updateStatut(int numVip,int i) throws SQLException {
-        String requete = "update  vip set codeStatut=? where idVip = ?";
+        String requete = "update  vip set codeStatut=? where idVip=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(2, numVip);
         pstmt.setInt(1, i);

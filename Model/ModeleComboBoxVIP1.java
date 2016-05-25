@@ -59,6 +59,10 @@ public class ModeleComboBoxVIP1 extends DefaultComboBoxModel<String> {
         
     }
     
+    public void addDivorce(int numVip1, int numVip2, Date dateDivorce) throws Exception{
+        daoEvent.addDivorce(numVip1, numVip2, dateDivorce);
+    }
+    
     
 
 }

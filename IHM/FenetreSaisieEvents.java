@@ -23,11 +23,13 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private ModeleComboBoxVIP2 leModeleVip2;
     
     public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1 leModeleVip1, ModeleComboBoxVIP2 leModeleVip2) {
+        super(parent, true);
         this.etatSortie = false;
         this.evenement = evenement;
         this.leModeleVip1 = leModeleVip1;
         this.leModeleVip2 = leModeleVip2;
 
+         initComponents();
     }
 
     /**
@@ -56,8 +58,8 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         jcbVip6 = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jtxtDateMariage2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jtxtDateDivorce = new javax.swing.JTextField();
+        jbnDivorce = new javax.swing.JButton();
         jlbTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -150,7 +152,12 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
         jLabel11.setText("Date de divorce:");
 
-        jButton3.setText("Valider le divorce");
+        jbnDivorce.setText("Valider le divorce");
+        jbnDivorce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbnDivorceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpDivorceLayout = new javax.swing.GroupLayout(jpDivorce);
         jpDivorce.setLayout(jpDivorceLayout);
@@ -164,7 +171,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                             .addGroup(jpDivorceLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addGap(20, 20, 20)
-                                .addComponent(jtxtDateMariage2))
+                                .addComponent(jtxtDateDivorce))
                             .addGroup(jpDivorceLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,7 +182,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                         .addComponent(jcbVip6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDivorceLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbnDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 47, Short.MAX_VALUE))
         );
         jpDivorceLayout.setVerticalGroup(
@@ -190,9 +197,9 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jtxtDateMariage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtDateDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(jbnDivorce)
                 .addContainerGap())
         );
 
@@ -243,22 +250,70 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 throw new Exception("Champs Lieu Mariage");
             }
             String lieuMariage = jtxtLieuMariage.getText();
-
-            evenement.setIdVip1(leModeleVip1.getIndexOf(nomVip1));
-            evenement.setIdVip2(leModeleVip2.getIndexOf(nomVip2));
+            
+            for(int i =0;i<leModeleVip1.getSize();i++){
+                if(leModeleVip1.getElementAt(i).equalsIgnoreCase(nomVip1)){
+                    evenement.setIdVip1(i);
+                }
+            }
+            for(int i =0;i<leModeleVip2.getSize();i++){
+                if(leModeleVip2.getElementAt(i).equalsIgnoreCase(nomVip2)){
+                    evenement.setIdVip2(i);
+                }
+            }
+            
             evenement.setDateMar(dateMariage);
             evenement.setLieuMariage(lieuMariage);
-
+            
             etatSortie = true;
+            
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "a" + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+           JOptionPane.showMessageDialog(this, "Erreur Marriage: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbtValiderMariageActionPerformed
 
     private void jcbVip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVip1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbVip1ActionPerformed
+
+    private void jbnDivorceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnDivorceActionPerformed
+        try {
+            if (jcbVip1.getSelectedItem().toString().isEmpty()) {
+                throw new Exception("Champs Vip 1 vide!");
+            }
+            String nomVip1 = jcbVip1.getSelectedItem().toString();
+            if (jcbVip2.getSelectedItem().toString().isEmpty()) {
+                throw new Exception("Champs Vip 2 vide!");
+            }
+            String nomVip2 = jcbVip2.getSelectedItem().toString();
+            if (jtxtDateDivorce.getText().isEmpty()) {
+                throw new Exception("Champs Date Mariage vide!");
+            }
+            Date dateDivorce = Date.valueOf(jtxtDateDivorce.getText());
+            
+            for(int i =0;i<leModeleVip1.getSize();i++){
+                if(leModeleVip1.getElementAt(i).equalsIgnoreCase(nomVip1)){
+                    evenement.setIdVip1(i);
+                }
+            }
+            for(int i =0;i<leModeleVip2.getSize();i++){
+                if(leModeleVip2.getElementAt(i).equalsIgnoreCase(nomVip2)){
+                    evenement.setIdVip2(i);
+                }
+            }
+            
+          
+            
+            evenement.setDateDiv(dateDivorce);
+            
+            etatSortie = true;
+            
+            this.dispose();
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(this, "Erreur Divorce: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbnDivorceActionPerformed
     
     public boolean doModal() {
         setVisible(true);
@@ -267,7 +322,6 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -276,6 +330,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton jbnDivorce;
     private javax.swing.JButton jbtValiderMariage;
     private javax.swing.JComboBox jcbVip1;
     private javax.swing.JComboBox jcbVip2;
@@ -284,8 +339,8 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private javax.swing.JLabel jlbTitre;
     private javax.swing.JPanel jpDivorce;
     private javax.swing.JPanel jpMariage;
+    private javax.swing.JTextField jtxtDateDivorce;
     private javax.swing.JTextField jtxtDateMariage;
-    private javax.swing.JTextField jtxtDateMariage2;
     private javax.swing.JTextField jtxtLieuMariage;
     // End of variables declaration//GEN-END:variables
 }

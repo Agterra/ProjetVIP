@@ -171,7 +171,14 @@ public class FenetreApplication extends javax.swing.JFrame {
             Evenements event = new Evenements();
             FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, event, mvCB1, mvCB2);
             if (laSaisie.doModal() == true) {
-                mvCB1.addMariage(event.getIdVip1(), event.getIdVip2(), event.getDateMar(), event.getLieuMariage());
+                if(!event.getDateDiv().toString().isEmpty()){
+                    mvCB1.addDivorce(event.getIdVip1(),event.getIdVip2(),event.getDateDiv());
+                }else if(!event.getDateMar().toString().isEmpty()){
+                    mvCB1.addMariage(event.getIdVip1(), event.getIdVip2(), event.getDateMar(), event.getLieuMariage());
+                }else{
+                    System.out.println("fail");
+                }
+                
             }
         } catch (Exception e) {
             System.out.println("Exception à l'insertion : " + e.getMessage());
