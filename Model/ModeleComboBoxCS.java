@@ -17,7 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 public class ModeleComboBoxCS extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;
-    private String[] noms = {"Divorcé", "Marié","Célibataire"};
+    private String[] noms = {"Célibataire"};
     
 
     public ModeleComboBoxCS() {

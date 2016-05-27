@@ -159,7 +159,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCodeStatut">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Code Statut (-1:divorc&#xe9;/0:c&#xe9;lib/1:mari&#xe9;)"/>
+        <Property name="text" type="java.lang.String" value="Code Statut (par defaut celibataire)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNumVIP">

@@ -89,7 +89,7 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
 
         jlbPaysVIP.setText("Pays");
 
-        jlbCodeStatut.setText("Code Statut (-1:divorcé/0:célib/1:marié)");
+        jlbCodeStatut.setText("Code Statut (par defaut celibataire)");
 
         jbtnSoumettre.setText("Soumettre");
         jbtnSoumettre.addActionListener(new java.awt.event.ActionListener() {
@@ -231,13 +231,9 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
                 throw new Exception("Champ code statut vide!");
             }
            
-            if(jcbCodeStatut.getSelectedItem().toString().equalsIgnoreCase("Célibataire")){
+            
                 vip.setCodeStatut(0);
-            }else if(jcbCodeStatut.getSelectedItem().toString().equalsIgnoreCase("Divorcé")){
-                vip.setCodeStatut(-1);
-            }else{
-                vip.setCodeStatut(1);
-            }
+            
            
             etatSortie=true;
             this.dispose();
