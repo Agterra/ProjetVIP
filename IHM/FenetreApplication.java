@@ -6,13 +6,16 @@
 package IHM;
 
 import Metier.Evenements;
-import Model.ModelJTable;
+import Metier.Photo;
+import Model.ModelJTableVIP;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxPays;
 import Model.ModeleComboBoxVIP1;
 import Model.ModeleComboBoxVIP2;
+import Model.ModeleJTablePhotos;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,20 +26,22 @@ import javax.swing.JOptionPane;
  */
 public class FenetreApplication extends javax.swing.JFrame {
 
-    private ModelJTable leModele;
+    private ModelJTableVIP leModele;
     private ModeleComboBoxCS csCB;
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
     private ModeleComboBoxVIP1 mvCB1;
     private ModeleComboBoxVIP2 mvCB2;
+    private ModeleJTablePhotos leModelePhoto;
 
-    public FenetreApplication(ModelJTable leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1 mvCB1, ModeleComboBoxVIP2 mvCB2) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1 mvCB1, ModeleComboBoxVIP2 mvCB2,ModeleJTablePhotos leModelePhoto) {
         this.leModele = leModele;
         this.crCB = crCB;
         this.csCB = csCB;
         this.paysCB = paysCB;
         this.mvCB1 = mvCB1;
         this.mvCB2 = mvCB2;
+        this.leModelePhoto=leModelePhoto;
 
         initComponents();
         try {
@@ -191,7 +196,16 @@ public class FenetreApplication extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,true);
+   
+        Photo laPhoto = new Photo();
+        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,laPhoto,leModelePhoto);
+        
+          if (gestionPhoto.doModal() == true) {
+              
+            }
+   
+    //    System.out.println("Exception gestionnaire photo: "+e.getMessage());
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

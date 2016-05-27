@@ -13,7 +13,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
 
     private boolean etatSortie;
     
-    public FenetreUploadPhoto(java.awt.Frame parent) {
+    public FenetreUploadPhoto(javax.swing.JDialog parent) {
         super(parent, true);
         this.etatSortie=false;
         
@@ -69,7 +69,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
 

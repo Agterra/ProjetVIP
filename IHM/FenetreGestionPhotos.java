@@ -5,6 +5,9 @@
  */
 package IHM;
 
+import Metier.Photo;
+import Model.ModeleJTablePhotos;
+
 /**
  *
  * @author Louis
@@ -12,11 +15,17 @@ package IHM;
 public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private boolean etatSortie;
-    
-    public FenetreGestionPhotos(java.awt.Frame parent) {
+    private Photo laPhoto;
+    private ModeleJTablePhotos leModelePhoto;
+
+    public FenetreGestionPhotos(java.awt.Frame parent, Photo laPhoto, ModeleJTablePhotos leModelePhoto) {
+
         super(parent, true);
-        this.etatSortie=false;
-        
+
+        this.etatSortie = false;
+        this.laPhoto = laPhoto;
+        this.leModelePhoto = leModelePhoto;
+
         initComponents();
     }
 
@@ -43,20 +52,15 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButton1.setText("Ajouter une photo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Supprimer");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(leModelePhoto);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,6 +94,21 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            FenetreUploadPhoto upload = new FenetreUploadPhoto(this);
+            if (upload.doModal() == true) {
+
+            }
+            etatSortie=true;
+            this.dispose();
+
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

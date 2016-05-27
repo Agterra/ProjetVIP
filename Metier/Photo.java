@@ -5,6 +5,8 @@
  */
 package Metier;
 
+import java.sql.Date;
+
 /**
  *
  * @author Claire
@@ -13,11 +15,14 @@ public class Photo {
     private int idVip;
     private int idPhoto;
     private String lien;
-
-    public Photo(int idVip, int idPhoto, String lien) {
+    private String lieu;
+    private Date laDate;
+    
+    public Photo(int idVip, int idPhoto,Date laDate,String lien,String lieu) {
         this.idVip = idVip;
         this.idPhoto = idPhoto;
         this.lien = lien;
+        this.lieu=lieu;
     }
 
     public Photo() {
@@ -46,5 +51,22 @@ public class Photo {
     public void setLien(String lien) {
         this.lien = lien;
     }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
+
+    public Date getLaDate() {
+        return laDate;
+    }
+
+    public void setLaDate(Date laDate) {
+        this.laDate = laDate;
+    }
+    
     
 }

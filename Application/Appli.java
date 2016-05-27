@@ -7,15 +7,17 @@ package Application;
 
 import AccesDonnees.DaoEvent;
 import AccesDonnees.DaoPays;
+import AccesDonnees.DaoPhoto;
 import AccesDonnees.DaoVIP;
 import AccesDonnees.SourceMySql;
 import IHM.FenetreApplication;
-import Model.ModelJTable;
+import Model.ModelJTableVIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxPays;
 import Model.ModeleComboBoxVIP1;
 import Model.ModeleComboBoxVIP2;
+import Model.ModeleJTablePhotos;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
@@ -34,7 +36,7 @@ public class Appli {
     private static DaoVIP daoVip;
     private static DaoPays leDaoPays;
     private static DaoEvent daoEvent;
-
+    private static DaoPhoto daoPhoto;
     /**
      * @param args the command line arguments
      */
@@ -64,21 +66,24 @@ public class Appli {
             daoVip = new DaoVIP(laConnexion);
             leDaoPays = new DaoPays(laConnexion);
             daoEvent = new DaoEvent(laConnexion);
+            daoPhoto = new DaoPhoto(laConnexion);
+            
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
-            final ModelJTable leModele = new ModelJTable(daoVip);
+            final ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
 
             final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
             final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
             final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
             final ModeleComboBoxVIP1 mvCB1 = new ModeleComboBoxVIP1(daoVip,daoEvent);
             final ModeleComboBoxVIP2 mvCB2 = new ModeleComboBoxVIP2(daoVip,daoEvent);
+            final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
 
 
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1,mvCB2).setVisible(true);
+                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1,mvCB2,leModelePhoto).setVisible(true);
                 }
             });
         } catch (SQLException ex) {
