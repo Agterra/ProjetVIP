@@ -206,6 +206,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         jTabbedPane1.addTab("Divorce", jpDivorce);
 
         jlbTitre.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jlbTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbTitre.setText("Gestionnaire d'événements");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,7 +224,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbTitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlbTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())

@@ -97,6 +97,11 @@ public class FenetreApplication extends javax.swing.JFrame {
         });
 
         jButton2.setText("Gestionnaire photos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1323.png"))); // NOI18N
 
@@ -184,6 +189,10 @@ public class FenetreApplication extends javax.swing.JFrame {
             System.out.println("Exception à l'insertion : " + e.getMessage());
         }
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
