@@ -11,13 +11,13 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.VIP;
 
-public class ModelJTable extends AbstractTableModel {
+public class ModelJTableVIP extends AbstractTableModel {
     
     private List<VIP> leConteneur;
     private String[] titre;
     private DaoVIP leDaoVIP;
     
-    public ModelJTable(DaoVIP leDaoVIP){
+    public ModelJTableVIP(DaoVIP leDaoVIP){
         this.leConteneur = new ArrayList<>();
         this.titre = new String[]{"idVip","nomVIP","prenomVip","civilite","dateNaiss","lieuNaiss","codeRole","codeStatut","nomPays"};
         this.leDaoVIP = leDaoVIP;

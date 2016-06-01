@@ -6,15 +6,23 @@
 package IHM;
 
 import Metier.Evenements;
-import Model.ModelJTable;
+import Metier.Photo;
+import Model.ModelJTableVIP;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
+<<<<<<< HEAD
 
 import Model.ModeleComboBoxVIP1M;
 import Model.ModeleComboBoxVIP2M;
+=======
+import Model.ModeleComboBoxVIP1;
+import Model.ModeleComboBoxVIP2;
+import Model.ModeleJTablePhotos;
+import java.sql.SQLException;
+>>>>>>> origin/master
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,24 +33,39 @@ import javax.swing.JOptionPane;
  */
 public class FenetreApplication extends javax.swing.JFrame {
 
-    private ModelJTable leModele;
+    private ModelJTableVIP leModele;
     private ModeleComboBoxCS csCB;
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
+<<<<<<< HEAD
  
      private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
     private ModeleComboBoxMarier mvCBMar;
 
     public FenetreApplication(ModelJTable leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar) {
+=======
+    private ModeleComboBoxVIP1 mvCB1;
+    private ModeleComboBoxVIP2 mvCB2;
+    private ModeleJTablePhotos leModelePhoto;
+
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1 mvCB1, ModeleComboBoxVIP2 mvCB2,ModeleJTablePhotos leModelePhoto) {
+>>>>>>> origin/master
         this.leModele = leModele;
         this.crCB = crCB;
         this.csCB = csCB;
         this.paysCB = paysCB;
+<<<<<<< HEAD
         
         this.mvCB1M = mvCB1M;
         this.mvCB2M = mvCB2M;
             this.mvCBMar = mvCBMar;
+=======
+        this.mvCB1 = mvCB1;
+        this.mvCB2 = mvCB2;
+        this.leModelePhoto=leModelePhoto;
+
+>>>>>>> origin/master
         initComponents();
         try {
             leModele.lireLesVip();
@@ -104,6 +127,11 @@ public class FenetreApplication extends javax.swing.JFrame {
         });
 
         jButton2.setText("Gestionnaire photos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1323.png"))); // NOI18N
 
@@ -193,6 +221,19 @@ public class FenetreApplication extends javax.swing.JFrame {
             System.out.println("Exception à l'insertion : " + e.getMessage());
         }
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+   
+        Photo laPhoto = new Photo();
+        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,laPhoto,leModelePhoto);
+        
+          if (gestionPhoto.doModal() == true) {
+              
+            }
+   
+    //    System.out.println("Exception gestionnaire photo: "+e.getMessage());
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
