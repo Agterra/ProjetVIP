@@ -49,10 +49,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jtxtLienPhoto" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jbnAjouterPhoto" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jFileChooser1" min="-2" pref="395" max="-2" attributes="0"/>
+                      <Component id="jfcPhoto" min="-2" pref="395" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -67,7 +66,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jFileChooser1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jfcPhoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -96,9 +95,7 @@
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtxtLienPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jbnAjouterPhoto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace min="45" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -115,9 +112,9 @@
         <Property name="text" type="java.lang.String" value="Uploader une photo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFileChooser" name="jFileChooser1">
+    <Component class="javax.swing.JFileChooser" name="jfcPhoto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFileChooser1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jfcPhotoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -169,11 +166,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtLienPhotoActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jbnAjouterPhoto">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter la photo"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

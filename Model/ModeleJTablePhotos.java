@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Model;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     }
 
     public void supprimerPhoto(int ligne) throws Exception {
-        int idPhoto = (int) getValueAt(ligne, 1);
+        String idPhoto = getValueAt(ligne, 1).toString();
         daoPhoto.supprimerPhoto(idPhoto);
         leConteneur.remove(ligne);
         this.fireTableDataChanged();

@@ -110,8 +110,10 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private void jbnAjoutPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnAjoutPhotoActionPerformed
         try {
-            FenetreUploadPhoto upload = new FenetreUploadPhoto(this);
+            Photo laPhoto = new Photo();
+            FenetreUploadPhoto upload = new FenetreUploadPhoto(this,laPhoto);
             if (upload.doModal() == true) {
+                System.out.println(laPhoto.toString());
                        leModelePhoto.insererPhoto(laPhoto);
             }
             etatSortie=true;

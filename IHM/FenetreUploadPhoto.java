@@ -5,6 +5,10 @@
  */
 package IHM;
 
+import Metier.Photo;
+import java.io.File;
+import java.sql.Date;
+
 /**
  *
  * @author Louis
@@ -12,11 +16,13 @@ package IHM;
 public class FenetreUploadPhoto extends javax.swing.JDialog {
 
     private boolean etatSortie;
-    
-    public FenetreUploadPhoto(javax.swing.JDialog parent) {
+    private Photo laPhoto;
+
+    public FenetreUploadPhoto(javax.swing.JDialog parent, Photo laPhoto) {
         super(parent, true);
-        this.etatSortie=false;
-        
+        this.etatSortie = false;
+        this.laPhoto = laPhoto;
+
         initComponents();
     }
 
@@ -30,7 +36,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jFileChooser1 = new javax.swing.JFileChooser();
+        jfcPhoto = new javax.swing.JFileChooser();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -41,7 +47,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         jtxtDatePhoto = new javax.swing.JTextField();
         jtxtLieuPhoto = new javax.swing.JTextField();
         jtxtLienPhoto = new javax.swing.JTextField();
-        jbnAjouterPhoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,9 +54,9 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Uploader une photo");
 
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+        jfcPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
+                jfcPhotoActionPerformed(evt);
             }
         });
 
@@ -95,8 +100,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             }
         });
 
-        jbnAjouterPhoto.setText("Ajouter la photo");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,10 +125,9 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtxtLienPhoto))
-                            .addComponent(jbnAjouterPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jtxtLienPhoto)))
                         .addGap(18, 18, 18)
-                        .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jfcPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,7 +138,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jfcPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
@@ -159,17 +161,37 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jtxtLienPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbnAjouterPhoto)
-                        .addGap(45, 45, 45))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
+    private void jfcPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfcPhotoActionPerformed
+        try {
+            File f = jfcPhoto.getSelectedFile();
+            Photo laPhoto = new Photo();
+            laPhoto.setIdPhoto(f.getName());
+            laPhoto.setLien(f.getAbsolutePath());
+             if (jtxtIdVip.getText().isEmpty()) {
+                throw new Exception("Champs IdVip vide!");
+            }
+            laPhoto.setIdVip(Integer.parseInt(jtxtIdVip.getText()));
+            if (jtxtDatePhoto.getText().isEmpty()) {
+                throw new Exception("Champs Date vide!");
+            }
+            laPhoto.setLaDate(Date.valueOf(jtxtDatePhoto.getText()));
+            if (jtxtLieuPhoto.getText().isEmpty()) {
+                throw new Exception("Champs Lieu vide!");
+            }
+            laPhoto.setLieu(jtxtLieuPhoto.getText());
+            etatSortie=true;
+            this.dispose();
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_jfcPhotoActionPerformed
 
     private void jtxtIdVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdVipActionPerformed
         // TODO add your handling code here:
@@ -191,21 +213,19 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtLienPhotoActionPerformed
 
-
     public boolean doModal() {
         setVisible(true);
         return etatSortie;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JButton jbnAjouterPhoto;
+    private javax.swing.JFileChooser jfcPhoto;
     private javax.swing.JTextField jtxtDatePhoto;
     private javax.swing.JTextField jtxtIdPhoto;
     private javax.swing.JTextField jtxtIdVip;

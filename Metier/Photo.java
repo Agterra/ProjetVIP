@@ -13,12 +13,12 @@ import java.sql.Date;
  */
 public class Photo {
     private int idVip;
-    private int idPhoto;
+    private String idPhoto;
     private String lien;
     private String lieu;
     private Date laDate;
     
-    public Photo(int idVip, int idPhoto,Date laDate,String lien,String lieu) {
+    public Photo(int idVip, String idPhoto,Date laDate,String lien,String lieu) {
         this.idVip = idVip;
         this.idPhoto = idPhoto;
         this.lien = lien;
@@ -36,11 +36,11 @@ public class Photo {
         this.idVip = idVip;
     }
 
-    public int getIdPhoto() {
+    public String getIdPhoto() {
         return idPhoto;
     }
 
-    public void setIdPhoto(int idPhoto) {
+    public void setIdPhoto(String idPhoto) {
         this.idPhoto = idPhoto;
     }
 
@@ -66,6 +66,11 @@ public class Photo {
 
     public void setLaDate(Date laDate) {
         this.laDate = laDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" + "idVip=" + idVip + ", idPhoto=" + idPhoto + ", lien=" + lien + ", lieu=" + lieu + ", laDate=" + laDate + '}';
     }
     
     

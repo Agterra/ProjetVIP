@@ -36,7 +36,7 @@ public class DaoPhoto {
 
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, img.getIdVip());
-        pstmt.setInt(2, img.getIdPhoto());
+        pstmt.setString(2, img.getIdPhoto());
         pstmt.setDate(3, img.getLaDate());
         pstmt.setString(4, img.getLieu());
         pstmt.setString(5, img.getLien());
@@ -45,22 +45,22 @@ public class DaoPhoto {
         pstmt.close();
     }
 
-    public void supprimerPhoto(int img) throws SQLException {
+    public void supprimerPhoto(String id) throws SQLException {
         String requete = "delete from Photo where idphoto = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, img);
+        pstmt.setString(1, id);
         pstmt.executeUpdate();
         pstmt.close();
     }
 
-    public boolean existIDPhoto(int id) throws SQLException {
+    public boolean existIDPhoto(String id) throws SQLException {
         int nb = 0;
         String requete = "select idphoto from Photo where idphoto=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, id);
-        ResultSet rset = pstmt.executeQuery(requete);
+        pstmt.setString(1, id);
+        ResultSet rset = pstmt.executeQuery();
         while (rset.next()) {
-            nb = rset.getInt(1);
+            nb++;
         }
         if (nb == 1) {
             return true;
@@ -75,7 +75,7 @@ public class DaoPhoto {
 
         while (rset.next()) {       // traitement du résulat
             int numVip = rset.getInt(1);
-            int idPhoto = rset.getInt(2);
+            String idPhoto = rset.getString(2);
             Date datePdv = rset.getDate(3);
             String lieu = rset.getNString(4);
             String lien = rset.getString(9);
