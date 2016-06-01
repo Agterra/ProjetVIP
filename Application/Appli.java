@@ -16,16 +16,13 @@ import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
-<<<<<<< HEAD
 
 import Model.ModeleComboBoxVIP1M;
 
 import Model.ModeleComboBoxVIP2M;
-=======
-import Model.ModeleComboBoxVIP1;
-import Model.ModeleComboBoxVIP2;
+
 import Model.ModeleJTablePhotos;
->>>>>>> origin/master
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
@@ -82,27 +79,23 @@ public class Appli {
             final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
             final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
             final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
-<<<<<<< HEAD
+
          
             final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip,daoEvent);
             final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip,daoEvent);
             final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent,daoVip);
-=======
-            final ModeleComboBoxVIP1 mvCB1 = new ModeleComboBoxVIP1(daoVip,daoEvent);
-            final ModeleComboBoxVIP2 mvCB2 = new ModeleComboBoxVIP2(daoVip,daoEvent);
+
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
 
 
->>>>>>> origin/master
+
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-<<<<<<< HEAD
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBMar).setVisible(true);
-=======
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1,mvCB2,leModelePhoto).setVisible(true);
->>>>>>> origin/master
+
+                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBMar,leModelePhoto).setVisible(true);
+
                 }
             });
         } catch (SQLException ex) {

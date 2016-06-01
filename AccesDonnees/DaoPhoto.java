@@ -25,26 +25,15 @@ public class DaoPhoto {
     public DaoPhoto(Connection connexion) throws SQLException {
         this.connexion = connexion;
     }
-<<<<<<< HEAD
+
      public void insererPhoto(Photo img) throws Exception {
          daoVip = new DaoVIP(connexion);
        
          if(this.existIDPhoto(img.getIdPhoto())==true){
              throw new Exception("La photo existe deja");
          }
-        String requete = "insert into Photo values(?,?,?)";
-=======
-
-    public void insererPhoto(Photo img) throws Exception {
-        daoVip = new DaoVIP(connexion);
-        if (daoVip.existe(img.getIdVip()) != true) {
-            throw new Exception("Le VIP n'existe pas");
-        }
-        if (this.existIDPhoto(img.getIdPhoto()) == true) {
-            throw new Exception("La photo existe deja");
-        }
         String requete = "insert into Photo values(?,?,?,?,?)";
->>>>>>> origin/master
+
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, img.getIdVip());
         pstmt.setInt(2, img.getIdPhoto());
