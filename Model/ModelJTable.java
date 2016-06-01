@@ -81,4 +81,9 @@ public class ModelJTable extends AbstractTableModel {
         leDaoVIP.lireLesVip(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
+     public void updateTable() throws SQLException {
+         leConteneur.clear();
+        leDaoVIP.lireLesVip(leConteneur);
+        fireTableDataChanged();  // notification de modification des données à la vue
+    }
 }

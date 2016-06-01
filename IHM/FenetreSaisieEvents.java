@@ -6,8 +6,11 @@
 package IHM;
 
 import Metier.Evenements;
-import Model.ModeleComboBoxVIP1;
-import Model.ModeleComboBoxVIP2;
+import Metier.VIP;
+import Model.ModeleComboBoxMarier;
+
+import Model.ModeleComboBoxVIP1M;
+import Model.ModeleComboBoxVIP2M;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
@@ -19,16 +22,18 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private boolean etatSortie;
     private Evenements evenement;
-    private ModeleComboBoxVIP1 leModeleVip1;
-    private ModeleComboBoxVIP2 leModeleVip2;
-    
-    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1 leModeleVip1, ModeleComboBoxVIP2 leModeleVip2) {
+   
+    private ModeleComboBoxVIP1M mvCB1M;
+    private ModeleComboBoxVIP2M mvCB2M;
+    private ModeleComboBoxMarier mvCBMar;
+    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar) {
         super(parent, true);
         this.etatSortie = false;
         this.evenement = evenement;
-        this.leModeleVip1 = leModeleVip1;
-        this.leModeleVip2 = leModeleVip2;
-
+       
+        this.mvCB1M = mvCB1M;
+        this.mvCB2M = mvCB2M;
+        this.mvCBMar = mvCBMar;
          initComponents();
     }
 
@@ -53,10 +58,8 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         jtxtLieuMariage = new javax.swing.JTextField();
         jbtValiderMariage = new javax.swing.JButton();
         jpDivorce = new javax.swing.JPanel();
-        jcbVip5 = new javax.swing.JComboBox();
+        jcbVip1M = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
-        jcbVip6 = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jtxtDateDivorce = new javax.swing.JTextField();
         jbnDivorce = new javax.swing.JButton();
@@ -64,14 +67,19 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jcbVip1.setModel(leModeleVip1);
+        jcbVip1.setModel(mvCB1M);
         jcbVip1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVip1ActionPerformed(evt);
             }
         });
 
-        jcbVip2.setModel(leModeleVip2);
+        jcbVip2.setModel(mvCB2M);
+        jcbVip2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbVip2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Vip 1:");
 
@@ -142,13 +150,14 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Mariage", jpMariage);
 
-        jcbVip5.setModel(leModeleVip1);
+        jcbVip1M.setModel( mvCBMar);
+        jcbVip1M.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbVip1MActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Vip 1:");
-
-        jcbVip6.setModel(leModeleVip2);
-
-        jLabel10.setText("Vip 2:");
 
         jLabel11.setText("Date de divorce:");
 
@@ -175,30 +184,25 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                             .addGroup(jpDivorceLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbVip5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbVip6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcbVip1M, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(70, 70, 70))))
                     .addGroup(jpDivorceLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jbnDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 47, Short.MAX_VALUE))
+                .addGap(0, 110, Short.MAX_VALUE))
         );
         jpDivorceLayout.setVerticalGroup(
             jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDivorceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbVip5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jcbVip6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jcbVip1M, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jtxtDateDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jbnDivorce)
                 .addContainerGap())
         );
@@ -237,11 +241,11 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             if (jcbVip1.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
-            String nomVip1 = jcbVip1.getSelectedItem().toString();
+            int idVip1 = ((VIP)jcbVip1.getSelectedItem()).getIdVip();
             if (jcbVip2.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 2 vide!");
             }
-            String nomVip2 = jcbVip2.getSelectedItem().toString();
+            int idVip2 = ((VIP)jcbVip2.getSelectedItem()).getIdVip();
             if (jtxtDateMariage.getText().isEmpty()) {
                 throw new Exception("Champs Date Mariage vide!");
             }
@@ -251,20 +255,12 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             }
             String lieuMariage = jtxtLieuMariage.getText();
             
-            for(int i =0;i<leModeleVip1.getSize();i++){
-                if(leModeleVip1.getElementAt(i).equalsIgnoreCase(nomVip1)){
-                    evenement.setIdVip1(i);
-                }
-            }
-            for(int i =0;i<leModeleVip2.getSize();i++){
-                if(leModeleVip2.getElementAt(i).equalsIgnoreCase(nomVip2)){
-                    evenement.setIdVip2(i);
-                }
-            }
-            
+           System.out.println(idVip1+" "+idVip2);
+            evenement.setIdVip1(idVip1);
+            evenement.setIdVip2(idVip2);
             evenement.setDateMar(dateMariage);
             evenement.setLieuMariage(lieuMariage);
-            
+            evenement.setType(1);
             etatSortie = true;
             
             this.dispose();
@@ -279,41 +275,41 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private void jbnDivorceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnDivorceActionPerformed
         try {
-            if (jcbVip1.getSelectedItem().toString().isEmpty()) {
+           /* if (jcbVip1M.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
-            String nomVip1 = jcbVip1.getSelectedItem().toString();
-            if (jcbVip2.getSelectedItem().toString().isEmpty()) {
+            int idVip1 = ((VIP)jcbVip1M.getSelectedItem()).getIdVip();
+            if (jcbVip2M.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 2 vide!");
             }
-            String nomVip2 = jcbVip2.getSelectedItem().toString();
+            int idVip2 = ((VIP)jcbVip2M.getSelectedItem()).getIdVip();
             if (jtxtDateDivorce.getText().isEmpty()) {
                 throw new Exception("Champs Date Mariage vide!");
             }
             Date dateDivorce = Date.valueOf(jtxtDateDivorce.getText());
             
-            for(int i =0;i<leModeleVip1.getSize();i++){
-                if(leModeleVip1.getElementAt(i).equalsIgnoreCase(nomVip1)){
-                    evenement.setIdVip1(i);
-                }
-            }
-            for(int i =0;i<leModeleVip2.getSize();i++){
-                if(leModeleVip2.getElementAt(i).equalsIgnoreCase(nomVip2)){
-                    evenement.setIdVip2(i);
-                }
-            }
             
+            evenement.setIdVip1(idVip1);
+            evenement.setIdVip2(idVip2);
           
             
             evenement.setDateDiv(dateDivorce);
-            
+            evenement.setType(-1);
             etatSortie = true;
             
-            this.dispose();
+            this.dispose();*/
         } catch (Exception e) {
            JOptionPane.showMessageDialog(this, "Erreur Divorce: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbnDivorceActionPerformed
+
+    private void jcbVip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVip2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbVip2ActionPerformed
+
+    private void jcbVip1MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVip1MActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbVip1MActionPerformed
     
     public boolean doModal() {
         setVisible(true);
@@ -323,7 +319,6 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -333,9 +328,8 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private javax.swing.JButton jbnDivorce;
     private javax.swing.JButton jbtValiderMariage;
     private javax.swing.JComboBox jcbVip1;
+    private javax.swing.JComboBox jcbVip1M;
     private javax.swing.JComboBox jcbVip2;
-    private javax.swing.JComboBox jcbVip5;
-    private javax.swing.JComboBox jcbVip6;
     private javax.swing.JLabel jlbTitre;
     private javax.swing.JPanel jpDivorce;
     private javax.swing.JPanel jpMariage;

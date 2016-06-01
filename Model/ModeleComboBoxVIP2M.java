@@ -17,34 +17,34 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Claire
  */
-public class ModeleComboBoxVIP1 extends DefaultComboBoxModel<String> {
+public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
 
-    private List<String> listeItems;
-    private String[] listeNoms ;
+    private List<VIP> listeItems;
+    private String[] noms ;
     private DaoEvent daoEvent;
 
-    public ModeleComboBoxVIP1(DaoVIP daoVIP) throws Exception {
+    public ModeleComboBoxVIP2M(DaoVIP daoVIP) throws Exception {
         super();
         //pour test
-        listeItems=daoVIP.SelectVIP(); 
+        listeItems=daoVIP.SelectVIPNM();
+       
+       
     }
-    public ModeleComboBoxVIP1(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
+    public ModeleComboBoxVIP2M(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
         super();
         //pour test
-        listeItems=daoVIP.SelectVIP();
+        listeItems=daoVIP.SelectVIPNM();
         this.daoEvent=daoEvent;
-        for(String nom : listeItems){
-            System.out.println(nom);
-        }
+        
     }
 
     @Override
-    public void addElement(String uneChaine) {
+    public void addElement(VIP uneChaine) {
         super.addElement(uneChaine);
     }
 
     @Override
-    public String getElementAt(int i) {
+    public VIP getElementAt(int i) {
         return listeItems.get(i);
     }
 
@@ -52,17 +52,11 @@ public class ModeleComboBoxVIP1 extends DefaultComboBoxModel<String> {
     public int getSize() {
         return listeItems.size();
     }
-    
     public void addMariage(int numVip1, int numVip2, Date dateMariage, String lieuMariage)throws Exception{
         
         daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
         
     }
-    
-    public void addDivorce(int numVip1, int numVip2, Date dateDivorce) throws Exception{
-        daoEvent.addDivorce(numVip1, numVip2, dateDivorce);
-    }
-    
     
 
 }

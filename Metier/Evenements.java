@@ -16,7 +16,14 @@ public class Evenements {
     private int idVip1,idVip2;
     private String lieuMariage;
     private Date dateDiv=null,dateMar=null;
+    private int type=0;
 
+    public Evenements(int idVip1, int idVip2, String lieuMariage,int type) {
+        this.idVip1 = idVip1;
+        this.idVip2 = idVip2;
+        this.lieuMariage = lieuMariage;
+        this.type=type;
+    }
     public Evenements() {
         
     }
@@ -54,6 +61,14 @@ public class Evenements {
         return dateMar;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public void setIdVip1(int idVip1) {
         this.idVip1 = idVip1;
     }
@@ -72,6 +87,11 @@ public class Evenements {
 
     public void setDateMar(Date dateMar) {
         this.dateMar = dateMar;
+    }
+
+    @Override
+    public String toString() {
+        return "Evenements{" + "idVip1=" + idVip1 + ", idVip2=" + idVip2 + ", dateMar=" + dateMar + '}';
     }
     
     

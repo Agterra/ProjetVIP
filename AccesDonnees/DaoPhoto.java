@@ -26,9 +26,7 @@ public class DaoPhoto {
     }
      public void insererPhoto(Photo img) throws Exception {
          daoVip = new DaoVIP(connexion);
-         if(daoVip.existe(img.getIdVip())!=true){
-             throw new Exception("Le VIP n'existe pas");
-         }
+       
          if(this.existIDPhoto(img.getIdPhoto())==true){
              throw new Exception("La photo existe deja");
          }

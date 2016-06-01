@@ -10,9 +10,11 @@ import Model.ModelJTable;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
+import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
-import Model.ModeleComboBoxVIP1;
-import Model.ModeleComboBoxVIP2;
+
+import Model.ModeleComboBoxVIP1M;
+import Model.ModeleComboBoxVIP2M;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,17 +29,20 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleComboBoxCS csCB;
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
-    private ModeleComboBoxVIP1 mvCB1;
-    private ModeleComboBoxVIP2 mvCB2;
+ 
+     private ModeleComboBoxVIP1M mvCB1M;
+    private ModeleComboBoxVIP2M mvCB2M;
+    private ModeleComboBoxMarier mvCBMar;
 
-    public FenetreApplication(ModelJTable leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1 mvCB1, ModeleComboBoxVIP2 mvCB2) {
+    public FenetreApplication(ModelJTable leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar) {
         this.leModele = leModele;
         this.crCB = crCB;
         this.csCB = csCB;
         this.paysCB = paysCB;
-        this.mvCB1 = mvCB1;
-        this.mvCB2 = mvCB2;
-
+        
+        this.mvCB1M = mvCB1M;
+        this.mvCB2M = mvCB2M;
+            this.mvCBMar = mvCBMar;
         initComponents();
         try {
             leModele.lireLesVip();
@@ -46,6 +51,8 @@ public class FenetreApplication extends javax.swing.JFrame {
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,16 +176,18 @@ public class FenetreApplication extends javax.swing.JFrame {
     private void jbtGestionEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGestionEventsActionPerformed
         try {
             Evenements event = new Evenements();
-            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, event, mvCB1, mvCB2);
+            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, event ,mvCB1M,mvCB2M,mvCBMar);
             if (laSaisie.doModal() == true) {
-                if(!event.getDateDiv().toString().isEmpty()){
-                    mvCB1.addDivorce(event.getIdVip1(),event.getIdVip2(),event.getDateDiv());
-                }else if(!event.getDateMar().toString().isEmpty()){
-                    mvCB1.addMariage(event.getIdVip1(), event.getIdVip2(), event.getDateMar(), event.getLieuMariage());
+                if(event.getType()==-1){
+                    System.out.println("div");
+                    mvCB1M.addDivorce(event.getIdVip1(),event.getIdVip2(),event.getDateDiv());
+                }else if(event.getType()==1){
+                    System.out.println("mar");
+                    mvCB1M.addMariage(event.getIdVip1(), event.getIdVip2(), event.getDateMar(), event.getLieuMariage());
                 }else{
                     System.out.println("fail");
                 }
-                
+                leModele.updateTable();
             }
         } catch (Exception e) {
             System.out.println("Exception à l'insertion : " + e.getMessage());

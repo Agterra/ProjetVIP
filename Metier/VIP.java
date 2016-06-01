@@ -27,8 +27,8 @@ public class VIP {
     public VIP(){
         
     }
-    public VIP(String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
-        this.idVip = incrIdVip;
+    public VIP(int id,String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
+        this.idVip = id;
         this.nomVip = nomVIP;
         this.prenomVip = prenomVip;
         this.civilite = civilite;
@@ -114,7 +114,7 @@ public class VIP {
 
     @Override
     public String toString() {
-        return "VIP{" + "idVip=" + idVip + ", nomVIP=" + nomVip + ", prenomVip=" + prenomVip + ", civilite=" + civilite + ", dateNaiss=" + dateNaiss + ", lieuNaiss=" + lieuNaiss + ", codeRole=" + codeRole + ", codeStatut=" + codeStatut + ", nomPays=" + nomPays + '}';
+        return  nomVip ;
     }
     
     
