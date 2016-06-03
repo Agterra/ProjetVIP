@@ -53,7 +53,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         
         this.mvCB1M = mvCB1M;
         this.mvCB2M = mvCB2M;
-            this.mvCBMar = mvCBMar;
+        this.mvCBMar = mvCBMar;
 
        
         this.leModelePhoto=leModelePhoto;
@@ -196,15 +196,15 @@ public class FenetreApplication extends javax.swing.JFrame {
 
     private void jbtGestionEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGestionEventsActionPerformed
         try {
-            Evenements event = new Evenements();
-            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, event ,mvCB1M,mvCB2M,mvCBMar);
+            Evenements eve = new Evenements();
+            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve ,mvCB1M,mvCB2M,mvCBMar);
             if (laSaisie.doModal() == true) {
-                if(event.getType()==-1){
+                if(eve.getType()==-1){
                     System.out.println("div");
-                    mvCB1M.addDivorce(event.getIdVip1(),event.getIdVip2(),event.getDateDiv());
-                }else if(event.getType()==1){
+                    mvCB1M.addDivorce(eve.getIdVip1(),eve.getIdVip2(),eve.getDateDiv(),eve.getDateMar());
+                }else if(eve.getType()==1){
                     System.out.println("mar");
-                    mvCB1M.addMariage(event.getIdVip1(), event.getIdVip2(), event.getDateMar(), event.getLieuMariage());
+                    mvCB1M.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
                 }else{
                     System.out.println("fail");
                 }

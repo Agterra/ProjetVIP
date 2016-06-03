@@ -105,7 +105,7 @@ public class DaoVIP {
     public void lireLesVip(List<VIP> lesVips) throws SQLException {    
         String requete = "select * from vip ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        ResultSet rset = pstmt.executeQuery(requete);
+        ResultSet rset = pstmt.executeQuery();
         
         while (rset.next()) {       // traitement du résulat
             int num = rset.getInt(1);
@@ -159,6 +159,24 @@ public class DaoVIP {
         pstmt.setInt(1, i);
         pstmt.executeUpdate();
         pstmt.close();
+    }
+    public String getNom(int numVip) throws SQLException {
+        String nom=" ";
+        String requete = "select nomVIP from vip where idVip=?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, numVip);
+       
+          
+          ResultSet rset = pstmt.executeQuery();
+        while (rset.next()) {// traitement du résulat
+            
+             nom = rset.getString(1);
+
+        }
+        
+        rset.close();
+        pstmt.close();
+        return nom;
     }
 }
 

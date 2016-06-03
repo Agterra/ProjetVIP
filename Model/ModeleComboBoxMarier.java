@@ -30,7 +30,6 @@ public class ModeleComboBoxMarier extends DefaultComboBoxModel<Evenements> {
         //pour test
         listeItems=daoEv.SelectMarier();
        
-       
     }
    
 

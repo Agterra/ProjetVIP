@@ -276,29 +276,27 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private void jbnDivorceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnDivorceActionPerformed
         try {
-           /* if (jcbVip1M.getSelectedItem().toString().isEmpty()) {
+           if (jcbVip1M.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
-            int idVip1 = ((VIP)jcbVip1M.getSelectedItem()).getIdVip();
-            if (jcbVip2M.getSelectedItem().toString().isEmpty()) {
-                throw new Exception("Champs Vip 2 vide!");
-            }
-            int idVip2 = ((VIP)jcbVip2M.getSelectedItem()).getIdVip();
+           Evenements eve = ((Evenements)jcbVip1M.getSelectedItem());
+            
             if (jtxtDateDivorce.getText().isEmpty()) {
                 throw new Exception("Champs Date Mariage vide!");
             }
             Date dateDivorce = Date.valueOf(jtxtDateDivorce.getText());
             
             
-            evenement.setIdVip1(idVip1);
-            evenement.setIdVip2(idVip2);
-          
+            evenement.setIdVip1(eve.getIdVip1());
+            evenement.setIdVip2(eve.getIdVip2());
+            evenement.setDateMar(eve.getDateMar());
+            System.out.println(evenement.getIdVip2());
             
             evenement.setDateDiv(dateDivorce);
             evenement.setType(-1);
             etatSortie = true;
             
-            this.dispose();*/
+            this.dispose();
         } catch (Exception e) {
            JOptionPane.showMessageDialog(this, "Erreur Divorce: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }

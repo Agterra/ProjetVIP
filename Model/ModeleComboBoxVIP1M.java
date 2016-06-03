@@ -57,8 +57,8 @@ public class ModeleComboBoxVIP1M extends DefaultComboBoxModel<VIP> {
         
     }
     
-    public void addDivorce(int numVip1, int numVip2, Date dateDivorce) throws Exception{
-        daoEvent.addDivorce(numVip1, numVip2, dateDivorce);
+    public void addDivorce(int numVip1, int numVip2, Date dateDivorce, Date dateMar) throws Exception{
+        daoEvent.addDivorce(numVip1, numVip2, dateDivorce,dateMar);
     }
     
     

@@ -24,39 +24,40 @@ public class DaoEvent {
 
     public DaoEvent(Connection connexion) throws SQLException {
         this.connexion = connexion;
+        daoVip=new DaoVIP(connexion);
     }
 
-    public Date sontMarie(int numVip1, int numVip2) throws SQLException {
-        int conjoint;
-        Date mar;
-        Date div = null;
-        String requete = "select idVip2,dateMar from Event where dateDiv=null AND idVip=? ";
-        PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, numVip1);
-       // pstmt.setDate(2, null);
-        ResultSet rset = pstmt.executeQuery(requete);
-        while (rset.next()) {
-            conjoint = rset.getInt(1);
-            mar = rset.getDate(2);
-            if (conjoint == numVip2) {
-                return mar;
-            }
-        }
-        requete = "select idVip2,dateMar from Event where dateDiv=null AND idVip=? ";
-        pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, numVip2);
-       // pstmt.setDate(1, null);
-        rset = pstmt.executeQuery();
-        while (rset.next()) {
-            conjoint = rset.getInt(1);
-            mar = rset.getDate(2);
-            if (conjoint == numVip1) {
-                return mar;
-            }
-        }
-        pstmt.close();
-        return div;
-    }
+//    public Date sontMarie(int numVip1, int numVip2) throws SQLException {
+//        int conjoint;
+//        Date mar;
+//        Date div = null;
+//        String requete = "select idVip2,dateMar from Event where dateDiv IS NULL AND idVip=? ";
+//        PreparedStatement pstmt = connexion.prepareStatement(requete);
+//        pstmt.setInt(1, numVip1);
+//       // pstmt.setDate(2, null);
+//        ResultSet rset = pstmt.executeQuery();
+//        while (rset.next()) {
+//            conjoint = rset.getInt(1);
+//            mar = rset.getDate(2);
+//            if (conjoint == numVip2) {
+//                return mar;
+//            }
+//        }
+//        requete = "select idVip2,dateMar from Event where dateDiv=null AND idVip=? ";
+//        pstmt = connexion.prepareStatement(requete);
+//        pstmt.setInt(1, numVip2);
+//       // pstmt.setDate(1, null);
+//        rset = pstmt.executeQuery();
+//        while (rset.next()) {
+//            conjoint = rset.getInt(1);
+//            mar = rset.getDate(2);
+//            if (conjoint == numVip1) {
+//                return mar;
+//            }
+//        }
+//        pstmt.close();
+//        return div;
+//    }
 
     public void addMariage(int numVip1, int numVip2, Date dateMar, String Lieu) throws Exception {
         try {
@@ -84,16 +85,17 @@ public class DaoEvent {
         }
     }
 
-    public void addDivorce(int numVip1, int numVip2, Date dateDiv) throws Exception {
-        Date DateMar = sontMarie(numVip1, numVip2);
+    public void addDivorce(int numVip1, int numVip2, Date dateDiv,Date DateMar) throws Exception {
+        
         if (DateMar.equals(div)) {
             throw new Exception("Ne divorcer pas le meme jours");
         }
          if (DateMar==null) {
             throw new Exception("non marier");
         }
-        if (DateMar.after(dateDiv)) {
-            throw new Exception("Divorcer avant de se marier");
+        if (DateMar.after(dateDiv)==true) {
+            System.out.println(dateDiv+" "+DateMar);
+            throw new Exception("marier avant de se divorcer");
         }
         //modfi de la date de div
         try {
@@ -112,22 +114,22 @@ public class DaoEvent {
             System.out.println(e.getMessage());
         }
     }
+    
      public List<Evenements> SelectMarier() throws Exception {
         listeMar= new ArrayList();
-        String requete = "Select * from Event where dateDiv=null ";  
+        String requete = "Select idVip,idVip2,dateMar from Event where dateDiv IS NULL";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery();
         
         System.out.println(rset);
         while (rset.next()) {// traitement du résulat
             
-           int idvip1=rset.getInt(1);
-            String lieux= rset.getString(3);
-             Date dateMar=rset.getDate(4);
-             int idvip2=rset.getInt(5);
-            System.out.println(dateMar);
+           String nomvip1=daoVip.getNom(rset.getInt(1));
+            Date date=rset.getDate(3);
+            String nomvip2=daoVip.getNom(rset.getInt(2));
+           // System.out.println(idvip2);
          
-            Evenements temp = new Evenements(idvip1,idvip2,lieux,dateMar);
+            Evenements temp = new Evenements(nomvip1,nomvip2,rset.getInt(1),rset.getInt(1),date);
             listeMar.add(temp);
         }
         rset.close();
