@@ -217,11 +217,11 @@ public class FenetreApplication extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
    
-        Photo laPhoto = new Photo();
-        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,laPhoto,leModelePhoto);
+  
+        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,leModelePhoto);
         
           if (gestionPhoto.doModal() == true) {
-              
+                        
             }
    
     //    System.out.println("Exception gestionnaire photo: "+e.getMessage());

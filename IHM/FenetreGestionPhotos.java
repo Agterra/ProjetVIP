@@ -17,20 +17,18 @@ import java.util.logging.Logger;
 public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private boolean etatSortie;
-    private Photo laPhoto;
     private ModeleJTablePhotos leModelePhoto;
 
-    public FenetreGestionPhotos(java.awt.Frame parent, Photo laPhoto, ModeleJTablePhotos leModelePhoto) {
-
+    public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto) {
+      
         super(parent, true);
-
+try {
         this.etatSortie = false;
-        this.laPhoto = laPhoto;
         this.leModelePhoto = leModelePhoto;
 
         initComponents();
-          try {
-            leModelePhoto.lireLesPhotos();
+  
+ 
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
@@ -111,13 +109,11 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     private void jbnAjoutPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnAjoutPhotoActionPerformed
         try {
             Photo laPhoto = new Photo();
-            FenetreUploadPhoto upload = new FenetreUploadPhoto(this,laPhoto);
+            FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto);
             if (upload.doModal() == true) {
                 System.out.println(laPhoto.toString());
-                       leModelePhoto.insererPhoto(laPhoto);
+                leModelePhoto.insererPhoto(laPhoto);
             }
-            etatSortie=true;
-            this.dispose();
 
         } catch (Exception e) {
             System.out.println("Erreur: " + e.getMessage());
@@ -126,7 +122,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
 
     private void jbnSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSupprActionPerformed
-         try {
+        try {
             int ligne = jTablePhoto.getSelectedRow();
             leModelePhoto.supprimerPhoto(ligne);
         } catch (Exception e) {
@@ -134,9 +130,6 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jbnSupprActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;
