@@ -7,6 +7,8 @@ package IHM;
 
 import Metier.Photo;
 import Model.ModeleJTablePhotos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -53,6 +55,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
         jbnSuppr = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePhoto = new javax.swing.JTable();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,13 +88,18 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbnAjoutPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbnSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbnSuppr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)))
+                        .addGap(0, 1, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,11 +108,13 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbnAjoutPhoto)
                     .addComponent(jbnSuppr))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,7 +140,11 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
                 ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
                 ftpClient.enterLocalPassiveMode();
 
+                viewBar();
                 ftpClient.storeFile("public_html/VIP/asset/images/" + laPhoto.getIdPhoto(), lienPhoto);
+                
+                    
+             
                 System.out.println(ftpClient.getReplyString());
 
             }
@@ -140,16 +154,37 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
+public void viewBar() {
 
+  jProgressBar1.setStringPainted(true);
+  jProgressBar1.setValue(0);
+
+  int timerDelay = 10;
+  new javax.swing.Timer(timerDelay , new ActionListener() {
+     private int index = 0;
+     private int maxIndex = 100;
+     public void actionPerformed(ActionEvent e) {
+        if (index < maxIndex) {
+           jProgressBar1.setValue(index);
+           index++;
+        } else {
+           jProgressBar1.setValue(maxIndex);
+           ((javax.swing.Timer)e.getSource()).stop(); // stop the timer
+        }
+     }
+  }).start();
+
+  jProgressBar1.setValue(jProgressBar1.getMinimum());
+}
     private void jbnSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSupprActionPerformed
         try {
             int ligne = jTablePhoto.getSelectedRow();
             Photo laPhoto = new Photo();
-            
-            leModelePhoto.supprimerPhoto(ligne);
+            String lienPhoto = leModelePhoto.getValueAt(ligne, 1).toString();
+           
              Properties props = new Properties();
-                FileInputStream fis = new FileInputStream("src/fpt.properties");
-                FileInputStream lienPhoto = new FileInputStream(leModelePhoto.getValueAt(ligne, 4).toString());
+             FileInputStream fis = new FileInputStream("src/fpt.properties");
+                
                 props.load(fis);
                 FTPSClient ftpClient = new FTPSClient();
 
@@ -159,9 +194,11 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
                 ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
                 ftpClient.enterLocalPassiveMode();
-
+                System.out.println("public_html/VIP/asset/images/" + lienPhoto);
                 ftpClient.deleteFile("public_html/VIP/asset/images/" + lienPhoto);
-                System.out.println(ftpClient.getReplyString());
+                
+                viewBar();
+                leModelePhoto.supprimerPhoto(ligne);
         } catch (Exception e) {
             System.out.println("Exception à la suppression : " + e.getMessage());
         }
@@ -174,6 +211,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePhoto;
     private javax.swing.JButton jbnAjoutPhoto;

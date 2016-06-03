@@ -18,7 +18,7 @@ public class Photo {
     private String lieu;
     private Date laDate;
     
-    public Photo(int idVip, String idPhoto,Date laDate,String lien,String lieu) {
+    public Photo(int idVip, String idPhoto,Date laDate,String lieu,String lien) {
         this.idVip = idVip;
         this.idPhoto = idPhoto;
         this.lien = lien;
@@ -70,7 +70,7 @@ public class Photo {
 
     @Override
     public String toString() {
-        return "Photo{" + "idVip=" + idVip + ", idPhoto=" + idPhoto + ", lien=" + lien + ", lieu=" + lieu + ", laDate=" + laDate + '}';
+        return "Photo{" + "idVip=" + idVip + ", idPhoto=" + idPhoto + ", laDate=" + laDate+ ", lieu=" + lieu+ ", lien=" + lien  + '}';
     }
     
     

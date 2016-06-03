@@ -49,10 +49,10 @@ public class ModeleJTablePhotos extends AbstractTableModel {
         }else if (column == 2){
             return  String.valueOf(laPhoto.getLaDate());
         }else if (column == 3){
-            return laPhoto.getLien();
+            return laPhoto.getLieu();
           
         }else{
-              return laPhoto.getLieu();
+              return laPhoto.getLien();
         }
     }
     

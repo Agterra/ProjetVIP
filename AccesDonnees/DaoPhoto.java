@@ -77,10 +77,10 @@ public class DaoPhoto {
             int numVip = rset.getInt(1);
             String idPhoto = rset.getString(2);
             Date datePdv = rset.getDate(3);
-            String lien = rset.getString(4);
-            String lieu = rset.getString(5);
+            String lieu = rset.getString(4);
+            String lien = rset.getString(5);
             
-            Photo temp = new Photo(numVip, idPhoto,datePdv, lien, lieu);
+            Photo temp = new Photo(numVip, idPhoto,datePdv, lieu, lien);
             lesPhotos.add(temp);
         }
         rset.close();
