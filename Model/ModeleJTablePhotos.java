@@ -47,11 +47,12 @@ public class ModeleJTablePhotos extends AbstractTableModel {
         }else if (column == 1){
             return laPhoto.getIdPhoto();
         }else if (column == 2){
-            return laPhoto.getLaDate();
+            return  String.valueOf(laPhoto.getLaDate());
         }else if (column == 3){
-            return laPhoto.getLieu();
-        }else{
             return laPhoto.getLien();
+          
+        }else{
+              return laPhoto.getLieu();
         }
     }
     
@@ -74,7 +75,7 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     }
 
     public void lireLesPhotos() throws Exception {
+        this.leConteneur = new ArrayList<>();
         daoPhoto.lireLesPhotos(leConteneur);
-        fireTableDataChanged();  // notification de modification des données à la vue
     }
 }

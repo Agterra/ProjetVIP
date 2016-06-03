@@ -61,7 +61,7 @@ public class Photo {
     }
 
     public Date getLaDate() {
-        return laDate;
+        return this.laDate;
     }
 
     public void setLaDate(Date laDate) {

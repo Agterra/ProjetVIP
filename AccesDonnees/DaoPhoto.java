@@ -80,7 +80,6 @@ public class DaoPhoto {
             String lien = rset.getString(4);
             String lieu = rset.getString(5);
             
-
             Photo temp = new Photo(numVip, idPhoto,datePdv, lien, lieu);
             lesPhotos.add(temp);
         }

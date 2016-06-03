@@ -7,8 +7,12 @@ package IHM;
 
 import Metier.Photo;
 import Model.ModeleJTablePhotos;
+import java.io.FileInputStream;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPSClient;
 
 /**
  *
@@ -20,15 +24,15 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     private ModeleJTablePhotos leModelePhoto;
 
     public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto) {
-      
-        super(parent, true);
-try {
-        this.etatSortie = false;
-        this.leModelePhoto = leModelePhoto;
 
-        initComponents();
-  
- 
+        super(parent, true);
+        try {
+            this.etatSortie = false;
+            this.leModelePhoto = leModelePhoto;
+
+            initComponents();
+
+            leModelePhoto.lireLesPhotos();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
@@ -113,6 +117,22 @@ try {
             if (upload.doModal() == true) {
                 System.out.println(laPhoto.toString());
                 leModelePhoto.insererPhoto(laPhoto);
+                Properties props = new Properties();
+                FileInputStream fis = new FileInputStream("src/fpt.properties");
+                FileInputStream lienPhoto = new FileInputStream(laPhoto.getLien());
+                props.load(fis);
+                FTPSClient ftpClient = new FTPSClient();
+
+                ftpClient.connect(props.getProperty("serveur"), Integer.parseInt(props.getProperty("port")));
+                ftpClient.login(props.getProperty("user"), props.getProperty("pwd"));
+
+                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+                ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
+                ftpClient.enterLocalPassiveMode();
+
+                ftpClient.storeFile("public_html/VIP/asset/images/" + laPhoto.getIdPhoto(), lienPhoto);
+                System.out.println(ftpClient.getReplyString());
+
             }
 
         } catch (Exception e) {
