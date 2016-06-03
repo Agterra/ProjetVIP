@@ -6,24 +6,23 @@
 package IHM;
 
 import AccesDonnees.DaoEvent;
-import AccesDonnees.DaoPhoto;
 import AccesDonnees.DaoVIP;
 import Metier.Evenements;
-import Metier.Photo;
 import Model.ModelJTableVIP;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxGenre;
+import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
 
 
 import Model.ModeleComboBoxVIP1M;
 import Model.ModeleComboBoxVIP2M;
+import Model.ModeleJTableFilm;
 
 
 import Model.ModeleJTablePhotos;
-import java.sql.SQLException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,15 +38,17 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleComboBoxCS csCB;
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
+    private ModeleJTableFilm leModeleFilm;
 
  private  DaoEvent daoEvent;
     private  DaoVIP daoVIP;
      private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
-    private ModeleComboBoxGenre mvCBMar;
+    private ModeleComboBoxMarier mvCBMar;
     private ModeleJTablePhotos leModelePhoto;
+    private ModeleComboBoxGenre mvCBGenre;
 
-    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBMar,ModeleJTablePhotos leModelePhoto,DaoEvent daoEv,DaoVIP daoVIP) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBGenre,ModeleJTablePhotos leModelePhoto,ModeleJTableFilm leModeleFilm,DaoEvent daoEv,DaoVIP daoVIP) {
 
         this.leModele = leModele;
         this.crCB = crCB;
@@ -215,7 +216,7 @@ this.daoEvent=daoEv;
                 }
                 leModele.updateTable();
             }
-            mvCBMar=new ModeleComboBoxGenre(daoEvent);
+            mvCBMar=new ModeleComboBoxMarier(daoEvent);
            mvCB2M=new ModeleComboBoxVIP2M(daoVIP,daoEvent);
            mvCB1M=new ModeleComboBoxVIP1M(daoVIP,daoEvent);
         } catch (Exception e) {

@@ -6,6 +6,7 @@
 package Application;
 
 import AccesDonnees.DaoEvent;
+import AccesDonnees.DaoFilm;
 import AccesDonnees.DaoPays;
 import AccesDonnees.DaoPhoto;
 import AccesDonnees.DaoVIP;
@@ -15,11 +16,13 @@ import Model.ModelJTableVIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxGenre;
+import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
 
 import Model.ModeleComboBoxVIP1M;
 
 import Model.ModeleComboBoxVIP2M;
+import Model.ModeleJTableFilm;
 
 import Model.ModeleJTablePhotos;
 
@@ -42,6 +45,7 @@ public class Appli {
     private static DaoPays leDaoPays;
     private static DaoEvent daoEvent;
     private static DaoPhoto daoPhoto;
+    private static DaoFilm daoFilm;
     /**
      * @param args the command line arguments
      */
@@ -72,6 +76,7 @@ public class Appli {
             leDaoPays = new DaoPays(laConnexion);
             daoEvent = new DaoEvent(laConnexion);
             daoPhoto = new DaoPhoto(laConnexion);
+            daoFilm = new DaoFilm(laConnexion);
             
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
@@ -83,10 +88,11 @@ public class Appli {
          
             final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip,daoEvent);
             final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip,daoEvent);
-            final ModeleComboBoxGenre mvCBMar = new ModeleComboBoxGenre(daoEvent);
+            final ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoFilm);
+            final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
-
+            final ModeleJTableFilm leModeleFilm = new ModeleJTableFilm(daoFilm);
 
 
             // la fenetre principale de l'application qui tourne dans l'EDT
@@ -94,7 +100,7 @@ public class Appli {
                 @Override
                 public void run() {
 
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBMar,leModelePhoto,daoEvent,daoVip).setVisible(true);
+                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBGenre,leModelePhoto,leModeleFilm,daoEvent,daoVip).setVisible(true);
 
                 }
             });
