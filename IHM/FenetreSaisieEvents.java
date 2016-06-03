@@ -7,7 +7,7 @@ package IHM;
 
 import Metier.Evenements;
 import Metier.VIP;
-import Model.ModeleComboBoxMarier;
+import Model.ModeleComboBoxGenre;
 
 import Model.ModeleComboBoxVIP1M;
 import Model.ModeleComboBoxVIP2M;
@@ -25,8 +25,8 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
    
     private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
-    private ModeleComboBoxMarier mvCBMar;
-    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar) {
+    private ModeleComboBoxGenre mvCBMar;
+    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBMar) {
         super(parent, true);
         this.etatSortie = false;
         this.evenement = evenement;

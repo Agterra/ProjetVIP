@@ -56,5 +56,11 @@ public class Film {
     public void setGenre(String Genre) {
         this.Genre = Genre;
     }
+
+    @Override
+    public String toString() {
+        return   Titre ;
+    }
+    
     
 }
