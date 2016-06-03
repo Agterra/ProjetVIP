@@ -80,9 +80,8 @@ public class DaoVIP {
         listeNomsIdVIP= new ArrayList();
         String requete = "Select * from vip where codeStatut!=1 ";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        ResultSet rset = pstmt.executeQuery(requete);
-        
-        System.out.println(rset);
+        ResultSet rset = pstmt.executeQuery();
+
         while (rset.next()) {// traitement du résulat
             int num = rset.getInt(1);
             String nom = rset.getString(2);

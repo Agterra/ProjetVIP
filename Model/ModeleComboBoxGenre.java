@@ -24,7 +24,6 @@ public class ModeleComboBoxGenre extends DefaultComboBoxModel<Film> {
 
     private List<Film> listeItems;
     private String[] noms ;
-<<<<<<< HEAD:Model/ModeleComboBoxGenre.java
     private DaoFilm daoFilm;
    // 
 
@@ -33,15 +32,6 @@ public class ModeleComboBoxGenre extends DefaultComboBoxModel<Film> {
         //pour test
         daoFilm=daof;
         listeItems=daof.SelectFilm();
-=======
-    private DaoEvent daoEvent;
-    private DaoVIP daoVip;
-
-    public ModeleComboBoxMarier(DaoEvent daoEv,DaoVIP daoVip) throws Exception {
-        super();
-        //pour test
-        listeItems=daoEv.SelectMarier();
->>>>>>> parent of 1f3c026... commit mariage marche:Model/ModeleComboBoxMarier.java
        
     }
    
@@ -60,16 +50,8 @@ public class ModeleComboBoxGenre extends DefaultComboBoxModel<Film> {
     public int getSize() {
         return listeItems.size();
     }
-<<<<<<< HEAD:Model/ModeleComboBoxGenre.java
    
      
-=======
-    public void addMariage(int numVip1, int numVip2, Date dateMariage, String lieuMariage)throws Exception{
-        
-        daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
-        
-    }
->>>>>>> parent of 1f3c026... commit mariage marche:Model/ModeleComboBoxMarier.java
     
 
 }

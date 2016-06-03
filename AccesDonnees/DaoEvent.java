@@ -109,6 +109,7 @@ public class DaoEvent {
             pstmt.executeUpdate();
             daoVip.updateStatut(numVip2, -1);
             daoVip.updateStatut(numVip1, -1);
+             System.out.println(numVip2+" "+numVip1);
             pstmt.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -121,7 +122,7 @@ public class DaoEvent {
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery();
         
-        System.out.println(rset);
+       // System.out.println(rset);
         while (rset.next()) {// traitement du résulat
             
            String nomvip1=daoVip.getNom(rset.getInt(1));
@@ -129,7 +130,7 @@ public class DaoEvent {
             String nomvip2=daoVip.getNom(rset.getInt(2));
            // System.out.println(idvip2);
          
-            Evenements temp = new Evenements(nomvip1,nomvip2,rset.getInt(1),rset.getInt(1),date);
+            Evenements temp = new Evenements(nomvip1,nomvip2,rset.getInt(1),rset.getInt(2),date);
             listeMar.add(temp);
         }
         rset.close();
