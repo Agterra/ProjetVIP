@@ -144,7 +144,24 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     private void jbnSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSupprActionPerformed
         try {
             int ligne = jTablePhoto.getSelectedRow();
+            Photo laPhoto = new Photo();
+            
             leModelePhoto.supprimerPhoto(ligne);
+             Properties props = new Properties();
+                FileInputStream fis = new FileInputStream("src/fpt.properties");
+                FileInputStream lienPhoto = new FileInputStream(leModelePhoto.getValueAt(ligne, 4).toString());
+                props.load(fis);
+                FTPSClient ftpClient = new FTPSClient();
+
+                ftpClient.connect(props.getProperty("serveur"), Integer.parseInt(props.getProperty("port")));
+                ftpClient.login(props.getProperty("user"), props.getProperty("pwd"));
+
+                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+                ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
+                ftpClient.enterLocalPassiveMode();
+
+                ftpClient.deleteFile("public_html/VIP/asset/images/" + lienPhoto);
+                System.out.println(ftpClient.getReplyString());
         } catch (Exception e) {
             System.out.println("Exception à la suppression : " + e.getMessage());
         }
