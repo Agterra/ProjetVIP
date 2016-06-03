@@ -22,15 +22,18 @@ public class ModeleComboBoxVIP1M extends DefaultComboBoxModel<VIP> {
     private List<VIP> listeItems;
     private String[] listeNoms ;
     private DaoEvent daoEvent;
-      private DaoVIP daoVip;
-   
+
+    public ModeleComboBoxVIP1M(DaoVIP daoVIP) throws Exception {
+        super();
+        //pour test
+        listeItems=daoVIP.SelectVIPNM(); 
+    }
     public ModeleComboBoxVIP1M(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
         super();
         //pour test
-        
+        listeItems=daoVIP.SelectVIPNM();
         this.daoEvent=daoEvent;
-        this.daoVip=daoVIP;
-        listeItems=daoVip.SelectVIPNM();
+        
     }
 
     @Override

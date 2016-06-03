@@ -5,9 +5,6 @@
  */
 package IHM;
 
-import AccesDonnees.DaoEvent;
-import AccesDonnees.DaoPhoto;
-import AccesDonnees.DaoVIP;
 import Metier.Evenements;
 import Metier.Photo;
 import Model.ModelJTableVIP;
@@ -40,21 +37,24 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
 
- private  DaoEvent daoEvent;
-    private  DaoVIP daoVIP;
+ 
      private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
     private ModeleComboBoxGenre mvCBMar;
     private ModeleJTablePhotos leModelePhoto;
 
+<<<<<<< HEAD
     public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBMar,ModeleJTablePhotos leModelePhoto,DaoEvent daoEv,DaoVIP daoVIP) {
+=======
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar,ModeleJTablePhotos leModelePhoto) {
+>>>>>>> parent of 1f3c026... commit mariage marche
 
         this.leModele = leModele;
         this.crCB = crCB;
         this.csCB = csCB;
         this.paysCB = paysCB;
-this.daoEvent=daoEv;
-        this.daoVIP=daoVIP;
+
+        
         this.mvCB1M = mvCB1M;
         this.mvCB2M = mvCB2M;
         this.mvCBMar = mvCBMar;
@@ -200,7 +200,6 @@ this.daoEvent=daoEv;
 
     private void jbtGestionEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGestionEventsActionPerformed
         try {
-          
             Evenements eve = new Evenements();
             FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve ,mvCB1M,mvCB2M,mvCBMar);
             if (laSaisie.doModal() == true) {
@@ -215,9 +214,12 @@ this.daoEvent=daoEv;
                 }
                 leModele.updateTable();
             }
+<<<<<<< HEAD
             mvCBMar=new ModeleComboBoxGenre(daoEvent);
            mvCB2M=new ModeleComboBoxVIP2M(daoVIP,daoEvent);
            mvCB1M=new ModeleComboBoxVIP1M(daoVIP,daoEvent);
+=======
+>>>>>>> parent of 1f3c026... commit mariage marche
         } catch (Exception e) {
             System.out.println("Exception à l'insertion : " + e.getMessage());
         }

@@ -83,7 +83,11 @@ public class Appli {
          
             final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip,daoEvent);
             final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip,daoEvent);
+<<<<<<< HEAD
             final ModeleComboBoxGenre mvCBMar = new ModeleComboBoxGenre(daoEvent);
+=======
+            final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent,daoVip);
+>>>>>>> parent of 1f3c026... commit mariage marche
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
 
@@ -94,7 +98,7 @@ public class Appli {
                 @Override
                 public void run() {
 
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBMar,leModelePhoto,daoEvent,daoVip).setVisible(true);
+                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBMar,leModelePhoto).setVisible(true);
 
                 }
             });

@@ -263,7 +263,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             evenement.setLieuMariage(lieuMariage);
             evenement.setType(1);
             etatSortie = true;
-           
+            
             this.dispose();
         } catch (Exception e) {
            JOptionPane.showMessageDialog(this, "Erreur Marriage: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
@@ -290,12 +290,12 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             evenement.setIdVip1(eve.getIdVip1());
             evenement.setIdVip2(eve.getIdVip2());
             evenement.setDateMar(eve.getDateMar());
-            
+            System.out.println(evenement.getIdVip2());
             
             evenement.setDateDiv(dateDivorce);
             evenement.setType(-1);
             etatSortie = true;
-           
+            
             this.dispose();
         } catch (Exception e) {
            JOptionPane.showMessageDialog(this, "Erreur Divorce: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);

@@ -22,13 +22,12 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
     private List<VIP> listeItems;
     private String[] noms ;
     private DaoEvent daoEvent;
-     private DaoVIP daoVip;
 
     public ModeleComboBoxVIP2M(DaoVIP daoVIP) throws Exception {
         super();
         //pour test
         listeItems=daoVIP.SelectVIPNM();
-       this.daoVip=daoVIP;
+       
        
     }
     public ModeleComboBoxVIP2M(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
@@ -58,7 +57,7 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
         daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
         
     }
-     
+    
 
 }
 
