@@ -1,10 +1,8 @@
 package Model;
 
 import AccesDonnees.DaoEvent;
-import AccesDonnees.DaoFilm;
 import AccesDonnees.DaoVIP;
 import Metier.Evenements;
-import Metier.Film;
 import Metier.VIP;
 import java.sql.Date;
 import java.util.List;
@@ -20,29 +18,29 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Claire
  */
-public class ModeleComboBoxGenre extends DefaultComboBoxModel<Film> {
+public class ModeleComboBoxMarier extends DefaultComboBoxModel<Evenements> {
 
-    private List<Film> listeItems;
+    private List<Evenements> listeItems;
     private String[] noms ;
-    private DaoFilm daoFilm;
+    private DaoEvent daoEvent;
    // 
 
-    public ModeleComboBoxGenre(DaoFilm daof) throws Exception {
+    public ModeleComboBoxMarier(DaoEvent daoEv) throws Exception {
         super();
         //pour test
-        daoFilm=daof;
-        listeItems=daof.SelectFilm();
+        daoEvent=daoEv;
+        listeItems=daoEv.SelectMarier();
        
     }
    
 
     @Override
-    public void addElement(Film uneChaine) {
+    public void addElement(Evenements uneChaine) {
         super.addElement(uneChaine);
     }
 
     @Override
-    public Film getElementAt(int i) {
+    public Evenements getElementAt(int i) {
         return listeItems.get(i);
     }
 
@@ -50,7 +48,11 @@ public class ModeleComboBoxGenre extends DefaultComboBoxModel<Film> {
     public int getSize() {
         return listeItems.size();
     }
-   
+    public void addMariage(int numVip1, int numVip2, Date dateMariage, String lieuMariage)throws Exception{
+        
+        daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
+        
+    }
      
     
 

@@ -14,7 +14,7 @@ import IHM.FenetreApplication;
 import Model.ModelJTableVIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
-import Model.ModeleComboBoxGenre;
+import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
 
 import Model.ModeleComboBoxVIP1M;
@@ -83,7 +83,7 @@ public class Appli {
          
             final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip,daoEvent);
             final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip,daoEvent);
-            final ModeleComboBoxGenre mvCBMar = new ModeleComboBoxGenre(daoEvent);
+            final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
 
