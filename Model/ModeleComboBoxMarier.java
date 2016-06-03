@@ -23,11 +23,12 @@ public class ModeleComboBoxMarier extends DefaultComboBoxModel<Evenements> {
     private List<Evenements> listeItems;
     private String[] noms ;
     private DaoEvent daoEvent;
-    private DaoVIP daoVip;
+   // 
 
-    public ModeleComboBoxMarier(DaoEvent daoEv,DaoVIP daoVip) throws Exception {
+    public ModeleComboBoxMarier(DaoEvent daoEv) throws Exception {
         super();
         //pour test
+        daoEvent=daoEv;
         listeItems=daoEv.SelectMarier();
        
     }
@@ -52,6 +53,7 @@ public class ModeleComboBoxMarier extends DefaultComboBoxModel<Evenements> {
         daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
         
     }
+     
     
 
 }
