@@ -14,7 +14,7 @@ import Model.ModelJTableVIP;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
-import Model.ModeleComboBoxGenre;
+import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
 
 
@@ -44,10 +44,10 @@ public class FenetreApplication extends javax.swing.JFrame {
     private  DaoVIP daoVIP;
      private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
-    private ModeleComboBoxGenre mvCBMar;
+    private ModeleComboBoxMarier mvCBMar;
     private ModeleJTablePhotos leModelePhoto;
 
-    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBMar,ModeleJTablePhotos leModelePhoto,DaoEvent daoEv,DaoVIP daoVIP) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar,ModeleJTablePhotos leModelePhoto,DaoEvent daoEv,DaoVIP daoVIP) {
 
         this.leModele = leModele;
         this.crCB = crCB;
@@ -215,7 +215,7 @@ this.daoEvent=daoEv;
                 }
                 leModele.updateTable();
             }
-            mvCBMar=new ModeleComboBoxGenre(daoEvent);
+            mvCBMar=new ModeleComboBoxMarier(daoEvent);
            mvCB2M=new ModeleComboBoxVIP2M(daoVIP,daoEvent);
            mvCB1M=new ModeleComboBoxVIP1M(daoVIP,daoEvent);
         } catch (Exception e) {

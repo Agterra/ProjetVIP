@@ -21,7 +21,6 @@ public class ModelJTableVIP extends AbstractTableModel {
         this.leConteneur = new ArrayList<>();
         this.titre = new String[]{"idVip","nomVIP","prenomVip","civilite","dateNaiss","lieuNaiss","codeRole","codeStatut","nomPays"};
         this.leDaoVIP = leDaoVIP;
-        
     }
     
     @Override
@@ -67,9 +66,7 @@ public class ModelJTableVIP extends AbstractTableModel {
 
     public void insererVip(VIP leVip) throws SQLException {
         leDaoVIP.insererVip(leVip);
-        
-          leConteneur.clear();
-         leDaoVIP.lireLesVip(leConteneur);
+        leConteneur.add(leVip);
         this.fireTableDataChanged();
     }
 

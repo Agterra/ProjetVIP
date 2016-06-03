@@ -12,8 +12,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -21,7 +19,6 @@ import java.util.List;
  */
 public class DaoFilm {
      private final Connection connexion;
-     private List<Film> ListeFilm;
    
      
     public DaoFilm(Connection connexion) throws SQLException {
@@ -29,7 +26,9 @@ public class DaoFilm {
     }
      public void insererFilm(Film film) throws Exception {
        
-         
+         if(this.existVisa(film.getVisa())==true){
+             throw new Exception("La photo existe deja");
+         }
         String requete = "insert into Film values(?,?,?,?)";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, film.getVisa());
@@ -39,7 +38,6 @@ public class DaoFilm {
         pstmt.executeUpdate();
         pstmt.close();
     }
-       
      
      public void supprimerFilm(int film) throws SQLException {
         String requete = "delete from Film where numVisa = ?";
@@ -48,26 +46,19 @@ public class DaoFilm {
         pstmt.executeUpdate();
         pstmt.close();
     }
-        public List<Film> SelectFilm() throws Exception {
-        ListeFilm= new ArrayList();
-        String requete = "Select * from Film ";  
+     
+     public boolean existVisa(int id) throws SQLException {
+        int nb=0;
+        String requete = "select idphoto from Film where numVisa=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        ResultSet rset = pstmt.executeQuery();
-
-        while (rset.next()) {// traitement du résulat
-            int visa = rset.getInt(1);
-            String titre = rset.getString(2);
-             int Annee = rset.getInt(3);
-            String Genre = rset.getString(4);
-           
-         
-            Film temp = new Film(visa,titre, Annee, Genre);
-            ListeFilm.add(temp);
+        pstmt.setInt(1, id);
+        ResultSet rset = pstmt.executeQuery(requete);
+        while (rset.next()) {   
+                nb = rset.getInt(1);
+            }
+        if(nb==1){
+            return true;
         }
-        rset.close();
-        pstmt.close();
-        return ListeFilm;
-     }
-     
-     
+        return false;
+   }
 }
