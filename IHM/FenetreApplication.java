@@ -48,7 +48,7 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleJTablePhotos leModelePhoto;
     private ModeleComboBoxGenre mvCBGenre;
 
-    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBGenre,ModeleJTablePhotos leModelePhoto,ModeleJTableFilm leModeleFilm,DaoEvent daoEv,DaoVIP daoVIP) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBGenre,ModeleComboBoxMarier mvCBMar,ModeleJTablePhotos leModelePhoto,ModeleJTableFilm leModeleFilm,DaoEvent daoEv,DaoVIP daoVIP) {
 
         this.leModele = leModele;
         this.crCB = crCB;
@@ -59,10 +59,10 @@ this.daoEvent=daoEv;
         this.mvCB1M = mvCB1M;
         this.mvCB2M = mvCB2M;
         this.mvCBMar = mvCBMar;
-
+this.mvCBGenre=mvCBGenre;
        
         this.leModelePhoto=leModelePhoto;
-
+         this.leModeleFilm=leModeleFilm;
 
         initComponents();
         try {
@@ -91,6 +91,7 @@ this.daoEvent=daoEv;
         jbtGestionEvents = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jBFilm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Les VIPs");
@@ -133,6 +134,13 @@ this.daoEvent=daoEv;
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1323.png"))); // NOI18N
 
+        jBFilm.setText("Gestionnaire Film");
+        jBFilm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFilmActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,16 +148,20 @@ this.daoEvent=daoEv;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btInserer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtGestionEvents)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBFilm)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -164,7 +176,8 @@ this.daoEvent=daoEv;
                     .addComponent(btSuppr)
                     .addComponent(jbtGestionEvents)
                     .addComponent(jButton2)
-                    .addComponent(btInserer))
+                    .addComponent(btInserer)
+                    .addComponent(jBFilm))
                 .addContainerGap())
         );
 
@@ -237,6 +250,15 @@ this.daoEvent=daoEv;
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
+        // TODO add your handling code here:
+      FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this,leModeleFilm, mvCBGenre);
+        
+          if (gestionfilm.doModal() == true) {
+                        
+            }
+    }//GEN-LAST:event_jBFilmActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +266,7 @@ this.daoEvent=daoEv;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btInserer;
     private javax.swing.JButton btSuppr;
+    private javax.swing.JButton jBFilm;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

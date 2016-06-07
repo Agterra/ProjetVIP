@@ -7,6 +7,7 @@ package Application;
 
 import AccesDonnees.DaoEvent;
 import AccesDonnees.DaoFilm;
+import AccesDonnees.DaoGenre;
 import AccesDonnees.DaoPays;
 import AccesDonnees.DaoPhoto;
 import AccesDonnees.DaoVIP;
@@ -46,6 +47,7 @@ public class Appli {
     private static DaoEvent daoEvent;
     private static DaoPhoto daoPhoto;
     private static DaoFilm daoFilm;
+    private static DaoGenre daoGenre;
     /**
      * @param args the command line arguments
      */
@@ -77,6 +79,7 @@ public class Appli {
             daoEvent = new DaoEvent(laConnexion);
             daoPhoto = new DaoPhoto(laConnexion);
             daoFilm = new DaoFilm(laConnexion);
+            daoGenre = new DaoGenre(laConnexion);
             
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
@@ -88,7 +91,7 @@ public class Appli {
          
             final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip,daoEvent);
             final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip,daoEvent);
-            final ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoFilm);
+            final ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoGenre);
             final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
@@ -100,7 +103,7 @@ public class Appli {
                 @Override
                 public void run() {
 
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBGenre,leModelePhoto,leModeleFilm,daoEvent,daoVip).setVisible(true);
+                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBGenre,mvCBMar,leModelePhoto,leModeleFilm,daoEvent,daoVip).setVisible(true);
 
                 }
             });

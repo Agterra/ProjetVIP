@@ -38,7 +38,7 @@ public class ModeleJTableFilm extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 4;
     }
 
     @Override
@@ -67,13 +67,13 @@ public class ModeleJTableFilm extends AbstractTableModel {
     }
 
     public void supprimerFilm(int ligne) throws Exception {
-        int Visa = Integer.parseInt(getValueAt(ligne, 1).toString());
+        int Visa = Integer.parseInt(getValueAt(ligne, 0).toString());
         daoFilm.supprimerFilm(Visa);
         leConteneur.remove(ligne);
         this.fireTableDataChanged();
     }
 
-    public void lireLesPhotos() throws Exception {
+    public void lireLesFilm() throws Exception {
         leConteneur=daoFilm.SelectFilm();
         fireTableDataChanged();  // notification de modification des données à la vue
     }

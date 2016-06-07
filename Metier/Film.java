@@ -18,10 +18,10 @@ public class Film {
     public Film() {
     }
 
-    public Film(int Annee, String Titre, int Visa, String Genre) {
-        this.Annee = Annee;
+    public Film(int visa, String Titre, int annee, String Genre) {
+        this.Annee = annee;
         this.Titre = Titre;
-        this.Visa = Visa;
+        this.Visa = visa;
         this.Genre = Genre;
     }
 

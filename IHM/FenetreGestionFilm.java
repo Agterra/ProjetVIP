@@ -23,17 +23,17 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     private Film film;
     private ModeleJTableFilm leModeleFilm;
     private ModeleComboBoxGenre csCf;
-    public FenetreGestionFilm(java.awt.Frame parent, Film film, ModeleJTableFilm leModeleFilm,ModeleComboBoxGenre csCf) {
+    public FenetreGestionFilm(java.awt.Frame parent,  ModeleJTableFilm leModeleFilm,ModeleComboBoxGenre csCf) {
 
         super(parent, true);
         this.csCf=csCf;
         this.etatSortie = false;
-        this.film = film;
+        //this.film = film;
         this.leModeleFilm = leModeleFilm;
 
         initComponents();
           try {
-            leModeleFilm.lireLesPhotos();
+            leModeleFilm.lireLesFilm();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
@@ -62,7 +62,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         jLabel1.setText("Gestionnaire de Films");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jbnAjoutPhoto.setText("Ajouter une photo");
+        jbnAjoutPhoto.setText("Ajouter un film");
         jbnAjoutPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbnAjoutPhotoActionPerformed(evt);
@@ -119,11 +119,11 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
                 System.out.println(leFilm.toString());
                        leModeleFilm.insererFilm(leFilm);
             }
-            etatSortie=true;
-            this.dispose();
+         //   etatSortie=true;
+          /// this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur: " + e.getMessage());
+            System.out.println("Erreur zda: " + e.getMessage());
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed

@@ -2,6 +2,7 @@ package Model;
 
 import AccesDonnees.DaoEvent;
 import AccesDonnees.DaoFilm;
+import AccesDonnees.DaoGenre;
 import AccesDonnees.DaoVIP;
 import Metier.Evenements;
 import Metier.Film;
@@ -20,29 +21,29 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Claire
  */
-public class ModeleComboBoxGenre extends DefaultComboBoxModel<Film> {
+public class ModeleComboBoxGenre extends DefaultComboBoxModel<String> {
 
-    private List<Film> listeItems;
+    private List<String> listeItems;
     private String[] noms ;
-    private DaoFilm daoFilm;
+    private DaoGenre daoGenre;
    // 
 
-    public ModeleComboBoxGenre(DaoFilm daof) throws Exception {
+    public ModeleComboBoxGenre(DaoGenre daoGenre) throws Exception {
         super();
         //pour test
-        daoFilm=daof;
-        listeItems=daof.SelectFilm();
+        daoGenre=daoGenre;
+        listeItems=daoGenre.SelectGenre();
        
     }
    
 
     @Override
-    public void addElement(Film uneChaine) {
+    public void addElement(String uneChaine) {
         super.addElement(uneChaine);
     }
 
     @Override
-    public Film getElementAt(int i) {
+    public String getElementAt(int i) {
         return listeItems.get(i);
     }
 

@@ -31,14 +31,10 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
         super(parent, true);
         this.film=film;
         etatSortie=false;
-        this.cfCB=cfCB;
-       
-      
-        
+        this.cfCB=csCf;
+            
         initComponents();
-        
-    
-        
+
     }
 
     /**

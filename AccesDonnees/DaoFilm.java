@@ -34,7 +34,7 @@ public class DaoFilm {
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, film.getVisa());
         pstmt.setString(2, film.getTitre());
-        pstmt.setString(3, film.getGenre());
+        pstmt.setString(4, film.getGenre());
         pstmt.setInt(3, film.getAnnee());
         pstmt.executeUpdate();
         pstmt.close();
