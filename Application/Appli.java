@@ -13,6 +13,7 @@ import AccesDonnees.DaoPhoto;
 import AccesDonnees.DaoVIP;
 import AccesDonnees.SourceMySql;
 import IHM.FenetreApplication;
+import IHM.FenetreIdentification;
 import Model.ModelJTableVIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
@@ -26,6 +27,7 @@ import Model.ModeleComboBoxVIP2M;
 import Model.ModeleJTableFilm;
 
 import Model.ModeleJTablePhotos;
+import java.net.PasswordAuthentication;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -60,16 +62,19 @@ public class Appli {
 
         // Etablissement de la connexion à la base MySql avec affichage de la fenetre d'identification 
         boolean etat = false;
-
-        //        PasswordAuthentication login = new PasswordAuthentication("p1422645",234452);
-        try {
-            laSourceDeDonnees = SourceMySql.getSource();
-            laConnexion = laSourceDeDonnees.getConnection();
-            etat = true;
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
-                    "avertissement", JOptionPane.WARNING_MESSAGE);
-        }
+        do {
+            FenetreIdentification fi = new FenetreIdentification(null);
+            PasswordAuthentication login = fi.identifier();
+            try {
+                laSourceDeDonnees = SourceMySql.getSource(login);
+                laConnexion = laSourceDeDonnees.getConnection();
+                etat = true;
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
+                        "avertissement", JOptionPane.WARNING_MESSAGE);
+            }
+        } while (etat == false);
+       
 
         // Instanciation des objets nécessaires à l'application
         try {
