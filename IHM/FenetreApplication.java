@@ -12,15 +12,16 @@ import Model.ModelJTableVIP;
 import Metier.VIP;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
+import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxGenre;
 import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
 
-
 import Model.ModeleComboBoxVIP1M;
 import Model.ModeleComboBoxVIP2M;
+import Model.ModeleComboBoxVIPAct;
+import Model.ModeleComboBoxVIPReal;
 import Model.ModeleJTableFilm;
-
 
 import Model.ModeleJTablePhotos;
 
@@ -40,29 +41,34 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleComboBoxPays paysCB;
     private ModeleJTableFilm leModeleFilm;
 
- private  DaoEvent daoEvent;
-    private  DaoVIP daoVIP;
-     private ModeleComboBoxVIP1M mvCB1M;
+    private DaoEvent daoEvent;
+    private DaoVIP daoVIP;
+    private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
     private ModeleComboBoxMarier mvCBMar;
     private ModeleJTablePhotos leModelePhoto;
     private ModeleComboBoxGenre mvCBGenre;
+    private ModeleComboBoxFilm CBVF;
+    private ModeleComboBoxVIPAct CBVA;
+    private ModeleComboBoxVIPReal CBVR;
 
-    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxGenre mvCBGenre,ModeleComboBoxMarier mvCBMar,ModeleJTablePhotos leModelePhoto,ModeleJTableFilm leModeleFilm,DaoEvent daoEv,DaoVIP daoVIP) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxCS csCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M, ModeleComboBoxVIP2M mvCB2M, ModeleComboBoxGenre mvCBGenre, ModeleComboBoxMarier mvCBMar, ModeleJTablePhotos leModelePhoto, ModeleJTableFilm leModeleFilm, DaoEvent daoEv, DaoVIP daoVIP, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR) {
 
         this.leModele = leModele;
         this.crCB = crCB;
         this.csCB = csCB;
         this.paysCB = paysCB;
-this.daoEvent=daoEv;
-        this.daoVIP=daoVIP;
+        this.daoEvent = daoEv;
+        this.daoVIP = daoVIP;
         this.mvCB1M = mvCB1M;
         this.mvCB2M = mvCB2M;
         this.mvCBMar = mvCBMar;
-this.mvCBGenre=mvCBGenre;
-       
-        this.leModelePhoto=leModelePhoto;
-         this.leModeleFilm=leModeleFilm;
+        this.mvCBGenre = mvCBGenre;
+          this.CBVF = CBVF;
+            this.CBVA = CBVA;
+              this.CBVR = CBVR;
+        this.leModelePhoto = leModelePhoto;
+        this.leModeleFilm = leModeleFilm;
 
         initComponents();
         try {
@@ -72,8 +78,6 @@ this.mvCBGenre=mvCBGenre;
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,49 +218,48 @@ this.mvCBGenre=mvCBGenre;
 
     private void jbtGestionEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGestionEventsActionPerformed
         try {
-          
+
             Evenements eve = new Evenements();
-            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve ,mvCB1M,mvCB2M,mvCBMar);
+            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve, mvCB1M, mvCB2M, mvCBMar);
             if (laSaisie.doModal() == true) {
-                if(eve.getType()==-1){
+                if (eve.getType() == -1) {
                     System.out.println("div");
-                    mvCB1M.addDivorce(eve.getIdVip1(),eve.getIdVip2(),eve.getDateDiv(),eve.getDateMar());
-                }else if(eve.getType()==1){
+                    mvCB1M.addDivorce(eve.getIdVip1(), eve.getIdVip2(), eve.getDateDiv(), eve.getDateMar());
+                } else if (eve.getType() == 1) {
                     System.out.println("mar");
                     mvCB1M.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
-                }else{
+                } else {
                     System.out.println("fail");
                 }
                 leModele.updateTable();
             }
-            mvCBMar=new ModeleComboBoxMarier(daoEvent);
-           mvCB2M=new ModeleComboBoxVIP2M(daoVIP,daoEvent);
-           mvCB1M=new ModeleComboBoxVIP1M(daoVIP,daoEvent);
+            mvCBMar = new ModeleComboBoxMarier(daoEvent);
+            mvCB2M = new ModeleComboBoxVIP2M(daoVIP, daoEvent);
+            mvCB1M = new ModeleComboBoxVIP1M(daoVIP, daoEvent);
         } catch (Exception e) {
             System.out.println("Exception à l'insertion : " + e.getMessage());
         }
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   
-  
-        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this,leModelePhoto);
-        
-          if (gestionPhoto.doModal() == true) {
-                        
-            }
-   
+
+        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this, leModelePhoto);
+
+        if (gestionPhoto.doModal() == true) {
+
+        }
+
     //    System.out.println("Exception gestionnaire photo: "+e.getMessage());
-    
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
         // TODO add your handling code here:
-      FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this,leModeleFilm, mvCBGenre);
-        
-          if (gestionfilm.doModal() == true) {
-                        
-            }
+        FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this, leModeleFilm, mvCBGenre,CBVF,CBVA,CBVR);
+
+        if (gestionfilm.doModal() == true) {
+
+        }
     }//GEN-LAST:event_jBFilmActionPerformed
 
     /**

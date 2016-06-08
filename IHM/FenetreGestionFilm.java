@@ -5,9 +5,14 @@
  */
 package IHM;
 
+import Metier.Casting;
 import Metier.Film;
 import Metier.Photo;
+import Metier.Real;
+import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxGenre;
+import Model.ModeleComboBoxVIPAct;
+import Model.ModeleComboBoxVIPReal;
 import Model.ModeleJTableFilm;
 import Model.ModeleJTablePhotos;
 import java.util.logging.Level;
@@ -23,10 +28,16 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     private Film film;
     private ModeleJTableFilm leModeleFilm;
     private ModeleComboBoxGenre csCf;
-    public FenetreGestionFilm(java.awt.Frame parent,  ModeleJTableFilm leModeleFilm,ModeleComboBoxGenre csCf) {
+    private ModeleComboBoxFilm CBVF;
+    private ModeleComboBoxVIPAct CBVA;
+    private ModeleComboBoxVIPReal CBVR;
+    public FenetreGestionFilm(java.awt.Frame parent,  ModeleJTableFilm leModeleFilm,ModeleComboBoxGenre csCf,ModeleComboBoxFilm CBVF,ModeleComboBoxVIPAct CBVA,ModeleComboBoxVIPReal CBVR) {
 
         super(parent, true);
         this.csCf=csCf;
+         this.CBVF=CBVF;     
+this.CBVA=CBVA;
+this.CBVR=CBVR;
         this.etatSortie = false;
         //this.film = film;
         this.leModeleFilm = leModeleFilm;
@@ -49,11 +60,16 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jbnAjoutPhoto = new javax.swing.JButton();
         jbnSuppr = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFilm = new javax.swing.JTable();
+        jBCast = new javax.swing.JButton();
+        jBReal = new javax.swing.JButton();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,6 +95,20 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         jTableFilm.setModel(leModeleFilm);
         jScrollPane1.setViewportView(jTableFilm);
 
+        jBCast.setText("Gestion Casting");
+        jBCast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCastActionPerformed(evt);
+            }
+        });
+
+        jBReal.setText("Gestion Realisation");
+        jBReal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRealActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,6 +122,10 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbnSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBReal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBCast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,8 +133,15 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jBCast)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBReal)))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbnAjoutPhoto)
@@ -119,8 +160,8 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
                 System.out.println(leFilm.toString());
                        leModeleFilm.insererFilm(leFilm);
             }
-         //   etatSortie=true;
-          /// this.dispose();
+          //  etatSortie=true;
+         //  this.dispose();
 
         } catch (Exception e) {
             System.out.println("Erreur zda: " + e.getMessage());
@@ -137,6 +178,38 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jbnSupprActionPerformed
 
+    private void jBCastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCastActionPerformed
+         try {
+            Casting cas = new Casting();
+            FenetreCasting saise = new FenetreCasting(this,cas,CBVF,CBVA);
+            if (saise.doModal() == true) {
+                //System.out.println(leFilm.toString());
+                       CBVF.insererCast(cas);
+            }
+         //   etatSortie=true;
+          // this.dispose();
+
+        } catch (Exception e) {
+            System.out.println("Erreur zda: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jBCastActionPerformed
+
+    private void jBRealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealActionPerformed
+        try {
+            Real real = new Real();
+            FenetreReal saise = new FenetreReal(this,real,CBVF,CBVR);
+            if (saise.doModal() == true) {
+                //System.out.println(leFilm.toString());
+                       CBVF.insererReal(real);
+            }
+         //   etatSortie=true;
+          // this.dispose();
+
+        } catch (Exception e) {
+            System.out.println("Erreur zda: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jBRealActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -146,6 +219,9 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCast;
+    private javax.swing.JButton jBReal;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFilm;

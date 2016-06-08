@@ -51,31 +51,7 @@ public class DaoVIP {
         pstmt.close();
         return listeNomsIdVIP;
      }
-//     public List<VIP> SelectVIPM() throws Exception {
-//        listeNomsIdVIP= new ArrayList();
-//        String requete = "Select * from vip where codeStatut=1 ";  
-//        PreparedStatement pstmt = connexion.prepareStatement(requete);
-//        ResultSet rset = pstmt.executeQuery(requete);
-//        
-//        System.out.println(rset);
-//        while (rset.next()) {// traitement du résulat
-//            int num = rset.getInt(1);
-//            String nom = rset.getString(2);
-//            String prenom = rset.getString(3);
-//            String civ = rset.getString(4);
-//            Date dateNaiss = rset.getDate(5);
-//            String lieu = rset.getString(6);
-//            int codeR = rset.getInt(7);
-//            int codeS = rset.getInt(8);
-//            String pays = rset.getString(9);
-//         
-//            VIP temp = new VIP(num,nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
-//            listeNomsIdVIP.add(temp);
-//        }
-//        rset.close();
-//        pstmt.close();
-//        return listeNomsIdVIP;
-//     }
+
         public List<VIP> SelectVIPNM() throws Exception {
         listeNomsIdVIP= new ArrayList();
         String requete = "Select * from vip where codeStatut!=1 ";  
@@ -177,5 +153,56 @@ public class DaoVIP {
         pstmt.close();
         return nom;
     }
+    public List<VIP> SelectVIPACteur() throws Exception {
+        listeNomsIdVIP= new ArrayList();
+        String requete = "Select * from vip where codeRole!=0";  
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        ResultSet rset = pstmt.executeQuery(requete);
+        
+        System.out.println(rset);
+        while (rset.next()) {// traitement du résulat
+            int num = rset.getInt(1);
+            String nom = rset.getString(2);
+            String prenom = rset.getString(3);
+            String civ = rset.getString(4);
+            Date dateNaiss = rset.getDate(5);
+            String lieu = rset.getString(6);
+            int codeR = rset.getInt(7);
+            int codeS = rset.getInt(8);
+            String pays = rset.getString(9);
+         
+            VIP temp = new VIP(num,nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
+            listeNomsIdVIP.add(temp);
+        }
+        rset.close();
+        pstmt.close();
+        return listeNomsIdVIP;
+    }
+    public List<VIP> SelectVIPReal() throws Exception {
+        listeNomsIdVIP= new ArrayList();
+        String requete = "Select * from vip where codeRole!=1";  
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        ResultSet rset = pstmt.executeQuery(requete);
+        
+        System.out.println(rset);
+        while (rset.next()) {// traitement du résulat
+            int num = rset.getInt(1);
+            String nom = rset.getString(2);
+            String prenom = rset.getString(3);
+            String civ = rset.getString(4);
+            Date dateNaiss = rset.getDate(5);
+            String lieu = rset.getString(6);
+            int codeR = rset.getInt(7);
+            int codeS = rset.getInt(8);
+            String pays = rset.getString(9);
+         
+            VIP temp = new VIP(num,nom, prenom, civ, dateNaiss,lieu,codeR,codeS,pays);
+            listeNomsIdVIP.add(temp);
+        }
+        rset.close();
+        pstmt.close();
+        return listeNomsIdVIP;
+     }
 }
+
 

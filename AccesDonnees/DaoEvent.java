@@ -27,37 +27,7 @@ public class DaoEvent {
         daoVip=new DaoVIP(connexion);
     }
 
-//    public Date sontMarie(int numVip1, int numVip2) throws SQLException {
-//        int conjoint;
-//        Date mar;
-//        Date div = null;
-//        String requete = "select idVip2,dateMar from Event where dateDiv IS NULL AND idVip=? ";
-//        PreparedStatement pstmt = connexion.prepareStatement(requete);
-//        pstmt.setInt(1, numVip1);
-//       // pstmt.setDate(2, null);
-//        ResultSet rset = pstmt.executeQuery();
-//        while (rset.next()) {
-//            conjoint = rset.getInt(1);
-//            mar = rset.getDate(2);
-//            if (conjoint == numVip2) {
-//                return mar;
-//            }
-//        }
-//        requete = "select idVip2,dateMar from Event where dateDiv=null AND idVip=? ";
-//        pstmt = connexion.prepareStatement(requete);
-//        pstmt.setInt(1, numVip2);
-//       // pstmt.setDate(1, null);
-//        rset = pstmt.executeQuery();
-//        while (rset.next()) {
-//            conjoint = rset.getInt(1);
-//            mar = rset.getDate(2);
-//            if (conjoint == numVip1) {
-//                return mar;
-//            }
-//        }
-//        pstmt.close();
-//        return div;
-//    }
+
 
     public void addMariage(int numVip1, int numVip2, Date dateMar, String Lieu) throws Exception {
         try {
@@ -66,10 +36,6 @@ public class DaoEvent {
         }
 
         daoVip = new DaoVIP(connexion);
-       
-        
-
-        
             String requete = "insert into Event values(?,null,?,?,?);";
             PreparedStatement pstmt = connexion.prepareStatement(requete);
              pstmt.setInt(1, numVip2);
