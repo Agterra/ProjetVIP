@@ -27,22 +27,28 @@ public class FenetreCasting extends javax.swing.JDialog {
     private Casting cas;
     private boolean etatSortie;
     private ModeleComboBoxFilm CBf;
+    private String nomFilm;
+    private int numVisa;
     private ModeleComboBoxVIPAct CBv;
     
   
     
-    public FenetreCasting(javax.swing.JDialog parent, Casting cas,ModeleComboBoxFilm CBf,ModeleComboBoxVIPAct CBv) {
+    public FenetreCasting(javax.swing.JDialog parent, Casting cas,String nomFilm,int numVisa,ModeleComboBoxVIPAct CBv,ModeleComboBoxFilm CBf) {
         super(parent, true);
         this.cas=cas;
         etatSortie=false;
         this.CBv=CBv;
+        this.numVisa=numVisa;
+        this.nomFilm=nomFilm;
         this.CBf=CBf;
-
+        System.out.println(numVisa + " " + nomFilm);
+        
+     
       
         
         initComponents();
         
-    
+       jlblNomFilm.setText(nomFilm);
         
     }
 
@@ -58,8 +64,9 @@ public class FenetreCasting extends javax.swing.JDialog {
         jlbNomVIP = new javax.swing.JLabel();
         jlbPrenomVIP = new javax.swing.JLabel();
         jbtnSoumettre = new javax.swing.JButton();
-        jcbFilm = new javax.swing.JComboBox();
         jcbAct = new javax.swing.JComboBox();
+        jlblNomFilm = new javax.swing.JTextField();
+        jbtnQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Saisie d'un VIP");
@@ -68,16 +75,23 @@ public class FenetreCasting extends javax.swing.JDialog {
 
         jlbPrenomVIP.setText("Acteur");
 
-        jbtnSoumettre.setText("Soumettre");
+        jbtnSoumettre.setText("Ajouter l'acteur");
         jbtnSoumettre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnSoumettreActionPerformed(evt);
             }
         });
 
-        jcbFilm.setModel(CBf    );
-
         jcbAct.setModel(CBv);
+
+        jlblNomFilm.setEditable(false);
+
+        jbtnQuitter.setText("Quitter");
+        jbtnQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnQuitterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,20 +99,21 @@ public class FenetreCasting extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jcbFilm, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlbNomVIP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlbNomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(jlblNomFilm)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbtnSoumettre)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbAct, 0, 192, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE))
-                    .addComponent(jcbAct, 0, 192, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jbtnSoumettre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +123,15 @@ public class FenetreCasting extends javax.swing.JDialog {
                     .addComponent(jlbNomVIP)
                     .addComponent(jlbPrenomVIP))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbFilm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jcbAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlblNomFilm)
+                        .addGap(2, 2, 2)))
                 .addGap(18, 18, 18)
-                .addComponent(jbtnSoumettre)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnSoumettre)
+                    .addComponent(jbtnQuitter))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -122,23 +141,26 @@ public class FenetreCasting extends javax.swing.JDialog {
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
         try{
             
-            if(jcbFilm.getSelectedItem().toString().isEmpty()){
-                throw new Exception("Champ film vide!");
-            }
-            cas.setNumVisa(((Film)jcbFilm.getSelectedItem()).getVisa());
+    
+            
+            cas.setNumVisa(numVisa);
             if(jcbAct.getSelectedItem().toString().isEmpty()){
                 throw new Exception("acteur");
             }
             cas.setIdVip(((VIP)jcbAct.getSelectedItem()).getIdVip());
-           
-            etatSortie=true;
-            this.dispose();
-            
+           CBf.insererCast(cas);
+    
         }catch(Exception e){
                     JOptionPane.showMessageDialog(this,"a"+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
+
+    private void jbtnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnQuitterActionPerformed
+            etatSortie=true;
+            this.dispose();
+            
+    }//GEN-LAST:event_jbtnQuitterActionPerformed
 
     public boolean doModal() {
         setVisible(true);
@@ -149,10 +171,11 @@ public class FenetreCasting extends javax.swing.JDialog {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbtnQuitter;
     private javax.swing.JButton jbtnSoumettre;
     private javax.swing.JComboBox jcbAct;
-    private javax.swing.JComboBox jcbFilm;
     private javax.swing.JLabel jlbNomVIP;
     private javax.swing.JLabel jlbPrenomVIP;
+    private javax.swing.JTextField jlblNomFilm;
     // End of variables declaration//GEN-END:variables
 }

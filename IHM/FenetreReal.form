@@ -24,26 +24,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jcbFilm" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jlbNomVIP" alignment="0" pref="190" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jlbNomVIP" pref="190" max="32767" attributes="0"/>
+                  <Component id="jlblNomFilm" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jcbReal" pref="192" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jlbPrenomVIP" min="-2" pref="190" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jcbReal" pref="192" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
-              <Component id="jbtnSoumettre" min="-2" pref="149" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jbtnSoumettre" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,9 +56,9 @@
                   <Component id="jlbPrenomVIP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jcbFilm" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbReal" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jcbReal" max="32767" attributes="0"/>
+                  <Component id="jlblNomFilm" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jbtnSoumettre" min="-2" max="-2" attributes="0"/>
@@ -75,29 +75,27 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlbPrenomVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Realisateur"/>
+        <Property name="text" type="java.lang.String" value="R&#xe9;alisateur"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbtnSoumettre">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Soumettre"/>
+        <Property name="text" type="java.lang.String" value="Ajouter R&#xe9;alisatieur"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnSoumettreActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jcbFilm">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="CBf    " type="code"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbReal">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="CBv" type="code"/>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jlblNomFilm">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

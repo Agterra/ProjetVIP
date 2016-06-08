@@ -30,20 +30,24 @@ public class FenetreReal extends javax.swing.JDialog {
     private boolean etatSortie;
     private ModeleComboBoxFilm CBf;
     private ModeleComboBoxVIPReal CBv;
+    private String nomFilm;
+    private int visaFilm;
     
   
     
-    public FenetreReal(javax.swing.JDialog parent, Real real,ModeleComboBoxFilm CBf,ModeleComboBoxVIPReal CBv) {
+    public FenetreReal(javax.swing.JDialog parent, Real real,String nomFilm,int visaFilm,ModeleComboBoxFilm CBf,ModeleComboBoxVIPReal CBv) {
         super(parent, true);
         this.real=real;
         etatSortie=false;
         this.CBv=CBv;
         this.CBf=CBf;
+        this.visaFilm=visaFilm;
+        this.nomFilm=nomFilm;
 
       
         
         initComponents();
-        
+        jlblNomFilm.setText(nomFilm);
     
         
     }
@@ -60,26 +64,26 @@ public class FenetreReal extends javax.swing.JDialog {
         jlbNomVIP = new javax.swing.JLabel();
         jlbPrenomVIP = new javax.swing.JLabel();
         jbtnSoumettre = new javax.swing.JButton();
-        jcbFilm = new javax.swing.JComboBox();
         jcbReal = new javax.swing.JComboBox();
+        jlblNomFilm = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Saisie d'un VIP");
 
         jlbNomVIP.setText("Film");
 
-        jlbPrenomVIP.setText("Realisateur");
+        jlbPrenomVIP.setText("Réalisateur");
 
-        jbtnSoumettre.setText("Soumettre");
+        jbtnSoumettre.setText("Ajouter Réalisatieur");
         jbtnSoumettre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnSoumettreActionPerformed(evt);
             }
         });
 
-        jcbFilm.setModel(CBf    );
-
         jcbReal.setModel(CBv);
+
+        jlblNomFilm.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,20 +91,20 @@ public class FenetreReal extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jcbFilm, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlbNomVIP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlbNomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(jlblNomFilm))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbReal, 0, 192, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE))
-                    .addComponent(jcbReal, 0, 192, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jbtnSoumettre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtnSoumettre)
+                .addGap(144, 144, 144))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,9 +114,9 @@ public class FenetreReal extends javax.swing.JDialog {
                     .addComponent(jlbNomVIP)
                     .addComponent(jlbPrenomVIP))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbFilm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbReal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jcbReal)
+                    .addComponent(jlblNomFilm))
                 .addGap(18, 18, 18)
                 .addComponent(jbtnSoumettre)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -124,10 +128,8 @@ public class FenetreReal extends javax.swing.JDialog {
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
         try{
             
-            if(jcbFilm.getSelectedItem().toString().isEmpty()){
-                throw new Exception("Champ film vide!");
-            }
-            real.setNumVisa(((Film)jcbFilm.getSelectedItem()).getVisa());
+             
+            real.setNumVisa(visaFilm);
             if(jcbReal.getSelectedItem().toString().isEmpty()){
                 throw new Exception("acteur");
             }
@@ -152,9 +154,9 @@ public class FenetreReal extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtnSoumettre;
-    private javax.swing.JComboBox jcbFilm;
     private javax.swing.JComboBox jcbReal;
     private javax.swing.JLabel jlbNomVIP;
     private javax.swing.JLabel jlbPrenomVIP;
+    private javax.swing.JTextField jlblNomFilm;
     // End of variables declaration//GEN-END:variables
 }

@@ -55,7 +55,9 @@ public class FenetreIdentification extends javax.swing.JDialog{
         jlbPwdAdmin.setText("Password :");
 
         jButton1.setText("Se connecter");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setSelected(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

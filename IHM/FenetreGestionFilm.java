@@ -164,7 +164,7 @@ this.CBVR=CBVR;
          //  this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur zda: " + e.getMessage());
+            System.out.println("Erreur : " + e.getMessage());
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
@@ -180,24 +180,26 @@ this.CBVR=CBVR;
 
     private void jBCastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCastActionPerformed
          try {
+             int ligne = jTableFilm.getSelectedRow();
             Casting cas = new Casting();
-            FenetreCasting saise = new FenetreCasting(this,cas,CBVF,CBVA);
+            FenetreCasting saise = new FenetreCasting(this,cas,leModeleFilm.getValueAt(ligne,1).toString(),Integer.parseInt(leModeleFilm.getValueAt(ligne,0).toString()),CBVA,CBVF);
             if (saise.doModal() == true) {
                 //System.out.println(leFilm.toString());
-                       CBVF.insererCast(cas);
+                      //CBVF.insererCast(cas);
             }
          //   etatSortie=true;
           // this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur zda: " + e.getMessage());
+            System.out.println("Erreur : " + e.getMessage());
         }
     }//GEN-LAST:event_jBCastActionPerformed
 
     private void jBRealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealActionPerformed
         try {
+                 int ligne = jTableFilm.getSelectedRow();
             Real real = new Real();
-            FenetreReal saise = new FenetreReal(this,real,CBVF,CBVR);
+            FenetreReal saise = new FenetreReal(this,real,leModeleFilm.getValueAt(ligne,1).toString(),Integer.parseInt(leModeleFilm.getValueAt(ligne,0).toString()),CBVF,CBVR);
             if (saise.doModal() == true) {
                 //System.out.println(leFilm.toString());
                        CBVF.insererReal(real);
@@ -206,7 +208,7 @@ this.CBVR=CBVR;
           // this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur zda: " + e.getMessage());
+            System.out.println("Erreur : " + e.getMessage());
         }
     }//GEN-LAST:event_jBRealActionPerformed
 

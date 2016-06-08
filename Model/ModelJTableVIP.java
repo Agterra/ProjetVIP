@@ -50,9 +50,27 @@ public class ModelJTableVIP extends AbstractTableModel {
         }else if(column == 5){
             return leVip.getLieuNaiss();
         }else if(column ==6){
-            return leVip.getCodeRole();
+             if( leVip.getCodeRole()==0){
+                return "Réalisateur";
+            }else if( leVip.getCodeRole()==1){
+                return "Acteur";
+            }else{
+                return "Acteur-Réalisateur";
+            }
         }else if(column == 7){
-          return leVip.getCodeStatut();  
+            if( leVip.getCodeStatut()==-1){
+                return "Divorcé";
+            }else if( leVip.getCodeStatut()==1){
+                if(leVip.getCivilite().equalsIgnoreCase("Mr")){
+                     return "Marié";
+                }else{
+                     return "Mariée";
+                }
+               
+            }else{
+                return "Célibataire";
+                
+            }
         }else {
             return leVip.getNomPays();
         }
