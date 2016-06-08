@@ -30,4 +30,13 @@ public class DaoCast {
             pstmt.executeUpdate();
             pstmt.close();
     }
+    public void SupprtReal (int id, int visa) throws SQLException{
+        String requete = "delete from Casting where idVip=? and numVisa=? ";
+            PreparedStatement pstmt = connexion.prepareStatement(requete);
+             pstmt.setInt(1,id );
+            
+             pstmt.setInt(2, visa);
+            pstmt.executeUpdate();
+            pstmt.close();
+    }
 }

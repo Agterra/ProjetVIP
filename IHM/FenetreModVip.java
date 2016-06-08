@@ -18,7 +18,7 @@ import Model.ModeleComboBoxPays;
  *
  * @author Louis
  */
-public class FenetreSaisieVIP extends javax.swing.JDialog {
+public class FenetreModVip extends javax.swing.JDialog {
     private VIP vip;
     private boolean etatSortie;
     private ModeleComboBoxCS csCB;
@@ -26,19 +26,20 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
     private ModeleComboBoxPays paysCB;
   
     
-    public FenetreSaisieVIP(java.awt.Frame parent, VIP vip,ModeleComboBoxCS csCB,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
+    public FenetreModVip(java.awt.Frame parent, VIP vip,ModeleComboBoxCS csCB,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
         super(parent, true);
         this.vip=vip;
         etatSortie=false;
         this.crCB=crCB;
         this.csCB=csCB;
         this.paysCB=paysCB;
-      
+        
         
         initComponents();
-        
-    
-        
+        txtNomVIP.setText(vip.getNomVip());
+        txtPrenomVIP.setText(vip.getPrenomVip());
+        txtCivVIP.setText(vip.getCivilite());
+        txtDateNaiss.setText(vip.getDateNaiss().toString());
     }
 
     /**
