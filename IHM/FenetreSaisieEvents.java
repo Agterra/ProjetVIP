@@ -53,16 +53,16 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtxtDateMariage = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jtxtLieuMariage = new javax.swing.JTextField();
         jbtValiderMariage = new javax.swing.JButton();
+        jDateM = new com.toedter.calendar.JDateChooser();
         jpDivorce = new javax.swing.JPanel();
         jcbVip1M = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jtxtDateDivorce = new javax.swing.JTextField();
         jbnDivorce = new javax.swing.JButton();
+        jDateD = new com.toedter.calendar.JDateChooser();
         jlbTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -104,23 +104,25 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpMariageLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpMariageLayout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jpMariageLayout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jcbVip1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpMariageLayout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtxtLieuMariage)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbVip1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcbVip2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpMariageLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtxtDateMariage))
-                            .addGroup(jpMariageLayout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtxtLieuMariage)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbVip2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jDateM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpMariageLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jbtValiderMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -135,17 +137,20 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                     .addComponent(jcbVip2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtxtDateMariage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpMariageLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addGroup(jpMariageLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jtxtLieuMariage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbtValiderMariage)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mariage", jpMariage);
@@ -176,16 +181,15 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDivorceLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jpDivorceLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(20, 20, 20)
-                                .addComponent(jtxtDateDivorce))
+                        .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpDivorceLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbVip1M, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70))))
+                                .addComponent(jcbVip1M, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpDivorceLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpDivorceLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jbnDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -199,10 +203,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                     .addComponent(jcbVip1M, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
-                .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jtxtDateDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                    .addComponent(jDateD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jbnDivorce)
                 .addContainerGap())
         );
@@ -247,10 +251,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 throw new Exception("Champs Vip 2 vide!");
             }
             int idVip2 = ((VIP)jcbVip2.getSelectedItem()).getIdVip();
-            if (jtxtDateMariage.getText().isEmpty()) {
+            if (jDateM.getDate()==null) {
                 throw new Exception("Champs Date Mariage vide!");
             }
-            Date dateMariage = Date.valueOf(jtxtDateMariage.getText());
+            Date dateMariage = new java.sql.Date(jDateM.getDate().getTime());
             if (jtxtLieuMariage.getText().isEmpty()) {
                 throw new Exception("Champs Lieu Mariage");
             }
@@ -281,10 +285,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             }
            Evenements eve = ((Evenements)jcbVip1M.getSelectedItem());
             
-            if (jtxtDateDivorce.getText().isEmpty()) {
+            if (jDateD.getDate()==null) {
                 throw new Exception("Champs Date Mariage vide!");
             }
-            Date dateDivorce = Date.valueOf(jtxtDateDivorce.getText());
+            Date dateDivorce = new java.sql.Date(jDateD.getDate().getTime());
             
             
             evenement.setIdVip1(eve.getIdVip1());
@@ -317,6 +321,8 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDateD;
+    private com.toedter.calendar.JDateChooser jDateM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -332,8 +338,6 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private javax.swing.JLabel jlbTitre;
     private javax.swing.JPanel jpDivorce;
     private javax.swing.JPanel jpMariage;
-    private javax.swing.JTextField jtxtDateDivorce;
-    private javax.swing.JTextField jtxtDateMariage;
     private javax.swing.JTextField jtxtLieuMariage;
     // End of variables declaration//GEN-END:variables
 }

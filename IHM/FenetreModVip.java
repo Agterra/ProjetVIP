@@ -39,7 +39,7 @@ public class FenetreModVip extends javax.swing.JDialog {
         txtNomVIP.setText(vip.getNomVip());
         txtPrenomVIP.setText(vip.getPrenomVip());
         txtCivVIP.setText(vip.getCivilite());
-        txtDateNaiss.setText(vip.getDateNaiss().toString());
+        jDateN.setDate(vip.getDateNaiss());
         txtLieuNaiss.setText(vip.getLieuNaiss());
         jcbPays.setSelectedItem((Object)vip.getNomPays());
         String role;
@@ -75,9 +75,9 @@ public class FenetreModVip extends javax.swing.JDialog {
         txtCivVIP = new javax.swing.JTextField();
         txtLieuNaiss = new javax.swing.JTextField();
         jbtnSoumettre = new javax.swing.JButton();
-        txtDateNaiss = new javax.swing.JTextField();
         jcbCodeRole = new javax.swing.JComboBox();
         jcbPays = new javax.swing.JComboBox();
+        jDateN = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Saisie d'un VIP");
@@ -136,7 +136,9 @@ public class FenetreModVip extends javax.swing.JDialog {
                     .addComponent(jcbCodeRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbPays, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCivVIP)
-                    .addComponent(txtDateNaiss))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jDateN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)
@@ -158,10 +160,10 @@ public class FenetreModVip extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbCivVIP)
                     .addComponent(txtCivVIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlbDateNaiss)
-                    .addComponent(txtDateNaiss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbLieuNaiss)
@@ -176,7 +178,7 @@ public class FenetreModVip extends javax.swing.JDialog {
                     .addComponent(jcbCodeRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jbtnSoumettre)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,10 +200,10 @@ public class FenetreModVip extends javax.swing.JDialog {
             }else{
                   vip.setCodeRole(2);
             }
-            if(txtDateNaiss.getText().isEmpty()){
+            if(jDateN.getDate()==null){
                 throw new Exception("Champ date de naissance vide!");
             }
-            vip.setDateNaiss(Date.valueOf(txtDateNaiss.getText()));
+            vip.setDateNaiss(new java.sql.Date(jDateN.getDate().getTime()));
             if(txtLieuNaiss.getText().isEmpty()){
                 throw new Exception("Champ lieu de naissance vide!");
             }
@@ -248,6 +250,7 @@ public class FenetreModVip extends javax.swing.JDialog {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDateN;
     private javax.swing.JButton jbtnSoumettre;
     private javax.swing.JComboBox jcbCodeRole;
     private javax.swing.JComboBox jcbPays;
@@ -259,7 +262,6 @@ public class FenetreModVip extends javax.swing.JDialog {
     private javax.swing.JLabel jlbPaysVIP;
     private javax.swing.JLabel jlbPrenomVIP;
     private javax.swing.JTextField txtCivVIP;
-    private javax.swing.JTextField txtDateNaiss;
     private javax.swing.JTextField txtLieuNaiss;
     private javax.swing.JTextField txtNomVIP;
     private javax.swing.JTextField txtPrenomVIP;
