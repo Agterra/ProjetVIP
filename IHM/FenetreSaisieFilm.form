@@ -90,12 +90,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlbNomVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom FILM"/>
+        <Property name="text" type="java.lang.String" value="Nom film"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbPrenomVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="annee sorti"/>
+        <Property name="text" type="java.lang.String" value="Date sortie"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCodeStatut">

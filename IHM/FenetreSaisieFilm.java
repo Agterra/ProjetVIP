@@ -62,9 +62,9 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
 
         jlbNumVIP.setText("Numéro Visa");
 
-        jlbNomVIP.setText("Nom FILM");
+        jlbNomVIP.setText("Nom film");
 
-        jlbPrenomVIP.setText("annee sorti");
+        jlbPrenomVIP.setText("Date sortie");
 
         jlbCodeStatut.setText("Genre");
 

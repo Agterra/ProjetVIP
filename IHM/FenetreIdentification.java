@@ -37,6 +37,7 @@ public class FenetreIdentification extends javax.swing.JDialog {
         initComponents();
         if(!memoId.equalsIgnoreCase(" ")){
           jtxtIdAdmin.setText("p"+memoId);
+          jckMemo.setSelected(true);
         }else{
             
         }
