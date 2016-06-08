@@ -40,6 +40,18 @@ public class FenetreModVip extends javax.swing.JDialog {
         txtPrenomVIP.setText(vip.getPrenomVip());
         txtCivVIP.setText(vip.getCivilite());
         txtDateNaiss.setText(vip.getDateNaiss().toString());
+        txtLieuNaiss.setText(vip.getLieuNaiss());
+        jcbPays.setSelectedItem((Object)vip.getNomPays());
+        String role;
+        if(vip.getCodeRole()==1){
+                role="Acteur";
+            }else if(vip.getCodeRole()==0){
+                
+                role="Realisateur";
+            }else{
+                    role="Acteur-Realisateur";
+            }
+        jcbCodeRole.setSelectedItem((Object)role);
     }
 
     /**
@@ -58,7 +70,6 @@ public class FenetreModVip extends javax.swing.JDialog {
         jlbLieuNaiss = new javax.swing.JLabel();
         jlbCodeRole = new javax.swing.JLabel();
         jlbPaysVIP = new javax.swing.JLabel();
-        jlbCodeStatut = new javax.swing.JLabel();
         txtNomVIP = new javax.swing.JTextField();
         txtPrenomVIP = new javax.swing.JTextField();
         txtCivVIP = new javax.swing.JTextField();
@@ -66,7 +77,6 @@ public class FenetreModVip extends javax.swing.JDialog {
         jbtnSoumettre = new javax.swing.JButton();
         txtDateNaiss = new javax.swing.JTextField();
         jcbCodeRole = new javax.swing.JComboBox();
-        jcbCodeStatut = new javax.swing.JComboBox();
         jcbPays = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -86,8 +96,6 @@ public class FenetreModVip extends javax.swing.JDialog {
 
         jlbPaysVIP.setText("Pays");
 
-        jlbCodeStatut.setText("Code Statut (par defaut celibataire)");
-
         jbtnSoumettre.setText("Soumettre");
         jbtnSoumettre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,8 +104,6 @@ public class FenetreModVip extends javax.swing.JDialog {
         });
 
         jcbCodeRole.setModel(crCB);
-
-        jcbCodeStatut.setModel(csCB);
 
         jcbPays.setModel(paysCB);
         jcbPays.addActionListener(new java.awt.event.ActionListener() {
@@ -111,37 +117,31 @@ public class FenetreModVip extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlbNomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbCivVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbDateNaiss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlbLieuNaiss, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                        .addGap(68, 68, 68))
+                    .addComponent(jlbPaysVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbCodeRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlbNomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlbCivVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlbDateNaiss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlbLieuNaiss, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                .addGap(68, 68, 68))
-                            .addComponent(jlbPaysVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlbCodeRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNomVIP)
-                            .addComponent(txtPrenomVIP)
-                            .addComponent(txtLieuNaiss)
-                            .addComponent(jcbCodeRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jcbPays, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCivVIP)
-                            .addComponent(txtDateNaiss)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlbCodeStatut)
-                        .addGap(12, 12, 12)
-                        .addComponent(jcbCodeStatut, 0, 192, Short.MAX_VALUE)))
+                    .addComponent(txtNomVIP)
+                    .addComponent(txtPrenomVIP)
+                    .addComponent(txtLieuNaiss)
+                    .addComponent(jcbCodeRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jcbPays, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCivVIP)
+                    .addComponent(txtDateNaiss))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(jbtnSoumettre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,13 +174,9 @@ public class FenetreModVip extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbCodeRole)
                     .addComponent(jcbCodeRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbCodeStatut)
-                    .addComponent(jcbCodeStatut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addComponent(jbtnSoumettre)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,7 +196,7 @@ public class FenetreModVip extends javax.swing.JDialog {
             }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Realisateur")){
                 vip.setCodeRole(0);
             }else{
-                    vip.setCodeRole(2);
+                  vip.setCodeRole(2);
             }
             if(txtDateNaiss.getText().isEmpty()){
                 throw new Exception("Champ date de naissance vide!");
@@ -224,19 +220,17 @@ public class FenetreModVip extends javax.swing.JDialog {
                 throw new Exception("Champ prénom vide!");
             }
             vip.setPrenomVip(txtPrenomVIP.getText());
-            if(jcbCodeStatut.getSelectedItem().toString().isEmpty()){
-                throw new Exception("Champ code statut vide!");
-            }
+            
            
             
-                vip.setCodeStatut(0);
+                vip.setCodeStatut(vip.getCodeStatut());
             
            
             etatSortie=true;
             this.dispose();
             
         }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"a"+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this," "+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
@@ -256,11 +250,9 @@ public class FenetreModVip extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtnSoumettre;
     private javax.swing.JComboBox jcbCodeRole;
-    private javax.swing.JComboBox jcbCodeStatut;
     private javax.swing.JComboBox jcbPays;
     private javax.swing.JLabel jlbCivVIP;
     private javax.swing.JLabel jlbCodeRole;
-    private javax.swing.JLabel jlbCodeStatut;
     private javax.swing.JLabel jlbDateNaiss;
     private javax.swing.JLabel jlbLieuNaiss;
     private javax.swing.JLabel jlbNomVIP;

@@ -96,6 +96,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jBFilm = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Les VIPs");
@@ -148,6 +149,13 @@ public class FenetreApplication extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("~ Voicela ~");
 
+        jButton1.setText("Modifier sélection");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,8 +166,10 @@ public class FenetreApplication extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btInserer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btSuppr)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtGestionEvents)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +193,8 @@ public class FenetreApplication extends javax.swing.JFrame {
                     .addComponent(jbtGestionEvents)
                     .addComponent(jButton2)
                     .addComponent(btInserer)
-                    .addComponent(jBFilm))
+                    .addComponent(jBFilm)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -264,6 +275,19 @@ public class FenetreApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBFilmActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {
+             int ligne =laTable.getSelectedRow();
+            VIP vip = leModele.getVip(Integer.parseInt(leModele.getValueAt(ligne,0).toString()));
+            FenetreModVip laSaisie = new FenetreModVip(this, vip, csCB, crCB, paysCB);
+            if (laSaisie.doModal() == true) {
+                leModele.ModifierVip(vip);
+            }
+        } catch (Exception e) {
+            System.out.println("Exception à la modification : " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -272,6 +296,7 @@ public class FenetreApplication extends javax.swing.JFrame {
     private javax.swing.JButton btInserer;
     private javax.swing.JButton btSuppr;
     private javax.swing.JButton jBFilm;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

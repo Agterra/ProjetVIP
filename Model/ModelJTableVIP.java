@@ -90,6 +90,11 @@ public class ModelJTableVIP extends AbstractTableModel {
          leDaoVIP.lireLesVip(leConteneur);
         this.fireTableDataChanged();
     }
+    public VIP getVip(int leVip) throws SQLException {
+        VIP Vip=leDaoVIP.getVip(leVip);
+        
+          return Vip;
+    }
 
     public void supprimerVip(int ligne) throws SQLException {
         int idVip = (int) getValueAt(ligne, 0);
@@ -107,4 +112,10 @@ public class ModelJTableVIP extends AbstractTableModel {
         leDaoVIP.lireLesVip(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
+      public void ModifierVip(VIP vip) throws SQLException {
+        // leConteneur.clear();
+        leDaoVIP.ModVip(vip);
+        updateTable();  // notification de modification des données à la vue
+    }
+     
 }
