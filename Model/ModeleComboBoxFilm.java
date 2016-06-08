@@ -64,6 +64,9 @@ public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
        daor.insertReal(rel.getIdVip(), rel.getNumVisa());
    }
     
+  public void supprCast(int visa)throws SQLException{
+      daoc.supprCasting(visa);
+  }
     
 
 }

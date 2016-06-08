@@ -271,7 +271,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this, leModeleFilm, mvCBGenre,CBVF,CBVA,CBVR);
 
         if (gestionfilm.doModal() == true) {
-
+               
         }
     }//GEN-LAST:event_jBFilmActionPerformed
 

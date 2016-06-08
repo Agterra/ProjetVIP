@@ -20,36 +20,32 @@ import Model.ModeleComboBoxPays;
 import Model.ModeleComboBoxVIPAct;
 import Model.ModeleComboBoxVIPReal;
 
-
 /**
  *
  * @author Louis
  */
 public class FenetreReal extends javax.swing.JDialog {
+
     private Real real;
     private boolean etatSortie;
     private ModeleComboBoxFilm CBf;
     private ModeleComboBoxVIPReal CBv;
     private String nomFilm;
     private int visaFilm;
-    
-  
-    
-    public FenetreReal(javax.swing.JDialog parent, Real real,String nomFilm,int visaFilm,ModeleComboBoxFilm CBf,ModeleComboBoxVIPReal CBv) {
-        super(parent, true);
-        this.real=real;
-        etatSortie=false;
-        this.CBv=CBv;
-        this.CBf=CBf;
-        this.visaFilm=visaFilm;
-        this.nomFilm=nomFilm;
 
-      
-        
+    public FenetreReal(javax.swing.JDialog parent, Real real, String nomFilm, int visaFilm, ModeleComboBoxFilm CBf, ModeleComboBoxVIPReal CBv) {
+        super(parent, true);
+        this.real = real;
+        etatSortie = false;
+        this.CBv = CBv;
+        this.CBf = CBf;
+        this.visaFilm = visaFilm;
+        this.nomFilm = nomFilm;
+
         initComponents();
-        jlblNomFilm.setText(nomFilm);
-    
         
+        jlblNomFilm.setText(this.nomFilm);
+
     }
 
     /**
@@ -66,6 +62,7 @@ public class FenetreReal extends javax.swing.JDialog {
         jbtnSoumettre = new javax.swing.JButton();
         jcbReal = new javax.swing.JComboBox();
         jlblNomFilm = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Saisie d'un VIP");
@@ -85,26 +82,33 @@ public class FenetreReal extends javax.swing.JDialog {
 
         jlblNomFilm.setEditable(false);
 
+        jButton1.setText("Quitter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jlbNomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                    .addComponent(jlblNomFilm))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jlbNomVIP, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addComponent(jlblNomFilm))
+                    .addComponent(jbtnSoumettre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcbReal, 0, 192, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlbPrenomVIP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtnSoumettre)
-                .addGap(144, 144, 144))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +122,9 @@ public class FenetreReal extends javax.swing.JDialog {
                     .addComponent(jcbReal)
                     .addComponent(jlblNomFilm))
                 .addGap(18, 18, 18)
-                .addComponent(jbtnSoumettre)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnSoumettre)
+                    .addComponent(jButton1))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -126,23 +132,26 @@ public class FenetreReal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
-        try{
-            
-             
+        try {
+
             real.setNumVisa(visaFilm);
-            if(jcbReal.getSelectedItem().toString().isEmpty()){
+            if (jcbReal.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("acteur");
             }
-            real.setIdVip(((VIP)jcbReal.getSelectedItem()).getIdVip());
-           
-            etatSortie=true;
-            this.dispose();
-            
-        }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"a"+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            real.setIdVip(((VIP) jcbReal.getSelectedItem()).getIdVip());
+
         
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          etatSortie = true;
+            this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public boolean doModal() {
         setVisible(true);
@@ -153,6 +162,7 @@ public class FenetreReal extends javax.swing.JDialog {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jbtnSoumettre;
     private javax.swing.JComboBox jcbReal;
     private javax.swing.JLabel jlbNomVIP;

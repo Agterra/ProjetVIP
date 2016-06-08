@@ -5,26 +5,47 @@
  */
 package IHM;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.PasswordAuthentication;
 
 /**
  *
  * @author Louis
  */
-public class FenetreIdentification extends javax.swing.JDialog{
+public class FenetreIdentification extends javax.swing.JDialog {
 
+    private String memoId=" ";
 
     public FenetreIdentification(javax.swing.JFrame parent) {
-        super(parent,true);
-      
+        super(parent, true);
+        try {
+            File f = new File("memo.txt");
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+                memoId=ois.readObject().toString();
+                 
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         initComponents();
+        if(!memoId.equalsIgnoreCase(" ")){
+          jtxtIdAdmin.setText("p"+memoId);
+        }else{
+            
+        }
 
     }
-    
-    public PasswordAuthentication identifier(){
+
+    public PasswordAuthentication identifier() {
         setVisible(true);
-        return new PasswordAuthentication(jtxtIdAdmin.getText(),jtxtPwdAdmin.getPassword());
+        return new PasswordAuthentication(jtxtIdAdmin.getText(), jtxtPwdAdmin.getPassword());
     }
 
     /**
@@ -43,8 +64,10 @@ public class FenetreIdentification extends javax.swing.JDialog{
         jButton1 = new javax.swing.JButton();
         jtxtIdAdmin = new javax.swing.JTextField();
         jtxtPwdAdmin = new javax.swing.JPasswordField();
+        jckMemo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 153, 51));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,9 +81,22 @@ public class FenetreIdentification extends javax.swing.JDialog{
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setSelected(true);
+        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton1FocusGained(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jckMemo.setText("Mémoriser Id");
+        jckMemo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jckMemo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jckMemoActionPerformed(evt);
             }
         });
 
@@ -82,7 +118,9 @@ public class FenetreIdentification extends javax.swing.JDialog{
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(121, 121, 121)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                    .addComponent(jckMemo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,7 +134,9 @@ public class FenetreIdentification extends javax.swing.JDialog{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbPwdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxtPwdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
+                .addComponent(jckMemo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -126,15 +166,39 @@ public class FenetreIdentification extends javax.swing.JDialog{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            if (jckMemo.isSelected()) {
+                File f = new File("memo.txt");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                System.out.println(Integer.parseInt(jtxtIdAdmin.getText().substring(1)));
+                oos.writeObject(Integer.parseInt(jtxtIdAdmin.getText().substring(1)));
+            }else{
+                File f = new File("memo.txt");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(" ");
+            }
+        } catch (Exception e) {
+                System.out.println(e.getMessage());
+        }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1FocusGained
+
+    private void jckMemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jckMemoActionPerformed
+
+    }//GEN-LAST:event_jckMemoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JCheckBox jckMemo;
     private javax.swing.JLabel jlbIdAdmin;
     private javax.swing.JLabel jlbPwdAdmin;
     private javax.swing.JTextField jtxtIdAdmin;

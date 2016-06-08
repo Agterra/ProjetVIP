@@ -30,7 +30,7 @@ public class DaoCast {
             pstmt.executeUpdate();
             pstmt.close();
     }
-    public void SupprtReal (int id, int visa) throws SQLException{
+    public void supprActeur(int id, int visa) throws SQLException{
         String requete = "delete from Casting where idVip=? and numVisa=? ";
             PreparedStatement pstmt = connexion.prepareStatement(requete);
              pstmt.setInt(1,id );
@@ -38,5 +38,13 @@ public class DaoCast {
              pstmt.setInt(2, visa);
             pstmt.executeUpdate();
             pstmt.close();
+    }
+    
+    public void supprCasting(int visa) throws SQLException{
+        String requete = "delete from Casting where numVisa=?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1,visa);
+        pstmt.executeUpdate();
+        pstmt.close();
     }
 }

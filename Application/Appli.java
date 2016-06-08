@@ -57,6 +57,7 @@ public class Appli {
     private static DaoGenre daoGenre;
     private static DaoCast daoc;
     private static DaoReal daor;
+    public static String memoId="none";
   
     /**
      * @param args the command line arguments
