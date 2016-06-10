@@ -6,7 +6,6 @@
 package AccesDonnees;
 
 import Metier.Evenements;
-import Metier.VIP;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

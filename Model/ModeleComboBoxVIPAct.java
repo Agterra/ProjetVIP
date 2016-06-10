@@ -46,6 +46,9 @@ public class ModeleComboBoxVIPAct extends DefaultComboBoxModel<VIP> {
         return listeItems.size();
     }
    
+    public void majBox()throws Exception{
+        this.listeItems=daoVip.SelectVIPACteur();
+    }
     
     
 

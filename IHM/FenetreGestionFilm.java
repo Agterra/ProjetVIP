@@ -218,6 +218,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         try {
             int ligne = jTableFilm.getSelectedRow();
             Casting cas = new Casting();
+            CBVA.majBox();
             FenetreCasting saise = new FenetreCasting(this, cas, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVA, CBVF);
             if (saise.doModal() == true) {
                 //System.out.println(leFilm.toString());

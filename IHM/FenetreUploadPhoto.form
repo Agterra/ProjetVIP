@@ -26,11 +26,12 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" pref="625" max="32767" attributes="0"/>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jfcPhoto" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jfcPhoto" min="-2" pref="492" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -43,15 +44,16 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jfcPhoto" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jfcPhoto" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,11 +68,6 @@
         <Property name="text" type="java.lang.String" value="Uploader une photo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFileChooser" name="jfcPhoto">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jfcPhotoActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
       <Layout>
@@ -80,7 +77,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jtxtIdVip" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtxtLieuPhoto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtDatePhoto" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
@@ -89,7 +86,7 @@
                           </Group>
                           <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jtxtDatePhoto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtLieuPhoto" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -105,11 +102,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jtxtLieuPhoto" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtDatePhoto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jtxtDatePhoto" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtLieuPhoto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -131,9 +128,9 @@
             <Property name="text" type="java.lang.String" value="Date photo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtLieuPhoto">
+        <Component class="javax.swing.JTextField" name="jtxtDatePhoto">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtLieuPhotoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtDatePhotoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -141,12 +138,17 @@
             <Property name="text" type="java.lang.String" value="Lieu photo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtDatePhoto">
+        <Component class="javax.swing.JTextField" name="jtxtLieuPhoto">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtDatePhotoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtLieuPhotoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JFileChooser" name="jfcPhoto">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jfcPhotoActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

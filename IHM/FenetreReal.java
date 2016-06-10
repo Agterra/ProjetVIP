@@ -139,7 +139,8 @@ public class FenetreReal extends javax.swing.JDialog {
                 throw new Exception("acteur");
             }
             real.setIdVip(((VIP) jcbReal.getSelectedItem()).getIdVip());
-
+            etatSortie=true;
+            this.dispose();
         
 
         } catch (Exception e) {

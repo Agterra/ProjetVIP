@@ -23,6 +23,7 @@ public class Photo {
         this.idPhoto = idPhoto;
         this.lien = lien;
         this.lieu=lieu;
+        this.laDate=laDate;
     }
 
     public Photo() {
