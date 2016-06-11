@@ -44,10 +44,10 @@ public class FenetreModVip extends javax.swing.JDialog {
         jcbPays.setSelectedItem((Object)vip.getNomPays());
         String role;
         if(vip.getCodeRole()==1){
-                role="Acteur";
+                role="Acteur-rice";
             }else if(vip.getCodeRole()==0){
                 
-                role="Realisateur";
+                role="Realisateur-trice";
             }else{
                     role="Acteur-Realisateur";
             }
@@ -92,7 +92,7 @@ public class FenetreModVip extends javax.swing.JDialog {
 
         jlbLieuNaiss.setText("Lieu de naissance");
 
-        jlbCodeRole.setText("Code Rôle (0=réal / 1=acteur)");
+        jlbCodeRole.setText("Rôle ");
 
         jlbPaysVIP.setText("Pays");
 
@@ -136,9 +136,7 @@ public class FenetreModVip extends javax.swing.JDialog {
                     .addComponent(jcbCodeRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbPays, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCivVIP)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jDateN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jDateN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)

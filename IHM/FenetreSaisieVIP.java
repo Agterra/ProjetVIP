@@ -191,9 +191,9 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
             if(jcbCodeRole.getSelectedItem().toString().isEmpty()){
                 throw new Exception("Champ code rôle vide!");
             }
-            if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("acteur")){
+            if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("acteur-rice")){
                 vip.setCodeRole(1);
-            }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Realisateur")){
+            }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Realisateur-trice")){
                 vip.setCodeRole(0);
             }else{
                     vip.setCodeRole(2);

@@ -46,10 +46,7 @@
                   <Component id="jcbCodeRole" alignment="0" max="32767" attributes="0"/>
                   <Component id="jcbPays" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtCivVIP" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="jDateN" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jDateN" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -133,7 +130,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCodeRole">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Code R&#xf4;le (0=r&#xe9;al / 1=acteur)"/>
+        <Property name="text" type="java.lang.String" value="R&#xf4;le "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbPaysVIP">
