@@ -41,14 +41,14 @@
                   <Component id="txtVisa" max="32767" attributes="0"/>
                   <Component id="txtNomFilm" max="32767" attributes="0"/>
                   <Component id="txtAnnee" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jcbGenre" alignment="0" pref="310" max="32767" attributes="0"/>
+                  <Component id="jcbGenre" alignment="0" pref="185" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Component id="jbtnSoumettre" min="-2" pref="149" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

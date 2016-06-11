@@ -126,7 +126,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                     .addGroup(jpMariageLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jbtValiderMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpMariageLayout.setVerticalGroup(
             jpMariageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +193,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                     .addGroup(jpDivorceLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jbnDivorce, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 110, Short.MAX_VALUE))
+                .addGap(0, 93, Short.MAX_VALUE))
         );
         jpDivorceLayout.setVerticalGroup(
             jpDivorceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +225,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlbTitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

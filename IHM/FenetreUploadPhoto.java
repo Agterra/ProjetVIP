@@ -42,9 +42,9 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jtxtIdVip = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jtxtDatePhoto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jtxtLieuPhoto = new javax.swing.JTextField();
+        jtxtDatePhoto = new com.toedter.calendar.JDateChooser();
         jfcPhoto = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -63,12 +63,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
 
         jLabel4.setText("Date photo:");
 
-        jtxtDatePhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtDatePhotoActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("Lieu photo:");
 
         jtxtLieuPhoto.addActionListener(new java.awt.event.ActionListener() {
@@ -84,16 +78,18 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtxtIdVip)
-                    .addComponent(jtxtDatePhoto)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 38, Short.MAX_VALUE))
-                    .addComponent(jtxtLieuPhoto))
-                .addContainerGap())
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtxtLieuPhoto, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                .addComponent(jtxtIdVip, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,10 +101,10 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jtxtLieuPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -160,10 +156,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtLieuPhotoActionPerformed
 
-    private void jtxtDatePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtDatePhotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtDatePhotoActionPerformed
-
     private void jfcPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfcPhotoActionPerformed
         try {
             File f = jfcPhoto.getSelectedFile();
@@ -179,10 +171,10 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             }
             laPhoto.setIdVip(Integer.parseInt(jtxtIdVip.getText()));
             
-            if (jtxtDatePhoto.getText().isEmpty()) {
+            if (jtxtDatePhoto.getDate()==null) {
                 throw new Exception("Champs Date vide!");
             }
-            laPhoto.setLaDate(Date.valueOf(jtxtDatePhoto.getText()));
+            laPhoto.setLaDate(new java.sql.Date(jtxtDatePhoto.getDate().getTime()));
             
             if (jtxtLieuPhoto.getText().isEmpty()) {
                 throw new Exception("Champs Lieu vide!");
@@ -209,7 +201,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFileChooser jfcPhoto;
-    private javax.swing.JTextField jtxtDatePhoto;
+    private com.toedter.calendar.JDateChooser jtxtDatePhoto;
     private javax.swing.JTextField jtxtIdVip;
     private javax.swing.JTextField jtxtLieuPhoto;
     // End of variables declaration//GEN-END:variables

@@ -98,12 +98,12 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
                     .addComponent(txtVisa)
                     .addComponent(txtNomFilm)
                     .addComponent(txtAnnee)
-                    .addComponent(jcbGenre, 0, 310, Short.MAX_VALUE))
+                    .addComponent(jcbGenre, 0, 185, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
                 .addComponent(jbtnSoumettre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
