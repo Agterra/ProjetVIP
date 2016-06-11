@@ -5,19 +5,14 @@
  */
 package IHM;
 
-import AccesDonnees.DaoPays;
 import Metier.VIP;
-import java.sql.Date;
 import javax.swing.JOptionPane;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxPays;
 
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreModVip extends javax.swing.JDialog {
     private VIP vip;
     private boolean etatSortie;

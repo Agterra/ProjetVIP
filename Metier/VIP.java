@@ -7,10 +7,7 @@ package Metier;
 
 import java.sql.Date;
 
-/**
- *
- * @author Louis
- */
+
 public class VIP {
     
     private static int incrIdVip=0;

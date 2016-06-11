@@ -10,15 +10,9 @@ import AccesDonnees.DaoFilm;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import AccesDonnees.DaoPhoto;
 import Metier.Film;
-import Metier.Photo;
-import java.sql.SQLException;
 
-/**
- *
- * @author Louis
- */
+
 public class ModeleJTableFilm extends AbstractTableModel {
 
     private List<Film> leConteneur;

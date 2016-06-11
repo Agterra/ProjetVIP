@@ -11,12 +11,8 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import AccesDonnees.DaoPhoto;
 import Metier.Photo;
-import java.sql.SQLException;
 
-/**
- *
- * @author Louis
- */
+
 public class ModeleJTablePhotos extends AbstractTableModel {
 
     private List<Photo> leConteneur;

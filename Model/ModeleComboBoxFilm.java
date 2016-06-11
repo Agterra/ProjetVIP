@@ -1,15 +1,11 @@
 package Model;
 
 import AccesDonnees.DaoCast;
-import AccesDonnees.DaoEvent;
 import AccesDonnees.DaoFilm;
 import AccesDonnees.DaoReal;
-import AccesDonnees.DaoVIP;
 import Metier.Casting;
 import Metier.Film;
 import Metier.Real;
-import Metier.VIP;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -20,10 +16,7 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Claire
- */
+
 public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
 
     private List<Film> listeItems;

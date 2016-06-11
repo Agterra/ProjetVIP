@@ -7,10 +7,7 @@ package Metier;
 
 import java.sql.Date;
 
-/**
- *
- * @author nan c'est pas moi
- */
+
 public class Evenements {
     
     private int idVip1,idVip2;

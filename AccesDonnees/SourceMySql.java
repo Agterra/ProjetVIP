@@ -11,10 +11,7 @@ import java.net.PasswordAuthentication;
 import java.util.Properties;
 import javax.sql.DataSource;
 
-/**
- *
- * @author Louis
- */
+
 public class SourceMySql {
      public static DataSource getSource(PasswordAuthentication login) throws Exception {
         // récupération des informations d'authentification
@@ -22,7 +19,7 @@ public class SourceMySql {
         String pwd = new String(login.getPassword());
         // création d'un objet Properties à parir du fichier 
         Properties props = new Properties();
-        FileInputStream fichier = new FileInputStream("src/connexion.properties");
+        FileInputStream fichier = new FileInputStream("./src/connexion.properties");
         props.load(fichier);
         MysqlDataSource ds = new MysqlDataSource();
         ds.setPortNumber(Integer.parseInt(props.getProperty("port")));

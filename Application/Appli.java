@@ -41,10 +41,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-/**
- *
- * @author Louis
- */
+
 public class Appli {
 
     private static DataSource laSourceDeDonnees;
@@ -74,14 +71,17 @@ public class Appli {
         do {
             FenetreIdentification fi = new FenetreIdentification(null);
             PasswordAuthentication login = fi.identifier();
-            try {
-                laSourceDeDonnees = SourceMySql.getSource(login);
-                laConnexion = laSourceDeDonnees.getConnection();
-                etat = true;
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Login incorrect : " + ex.getMessage(),
-                        "Erreur", JOptionPane.WARNING_MESSAGE);
-            }
+            
+                try {
+                    laSourceDeDonnees = SourceMySql.getSource(login);
+                    laConnexion = laSourceDeDonnees.getConnection();
+                    etat = true;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Login incorrect : " + ex.getMessage(),
+                            "Erreur", JOptionPane.WARNING_MESSAGE);
+                }
+            
+            
         } while (etat == false);
        
 
@@ -132,6 +132,7 @@ public class Appli {
             JOptionPane.showMessageDialog(null, "Erreur:" + e.getMessage(),
                     "Erreur", JOptionPane.WARNING_MESSAGE);
         }
+        
     }
 
 }

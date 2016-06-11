@@ -1,7 +1,6 @@
 package Model;
 
 import AccesDonnees.DaoPays;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -11,10 +10,7 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Claire
- */
+
 public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;

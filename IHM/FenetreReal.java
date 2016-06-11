@@ -5,25 +5,13 @@
  */
 package IHM;
 
-import AccesDonnees.DaoPays;
-import Metier.Casting;
-import Metier.Film;
 import Metier.Real;
 import Metier.VIP;
-import java.sql.Date;
 import javax.swing.JOptionPane;
-import Model.ModeleComboBoxCR;
-import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxFilm;
-import Model.ModeleComboBoxGenre;
-import Model.ModeleComboBoxPays;
-import Model.ModeleComboBoxVIPAct;
 import Model.ModeleComboBoxVIPReal;
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreReal extends javax.swing.JDialog {
 
     private Real real;

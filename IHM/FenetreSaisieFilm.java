@@ -5,21 +5,12 @@
  */
 package IHM;
 
-import AccesDonnees.DaoPays;
 import Metier.Film;
-import Metier.VIP;
-import java.sql.Date;
 import javax.swing.JOptionPane;
-import Model.ModeleComboBoxCR;
-import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxGenre;
-import Model.ModeleComboBoxPays;
 
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreSaisieFilm extends javax.swing.JDialog {
     private Film film;
     private boolean etatSortie;

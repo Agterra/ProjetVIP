@@ -5,10 +5,7 @@
  */
 package Metier;
 
-/**
- *
- * @author Claire
- */
+
 public class Genre {
     private String libelle;
 

@@ -17,10 +17,7 @@ import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPSClient;
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private boolean etatSortie;

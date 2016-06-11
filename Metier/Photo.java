@@ -7,10 +7,7 @@ package Metier;
 
 import java.sql.Date;
 
-/**
- *
- * @author Claire
- */
+
 public class Photo {
     private int idVip;
     private String idPhoto;

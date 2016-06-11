@@ -13,10 +13,7 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Claire
- */
+
 public class ModeleComboBoxVIP1M extends DefaultComboBoxModel<VIP> {
 
     private List<VIP> listeItems;

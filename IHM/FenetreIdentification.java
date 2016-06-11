@@ -12,10 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.PasswordAuthentication;
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreIdentification extends javax.swing.JDialog {
 
     private String memoId=" ";
@@ -69,6 +66,11 @@ public class FenetreIdentification extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 51));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -193,6 +195,10 @@ public class FenetreIdentification extends javax.swing.JDialog {
     private void jckMemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jckMemoActionPerformed
 
     }//GEN-LAST:event_jckMemoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

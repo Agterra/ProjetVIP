@@ -5,10 +5,7 @@
  */
 package Metier;
 
-/**
- *
- * @author Claire
- */
+
 public class Film {
     private int Annee;
     private String Titre;

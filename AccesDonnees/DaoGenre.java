@@ -12,10 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Claire
- */
+
 public class DaoGenre {
     private final Connection connexion;
      private List<String> LesGenre;

@@ -3,7 +3,6 @@ package Model;
 import AccesDonnees.DaoEvent;
 import AccesDonnees.DaoVIP;
 import Metier.VIP;
-import java.sql.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -13,10 +12,7 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Claire
- */
+
 public class ModeleComboBoxVIPReal extends DefaultComboBoxModel<VIP> {
 
     private List<VIP> listeItems;

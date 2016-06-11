@@ -5,10 +5,7 @@
  */
 package Metier;
 
-/**
- *
- * @author Claire
- */
+
 public class Casting {
     private int numVisa;
     private int idVip;

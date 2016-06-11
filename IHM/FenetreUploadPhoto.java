@@ -7,13 +7,9 @@ package IHM;
 
 import Metier.Photo;
 import java.io.File;
-import java.sql.Date;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreUploadPhoto extends javax.swing.JDialog {
 
     private boolean etatSortie;

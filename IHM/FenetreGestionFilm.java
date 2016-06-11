@@ -7,22 +7,17 @@ package IHM;
 
 import Metier.Casting;
 import Metier.Film;
-import Metier.Photo;
 import Metier.Real;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxGenre;
 import Model.ModeleComboBoxVIPAct;
 import Model.ModeleComboBoxVIPReal;
 import Model.ModeleJTableFilm;
-import Model.ModeleJTablePhotos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreGestionFilm extends javax.swing.JDialog {
 
     private boolean etatSortie;

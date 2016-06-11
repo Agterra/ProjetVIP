@@ -29,10 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Louis
- */
+
 public class FenetreApplication extends javax.swing.JFrame {
 
     private ModelJTableVIP leModele;
