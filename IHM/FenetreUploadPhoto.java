@@ -167,9 +167,12 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
     private void jfcPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfcPhotoActionPerformed
         try {
             File f = jfcPhoto.getSelectedFile();
-         //   System.out.println(f.getName()+" "+f.getAbsolutePath());
+           // Test : System.out.println(f.getName()+" "+f.getAbsolutePath());
             laPhoto.setIdPhoto(f.getName());
             laPhoto.setLien(f.getAbsolutePath());
+            if(!f.getName().endsWith(".jpg") && !f.getName().endsWith(".bmp") && !f.getName().endsWith(".png")){
+                throw new Exception("Type de fichier incorrect!");
+            }
             
             if (jtxtIdVip.getText().isEmpty()) {
                 throw new Exception("Champs IdVip vide!");
