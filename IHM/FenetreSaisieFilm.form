@@ -7,7 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Saisie d&apos;un VIP"/>
+    <Property name="title" type="java.lang.String" value="Saisie d&apos;un film "/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlbPrenomVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date sortie"/>
+        <Property name="text" type="java.lang.String" value="Ann&#xe9;e sortie"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCodeStatut">

@@ -58,13 +58,13 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
         jcbGenre = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Saisie d'un VIP");
+        setTitle("Saisie d'un film ");
 
         jlbNumVIP.setText("Numéro Visa");
 
         jlbNomVIP.setText("Nom film");
 
-        jlbPrenomVIP.setText("Date sortie");
+        jlbPrenomVIP.setText("Année sortie");
 
         jlbCodeStatut.setText("Genre");
 
@@ -156,7 +156,7 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
             this.dispose();
             
         }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"a"+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this,"Erreur insertion film: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed

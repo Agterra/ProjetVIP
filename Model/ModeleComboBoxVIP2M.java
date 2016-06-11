@@ -59,6 +59,9 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
         
     }
      
+    public void majBox()throws Exception{
+        this.listeItems=daoVip.SelectVIPNM();
+    }
 
 }
 

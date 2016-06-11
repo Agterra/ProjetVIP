@@ -25,37 +25,32 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jlbNomVIP" max="32767" attributes="0"/>
-                          <Component id="jlbPrenomVIP" max="32767" attributes="0"/>
-                          <Component id="jlbCivVIP" max="32767" attributes="0"/>
-                          <Component id="jlbDateNaiss" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jlbLieuNaiss" pref="122" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jlbPaysVIP" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jlbCodeRole" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jlbNomVIP" max="32767" attributes="0"/>
+                      <Component id="jlbPrenomVIP" max="32767" attributes="0"/>
+                      <Component id="jlbCivVIP" max="32767" attributes="0"/>
+                      <Component id="jlbDateNaiss" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jlbLieuNaiss" pref="122" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNomVIP" max="32767" attributes="0"/>
-                          <Component id="txtPrenomVIP" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtLieuNaiss" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jcbCodeRole" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jcbPays" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCivVIP" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jDateN" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jlbPaysVIP" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jlbCodeRole" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jlbCodeStatut" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jcbCodeStatut" pref="192" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jlbCodeStatut" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jcbCodeStatut" max="32767" attributes="0"/>
+                  <Component id="txtNomVIP" max="32767" attributes="0"/>
+                  <Component id="txtPrenomVIP" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtLieuNaiss" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jcbCodeRole" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jcbPays" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtCivVIP" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jDateN" alignment="0" pref="159" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -84,10 +79,10 @@
                   <Component id="jlbCivVIP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCivVIP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jlbDateNaiss" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDateN" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jDateN" max="32767" attributes="0"/>
+                  <Component id="jlbDateNaiss" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -119,42 +114,42 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jlbNomVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom VIP"/>
+        <Property name="text" type="java.lang.String" value="Nom VIP :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbPrenomVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pr&#xe9;nom VIP"/>
+        <Property name="text" type="java.lang.String" value="Pr&#xe9;nom VIP :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCivVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Civilit&#xe9;"/>
+        <Property name="text" type="java.lang.String" value="Civilit&#xe9; :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbDateNaiss">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date de naissance"/>
+        <Property name="text" type="java.lang.String" value="Date de naissance :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbLieuNaiss">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lieu de naissance"/>
+        <Property name="text" type="java.lang.String" value="Lieu de naissance :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCodeRole">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Code R&#xf4;le (0=r&#xe9;al / 1=acteur)"/>
+        <Property name="text" type="java.lang.String" value="R&#xf4;le :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbPaysVIP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pays"/>
+        <Property name="text" type="java.lang.String" value="Pays :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlbCodeStatut">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Code Statut (par defaut celibataire)"/>
+        <Property name="text" type="java.lang.String" value="Statut :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNomVIP">

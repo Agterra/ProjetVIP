@@ -250,9 +250,12 @@ public class FenetreApplication extends javax.swing.JFrame {
             FenetreSaisieVIP laSaisie = new FenetreSaisieVIP(this, vip, csCB, crCB, paysCB);
             if (laSaisie.doModal() == true) {
                 leModele.insererVip(vip);
+                mvCB1M.majBox();
+                mvCB2M.majBox();
+                CBVR.majBox();
             }
         } catch (Exception e) {
-            System.out.println("Exception à l'insertion : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur insertion VIP: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btInsererActionPerformed
 
@@ -260,8 +263,9 @@ public class FenetreApplication extends javax.swing.JFrame {
         try {
             int ligne = laTable.getSelectedRow();
             leModele.supprimerVip(ligne);
+            
         } catch (Exception e) {
-            System.out.println("Exception à la suppression : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur suppression VIP: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btSupprActionPerformed
 
@@ -285,7 +289,7 @@ public class FenetreApplication extends javax.swing.JFrame {
                     System.out.println("mar");
                     mvCB1M.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
                 } else {
-                    System.out.println("fail");
+                    System.out.println("echec");
                 }
                 leModele.updateTable();
             }
@@ -293,7 +297,7 @@ public class FenetreApplication extends javax.swing.JFrame {
             mvCB2M = new ModeleComboBoxVIP2M(daoVIP, daoEvent);
             mvCB1M = new ModeleComboBoxVIP1M(daoVIP, daoEvent);
         } catch (Exception e) {
-            System.out.println("Exception à l'insertion : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur gestion événement: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
 
@@ -327,7 +331,7 @@ public class FenetreApplication extends javax.swing.JFrame {
                 leModele.ModifierVip(vip);
             }
         } catch (Exception e) {
-            System.out.println("Exception à la modification : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur modification VIP: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

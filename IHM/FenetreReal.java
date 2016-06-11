@@ -144,7 +144,7 @@ public class FenetreReal extends javax.swing.JDialog {
         
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Erreur gestion réal: "+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
 
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed

@@ -232,7 +232,7 @@ public class FenetreModVip extends javax.swing.JDialog {
             this.dispose();
             
         }catch(Exception e){
-                    JOptionPane.showMessageDialog(this," "+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this,"Erreur modification VIP: "+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed

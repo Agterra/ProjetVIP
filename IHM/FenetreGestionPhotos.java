@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPSClient;
 
@@ -150,7 +151,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
             }
 
         } catch (Exception e) {
-            System.out.println("Erreur: " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur gestion photos: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed

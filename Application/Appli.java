@@ -79,8 +79,8 @@ public class Appli {
                 laConnexion = laSourceDeDonnees.getConnection();
                 etat = true;
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
-                        "avertissement", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Login incorrect : " + ex.getMessage(),
+                        "Erreur", JOptionPane.WARNING_MESSAGE);
             }
         } while (etat == false);
        
@@ -126,11 +126,11 @@ public class Appli {
                 }
             });
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "problème dans la création des objets nécessaires" + ex.getMessage(),
-                    "avertissement", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Problème dans la création des objets nécessaires" + ex.getMessage(),
+                    "Erreur", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "erreur:" + e.getMessage(),
-                    "avertissement", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erreur:" + e.getMessage(),
+                    "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }
 

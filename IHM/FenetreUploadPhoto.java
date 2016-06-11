@@ -8,6 +8,7 @@ package IHM;
 import Metier.Photo;
 import java.io.File;
 import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -189,7 +190,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             this.dispose();
             
         } catch (Exception e) {
-            System.out.println("Erreur selection fichier : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur d'upload: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jfcPhotoActionPerformed
 

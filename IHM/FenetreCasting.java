@@ -151,7 +151,7 @@ public class FenetreCasting extends javax.swing.JDialog {
            CBf.insererCast(cas);
     
         }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"a"+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this,"Erreur insertion casting: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed

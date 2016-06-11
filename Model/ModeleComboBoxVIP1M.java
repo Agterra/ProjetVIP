@@ -58,6 +58,9 @@ public class ModeleComboBoxVIP1M extends DefaultComboBoxModel<VIP> {
         daoEvent.addDivorce(numVip1, numVip2, dateDivorce,dateMar);
     }
     
+    public void majBox()throws Exception{
+        this.listeItems=daoVip.SelectVIPNM();
+    }
     
 
 }

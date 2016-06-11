@@ -17,6 +17,7 @@ import Model.ModeleJTableFilm;
 import Model.ModeleJTablePhotos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -198,7 +199,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             //  this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur gestion film: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
@@ -210,7 +211,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             leModeleFilm.supprimerFilm(ligne);
             
         } catch (Exception e) {
-            System.out.println("Exception à la suppression : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur de suppression de film: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbnSupprActionPerformed
 
@@ -224,11 +225,9 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
                 //System.out.println(leFilm.toString());
                 //CBVF.insererCast(cas);
             }
-         //   etatSortie=true;
-            // this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur gestion casting: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jBCastActionPerformed
 
@@ -245,7 +244,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             // this.dispose();
 
         } catch (Exception e) {
-            System.out.println("Erreur : " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erreur gestion réal: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jBRealActionPerformed
 

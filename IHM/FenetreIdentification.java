@@ -181,7 +181,7 @@ public class FenetreIdentification extends javax.swing.JDialog {
                 oos.writeObject(" ");
             }
         } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("Erreur de sauvegarde de mot de passe: "+e.getMessage());
         }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

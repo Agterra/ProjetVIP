@@ -31,7 +31,7 @@ public class DaoEvent {
     public void addMariage(int numVip1, int numVip2, Date dateMar, String Lieu) throws Exception {
         try {
         if (numVip1 == numVip2) {
-            throw new Exception(" Meme vip");
+            throw new Exception(" Même vip");
         }
 
         daoVip = new DaoVIP(connexion);
@@ -53,14 +53,14 @@ public class DaoEvent {
     public void addDivorce(int numVip1, int numVip2, Date dateDiv,Date DateMar) throws Exception {
         
         if (DateMar.equals(div)) {
-            throw new Exception("Ne divorcer pas le meme jours");
+            throw new Exception("On ne peut divorcer le même jour!");
         }
          if (DateMar==null) {
-            throw new Exception("non marier");
+            throw new Exception("Les VIP ne sont pas mariés!");
         }
         if (DateMar.after(dateDiv)==true) {
             System.out.println(dateDiv+" "+DateMar);
-            throw new Exception("marier avant de se divorcer");
+            throw new Exception("Il faut se marier avant de pouvoir divorcer!");
         }
         //modfi de la date de div
         try {
