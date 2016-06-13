@@ -20,6 +20,7 @@ public class SourceMySql {
         // création d'un objet Properties à parir du fichier 
         Properties props = new Properties();
         FileInputStream fichier = new FileInputStream("./src/connexion.properties");
+        //recuperation des informations
         props.load(fichier);
         MysqlDataSource ds = new MysqlDataSource();
         ds.setPortNumber(Integer.parseInt(props.getProperty("port")));

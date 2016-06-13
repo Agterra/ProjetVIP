@@ -6,20 +6,28 @@
 package IHM;
 
 import Metier.Photo;
+import Metier.VIP;
+import Model.ModeleComboBoxVIP;
 import java.io.File;
 import javax.swing.JOptionPane;
 
 
 public class FenetreUploadPhoto extends javax.swing.JDialog {
-
+    private ModeleComboBoxVIP cbVip;
     private boolean etatSortie;
     private Photo laPhoto;
 
-    public FenetreUploadPhoto(javax.swing.JDialog parent, Photo laPhoto) {
+    /**
+     *Constructeur
+     * @param parent
+     * @param laPhoto
+     * @param cbVip
+     */
+    public FenetreUploadPhoto(javax.swing.JDialog parent, Photo laPhoto,ModeleComboBoxVIP cbVip) {
         super(parent, true);
         this.etatSortie = false;
         this.laPhoto = laPhoto;
-
+        this.cbVip=cbVip;
         initComponents();
         
     }
@@ -36,11 +44,11 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jtxtIdVip = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jtxtLieuPhoto = new javax.swing.JTextField();
         jtxtDatePhoto = new com.toedter.calendar.JDateChooser();
+        jComboBoxVip = new javax.swing.JComboBox();
         jfcPhoto = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,12 +58,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         jLabel1.setText("Uploader une photo");
 
         jLabel2.setText("IdVip:");
-
-        jtxtIdVip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtIdVipActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Date photo:");
 
@@ -67,6 +69,8 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             }
         });
 
+        jComboBoxVip.setModel(cbVip);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -75,17 +79,18 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jtxtLieuPhoto, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                .addComponent(jtxtIdVip, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
+                        .addContainerGap(9, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxVip, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,8 +98,8 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtIdVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jComboBoxVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,10 +149,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtxtIdVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdVipActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtIdVipActionPerformed
-
     private void jtxtLieuPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtLieuPhotoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtLieuPhotoActionPerformed
@@ -155,17 +156,17 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
     private void jfcPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfcPhotoActionPerformed
         try {
             File f = jfcPhoto.getSelectedFile();
-           // Test : System.out.println(f.getName()+" "+f.getAbsolutePath());
             laPhoto.setIdPhoto(f.getName());
             laPhoto.setLien(f.getAbsolutePath());
+            //test de si c'est un format autoriser
             if(!f.getName().endsWith(".jpg") && !f.getName().endsWith(".bmp") && !f.getName().endsWith(".png")){
                 throw new Exception("Type de fichier incorrect!");
             }
-            
-            if (jtxtIdVip.getText().isEmpty()) {
+            //verrifie que les champs sont rempli et attribution du contenu dans l'oject photo
+            if (jComboBoxVip.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs IdVip vide!");
             }
-            laPhoto.setIdVip(Integer.parseInt(jtxtIdVip.getText()));
+            laPhoto.setIdVip(((VIP)jComboBoxVip.getSelectedItem()).getIdVip());
             
             if (jtxtDatePhoto.getDate()==null) {
                 throw new Exception("Champs Date vide!");
@@ -185,12 +186,17 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jfcPhotoActionPerformed
 
+    /**
+     *gestion modal
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox jComboBoxVip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -198,7 +204,6 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFileChooser jfcPhoto;
     private com.toedter.calendar.JDateChooser jtxtDatePhoto;
-    private javax.swing.JTextField jtxtIdVip;
     private javax.swing.JTextField jtxtLieuPhoto;
     // End of variables declaration//GEN-END:variables
 }

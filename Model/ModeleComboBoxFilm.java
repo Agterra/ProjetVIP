@@ -25,6 +25,13 @@ public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
      private DaoReal daor;
       private DaoFilm daof;
    
+    /**
+     *
+     * @param daof
+     * @param daoc
+     * @param daor
+     * @throws Exception
+     */
     public  ModeleComboBoxFilm(DaoFilm daof,DaoCast daoc,DaoReal daor)throws Exception{
         super();
         //pour test
@@ -50,14 +57,30 @@ public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
         return listeItems.size();
     }
     
-   public void insererCast(Casting cast) throws SQLException{
+    /**
+     *appel insertCast du dao Casting
+     * @param cast
+     * @throws SQLException
+     */
+    public void insererCast(Casting cast) throws SQLException{
        daoc.insertCast(cast.getIdVip(), cast.getNumVisa());
    }
-   public void insererReal(Real rel) throws SQLException{
+
+    /**
+     *appel insertRel du dao realise
+     * @param rel
+     * @throws SQLException
+     */
+    public void insererReal(Real rel) throws SQLException{
        daor.insertReal(rel.getIdVip(), rel.getNumVisa());
    }
     
-  public void supprCast(int visa)throws SQLException{
+    /**
+     *appel supprCAst du dao casting
+     * @param visa
+     * @throws SQLException
+     */
+    public void supprCast(int visa)throws SQLException{
       daoc.supprCasting(visa);
   }
     

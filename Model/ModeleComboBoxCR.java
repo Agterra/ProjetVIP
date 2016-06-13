@@ -10,12 +10,16 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
+
+
 public class ModeleComboBoxCR extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;
     private String[] noms = {"Acteur-rice", "Realisateur-trice","Les Deux"};
     
-
+    /**
+     *Constructeur
+     */
     public ModeleComboBoxCR() {
         super();
         listeItems = Arrays.asList(noms);

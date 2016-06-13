@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxVIPReal;
 
-
 public class FenetreReal extends javax.swing.JDialog {
 
     private Real real;
@@ -21,6 +20,15 @@ public class FenetreReal extends javax.swing.JDialog {
     private String nomFilm;
     private int visaFilm;
 
+    /**
+     *Constructeur
+     * @param parent
+     * @param real
+     * @param nomFilm
+     * @param visaFilm
+     * @param CBf
+     * @param CBv
+     */
     public FenetreReal(javax.swing.JDialog parent, Real real, String nomFilm, int visaFilm, ModeleComboBoxFilm CBf, ModeleComboBoxVIPReal CBv) {
         super(parent, true);
         this.real = real;
@@ -121,7 +129,7 @@ public class FenetreReal extends javax.swing.JDialog {
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
         try {
-
+            //verrifie que les champs sont rempli et attribution du contenu dans l'oject Real
             real.setNumVisa(visaFilm);
             if (jcbReal.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("acteur");
@@ -142,6 +150,10 @@ public class FenetreReal extends javax.swing.JDialog {
             this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     *
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;

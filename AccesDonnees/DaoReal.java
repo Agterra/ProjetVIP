@@ -13,11 +13,22 @@ import java.sql.SQLException;
 public class DaoReal {
      private final Connection connexion;
      
-       public DaoReal(Connection connexion) throws SQLException {
+    /**
+     *Constructeur
+     * @param connexion
+     * @throws SQLException
+     */
+    public DaoReal(Connection connexion) throws SQLException {
         this.connexion = connexion;
         
     }
        
+    /**
+     *insertion d'u couple film realisateur
+     * @param id int id du vip
+     * @param visa int visa du film
+     * @throws SQLException
+     */
     public void insertReal (int id, int visa) throws SQLException{
         String requete = "insert into Realise values(?,?);";
             PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -27,6 +38,13 @@ public class DaoReal {
             pstmt.executeUpdate();
             pstmt.close();
     }
+
+    /**
+     *suppression d'un couple film realisateur
+     * @param id int
+     * @param visa int
+     * @throws SQLException
+     */
     public void SupprtReal (int id, int visa) throws SQLException{
         String requete = "delete from Realise where idVip=? and numVisa=? ";
             PreparedStatement pstmt = connexion.prepareStatement(requete);

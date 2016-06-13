@@ -12,9 +12,19 @@ public class Film {
     private int Visa;
     private String Genre;
 
+    /**
+     *Constructeur
+     */
     public Film() {
     }
 
+    /**
+     *Constructeur
+     * @param visa
+     * @param Titre
+     * @param annee
+     * @param Genre
+     */
     public Film(int visa, String Titre, int annee, String Genre) {
         this.Annee = annee;
         this.Titre = Titre;
@@ -22,34 +32,66 @@ public class Film {
         this.Genre = Genre;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getAnnee() {
         return Annee;
     }
 
+    /**
+     *
+     * @param Annee
+     */
     public void setAnnee(int Annee) {
         this.Annee = Annee;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTitre() {
         return Titre;
     }
 
+    /**
+     *
+     * @param Titre
+     */
     public void setTitre(String Titre) {
         this.Titre = Titre;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getVisa() {
         return Visa;
     }
 
+    /**
+     *
+     * @param Visa
+     */
     public void setVisa(int Visa) {
         this.Visa = Visa;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getGenre() {
         return Genre;
     }
 
+    /**
+     *
+     * @param Genre
+     */
     public void setGenre(String Genre) {
         this.Genre = Genre;
     }

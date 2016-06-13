@@ -8,29 +8,34 @@ package IHM;
 import Metier.VIP;
 import javax.swing.JOptionPane;
 import Model.ModeleComboBoxCR;
-import Model.ModeleComboBoxCS;
-import Model.ModeleComboBoxPays;
 
+import Model.ModeleComboBoxPays;
 
 
 public class FenetreModVip extends javax.swing.JDialog {
     private VIP vip;
     private boolean etatSortie;
-    private ModeleComboBoxCS csCB;
     private ModeleComboBoxCR crCB;
     private ModeleComboBoxPays paysCB;
   
-    
-    public FenetreModVip(java.awt.Frame parent, VIP vip,ModeleComboBoxCS csCB,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
+    /**
+     *Constructeur
+     * @param parent
+     * @param vip
+     * @param csCB
+     * @param crCB
+     * @param paysCB
+     */
+    public FenetreModVip(java.awt.Frame parent, VIP vip,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
         super(parent, true);
         this.vip=vip;
         etatSortie=false;
         this.crCB=crCB;
-        this.csCB=csCB;
         this.paysCB=paysCB;
         
         
         initComponents();
+        //initialisation des champs en fonction du vip a modifier
         txtNomVIP.setText(vip.getNomVip());
         txtPrenomVIP.setText(vip.getPrenomVip());
         txtCivVIP.setText(vip.getCivilite());
@@ -179,6 +184,7 @@ public class FenetreModVip extends javax.swing.JDialog {
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
         try{
+            //verrifie que les champs sont rempli et attribution du contenu dans l'oject vip
             if(txtCivVIP.getText().isEmpty()){
                 throw new Exception("Champ civilité vide!");
             }
@@ -215,12 +221,8 @@ public class FenetreModVip extends javax.swing.JDialog {
                 throw new Exception("Champ prénom vide!");
             }
             vip.setPrenomVip(txtPrenomVIP.getText());
-            
-           
-            
-                vip.setCodeStatut(vip.getCodeStatut());
-            
-           
+      vip.setCodeStatut(vip.getCodeStatut());
+   
             etatSortie=true;
             this.dispose();
             
@@ -234,6 +236,10 @@ public class FenetreModVip extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbPaysActionPerformed
 
+    /**
+     *gestion modal
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;

@@ -13,11 +13,22 @@ import java.sql.SQLException;
 public class DaoCast {
      private final Connection connexion;
      
-       public DaoCast(Connection connexion) throws SQLException {
+    /**
+     *Constructeur
+     * @param connexion
+     * @throws SQLException
+     */
+    public DaoCast(Connection connexion) throws SQLException {
         this.connexion = connexion;
         
     }
        
+    /**
+     *insertion d'un casting 
+     * @param id int id de l'acteur
+     * @param visa int nulmero visa
+     * @throws SQLException
+     */
     public void insertCast (int id, int visa) throws SQLException{
         String requete = "insert into Casting values(?,?);";
             PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -27,6 +38,13 @@ public class DaoCast {
             pstmt.executeUpdate();
             pstmt.close();
     }
+
+    /**
+     *
+     * @param id
+     * @param visa
+     * @throws SQLException
+     */
     public void supprActeur(int id, int visa) throws SQLException{
         String requete = "delete from Casting where idVip=? and numVisa=? ";
             PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -37,6 +55,11 @@ public class DaoCast {
             pstmt.close();
     }
     
+    /**
+     *
+     * @param visa
+     * @throws SQLException
+     */
     public void supprCasting(int visa) throws SQLException{
         String requete = "delete from Casting where numVisa=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);

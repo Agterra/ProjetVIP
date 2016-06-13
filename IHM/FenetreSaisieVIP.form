@@ -26,24 +26,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jlbNomVIP" max="32767" attributes="0"/>
-                      <Component id="jlbPrenomVIP" max="32767" attributes="0"/>
-                      <Component id="jlbCivVIP" max="32767" attributes="0"/>
-                      <Component id="jlbDateNaiss" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jlbLieuNaiss" pref="122" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jlbPaysVIP" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jlbCodeRole" alignment="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jlbNomVIP" max="32767" attributes="0"/>
+                  <Component id="jlbPrenomVIP" max="32767" attributes="0"/>
+                  <Component id="jlbCivVIP" max="32767" attributes="0"/>
+                  <Component id="jlbDateNaiss" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jlbLieuNaiss" pref="122" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jlbCodeStatut" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                  <Component id="jlbPaysVIP" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jlbCodeRole" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jcbCodeStatut" max="32767" attributes="0"/>
                   <Component id="txtNomVIP" max="32767" attributes="0"/>
                   <Component id="txtPrenomVIP" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtLieuNaiss" alignment="0" max="32767" attributes="0"/>
@@ -55,7 +51,7 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Component id="jbtnSoumettre" min="-2" pref="149" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -100,11 +96,6 @@
                   <Component id="jcbCodeRole" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlbCodeStatut" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbCodeStatut" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jbtnSoumettre" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -147,11 +138,6 @@
         <Property name="text" type="java.lang.String" value="Pays :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlbCodeStatut">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Statut :"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtNomVIP">
     </Component>
     <Component class="javax.swing.JTextField" name="txtPrenomVIP">
@@ -172,13 +158,6 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="crCB" type="code"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jcbCodeStatut">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="csCB" type="code"/>
         </Property>
       </Properties>
     </Component>

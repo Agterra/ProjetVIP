@@ -17,9 +17,14 @@ public class FenetreIdentification extends javax.swing.JDialog {
 
     private String memoId=" ";
 
+    /**
+     *Constructeur
+     * @param parent
+     */
     public FenetreIdentification(javax.swing.JFrame parent) {
         super(parent, true);
         try {
+            //lecture de l'id enregistrer
             File f = new File("memo.txt");
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -32,15 +37,18 @@ public class FenetreIdentification extends javax.swing.JDialog {
         }
 
         initComponents();
+        //si l'id pre enregistré n'est pas vide alors on l'affiche
         if(!memoId.equalsIgnoreCase(" ")){
           jtxtIdAdmin.setText("p"+memoId);
           jckMemo.setSelected(true);
-        }else{
-            
         }
 
     }
 
+    /**
+     *gestion identifiant
+     * @return
+     */
     public PasswordAuthentication identifier() {
         setVisible(true);
         return new PasswordAuthentication(jtxtIdAdmin.getText(), jtxtPwdAdmin.getPassword());
@@ -170,13 +178,12 @@ public class FenetreIdentification extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            if (jckMemo.isSelected()) {
+            if (jckMemo.isSelected()) {// si memo selectionner on enregistre le mot de passe
                 File f = new File("memo.txt");
                 FileOutputStream fos = new FileOutputStream(f);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
-                System.out.println(Integer.parseInt(jtxtIdAdmin.getText().substring(1)));
                 oos.writeObject(Integer.parseInt(jtxtIdAdmin.getText().substring(1)));
-            }else{
+            }else{//sinon on ecrit uniquement un espace
                 File f = new File("memo.txt");
                 FileOutputStream fos = new FileOutputStream(f);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -197,7 +204,7 @@ public class FenetreIdentification extends javax.swing.JDialog {
     }//GEN-LAST:event_jckMemoActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        System.exit(0);
+        System.exit(0);//si on arrete la fenetre d'identification l'application s'arrete
     }//GEN-LAST:event_formWindowClosing
 
 

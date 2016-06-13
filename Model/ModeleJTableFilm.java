@@ -19,6 +19,10 @@ public class ModeleJTableFilm extends AbstractTableModel {
     private String[] titre;
     private DaoFilm daoFilm;
 
+    /**
+     *Constructeur
+     * @param daoFilm
+     */
     public ModeleJTableFilm(DaoFilm daoFilm) {
         this.leConteneur = new ArrayList<>();
         this.titre = new String[]{"Visa","Titre","Annee","Genre"};
@@ -54,12 +58,22 @@ public class ModeleJTableFilm extends AbstractTableModel {
         return titre[column];
     }
     
-     public void insererFilm(Film laFilm) throws Exception {
+    /**
+     *appel inserer du dao
+     * @param laFilm
+     * @throws Exception
+     */
+    public void insererFilm(Film laFilm) throws Exception {
         daoFilm.insererFilm(laFilm);
         leConteneur.add(laFilm);
         this.fireTableDataChanged();
     }
 
+    /**
+     *appel supression du dao
+     * @param ligne
+     * @throws Exception
+     */
     public void supprimerFilm(int ligne) throws Exception {
         int Visa = Integer.parseInt(getValueAt(ligne, 0).toString());
         daoFilm.supprimerFilm(Visa);
@@ -67,6 +81,10 @@ public class ModeleJTableFilm extends AbstractTableModel {
         this.fireTableDataChanged();
     }
 
+    /**
+     *appel lireLesfilm du dao
+     * @throws Exception
+     */
     public void lireLesFilm() throws Exception {
         leConteneur=daoFilm.SelectFilm();
         fireTableDataChanged();  // notification de modification des données à la vue

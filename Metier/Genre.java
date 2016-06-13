@@ -5,21 +5,39 @@
  */
 package Metier;
 
-
+/**
+ *
+ * @author Claire
+ */
 public class Genre {
     private String libelle;
 
+    /**
+     *Constructeur
+     */
     public Genre() {
     }
 
+    /**
+     *Constructeur
+     * @param libelle
+     */
     public Genre(String libelle) {
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLibelle() {
         return libelle;
     }
 
+    /**
+     *
+     * @param libelle
+     */
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }

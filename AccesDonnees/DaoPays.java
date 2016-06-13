@@ -18,10 +18,21 @@ public class DaoPays {
      private final Connection connexion;
      private List<String> lesPays;
      
+    /**
+     * Constructeur
+     * @param connexion
+     * @throws SQLException
+     */
     public DaoPays(Connection connexion) throws SQLException {
         this.connexion = connexion;     
     }
-     public List<String> SelectPays() throws Exception {
+
+    /**
+     *Selection de tout les pays
+     * @return List de Pays
+     * @throws Exception
+     */
+    public List<String> SelectPays() throws Exception {
         lesPays= new ArrayList();
         String requete = "Select * from pays";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);

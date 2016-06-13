@@ -21,6 +21,12 @@ public class ModeleComboBoxVIP1M extends DefaultComboBoxModel<VIP> {
     private DaoEvent daoEvent;
       private DaoVIP daoVip;
    
+    /**
+     *Constructeur
+     * @param daoVIP
+     * @param daoEvent
+     * @throws Exception
+     */
     public ModeleComboBoxVIP1M(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
         super();
         //pour test
@@ -45,17 +51,38 @@ public class ModeleComboBoxVIP1M extends DefaultComboBoxModel<VIP> {
         return listeItems.size();
     }
     
+    /**
+     *appel add mariage du dao
+     * @param numVip1
+     * @param numVip2
+     * @param dateMariage
+     * @param lieuMariage
+     * @throws Exception
+     */
     public void addMariage(int numVip1, int numVip2, Date dateMariage, String lieuMariage)throws Exception{
         
         daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
         
     }
     
+    /**
+     * appel add divorce du dao
+     * @param numVip1
+     * @param numVip2
+     * @param dateDivorce
+     * @param dateMar
+     * @throws Exception
+     */
     public void addDivorce(int numVip1, int numVip2, Date dateDivorce, Date dateMar) throws Exception{
         daoEvent.addDivorce(numVip1, numVip2, dateDivorce,dateMar);
     }
     
+    /**
+     *met a jour la combox box
+     * @throws Exception
+     */
     public void majBox()throws Exception{
+        this.listeItems.clear();
         this.listeItems=daoVip.SelectVIPNM();
     }
     

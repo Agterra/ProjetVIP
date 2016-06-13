@@ -23,6 +23,15 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private ModeleComboBoxVIP1M mvCB1M;
     private ModeleComboBoxVIP2M mvCB2M;
     private ModeleComboBoxMarier mvCBMar;
+
+    /**
+     *Constructeur
+     * @param parent
+     * @param evenement
+     * @param mvCB1M
+     * @param mvCB2M
+     * @param mvCBMar
+     */
     public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar) {
         super(parent, true);
         this.etatSortie = false;
@@ -240,6 +249,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private void jbtValiderMariageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtValiderMariageActionPerformed
         try {
+            //verrifie que les champs sont rempli et attribution du contenu dans l'oject evenements
             if (jcbVip1.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
@@ -277,6 +287,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private void jbnDivorceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnDivorceActionPerformed
         try {
+             //verrifie que les champs sont rempli et attribution du contenu dans l'oject evenements
            if (jcbVip1M.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
@@ -286,13 +297,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 throw new Exception("Champs Date Mariage vide!");
             }
             Date dateDivorce = new java.sql.Date(jDateD.getDate().getTime());
-            
-            
+          
             evenement.setIdVip1(eve.getIdVip1());
             evenement.setIdVip2(eve.getIdVip2());
-            evenement.setDateMar(eve.getDateMar());
-            
-            
+            evenement.setDateMar(eve.getDateMar());       
             evenement.setDateDiv(dateDivorce);
             evenement.setType(-1);
             etatSortie = true;
@@ -311,6 +319,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbVip1MActionPerformed
     
+    /**
+     *gestion modal
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;

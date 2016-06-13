@@ -18,11 +18,11 @@ import IHM.FenetreApplication;
 import IHM.FenetreIdentification;
 import Model.ModelJTableVIP;
 import Model.ModeleComboBoxCR;
-import Model.ModeleComboBoxCS;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxGenre;
 import Model.ModeleComboBoxMarier;
 import Model.ModeleComboBoxPays;
+import Model.ModeleComboBoxVIP;
 
 import Model.ModeleComboBoxVIP1M;
 
@@ -41,7 +41,6 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-
 public class Appli {
 
     private static DataSource laSourceDeDonnees;
@@ -54,8 +53,8 @@ public class Appli {
     private static DaoGenre daoGenre;
     private static DaoCast daoc;
     private static DaoReal daor;
-    public static String memoId="none";
-  
+    public static String memoId = "none";
+
     /**
      * @param args the command line arguments
      */
@@ -71,19 +70,17 @@ public class Appli {
         do {
             FenetreIdentification fi = new FenetreIdentification(null);
             PasswordAuthentication login = fi.identifier();
-            
-                try {
-                    laSourceDeDonnees = SourceMySql.getSource(login);
-                    laConnexion = laSourceDeDonnees.getConnection();
-                    etat = true;
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Login incorrect : " + ex.getMessage(),
-                            "Erreur", JOptionPane.WARNING_MESSAGE);
-                }
-            
-            
+
+            try {
+                laSourceDeDonnees = SourceMySql.getSource(login);
+                laConnexion = laSourceDeDonnees.getConnection();
+                etat = true;
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Login incorrect : " + ex.getMessage(),
+                        "Erreur", JOptionPane.WARNING_MESSAGE);
+            }
+
         } while (etat == false);
-       
 
         // Instanciation des objets nécessaires à l'application
         try {
@@ -94,34 +91,33 @@ public class Appli {
             daoPhoto = new DaoPhoto(laConnexion);
             daoFilm = new DaoFilm(laConnexion);
             daoGenre = new DaoGenre(laConnexion);
-            daoc= new DaoCast(laConnexion);
-            daor=new DaoReal(laConnexion);
-    
+            daoc = new DaoCast(laConnexion);
+            daor = new DaoReal(laConnexion);
+
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
 
-            final ModeleComboBoxCR crCB= new ModeleComboBoxCR();
-            final ModeleComboBoxCS csCB=new ModeleComboBoxCS();
-            final ModeleComboBoxPays paysCB=new ModeleComboBoxPays(leDaoPays);
+            final ModeleComboBoxCR crCB = new ModeleComboBoxCR();
+            final ModeleComboBoxPays paysCB = new ModeleComboBoxPays(leDaoPays);
 
-         final ModeleComboBoxFilm CBVF= new ModeleComboBoxFilm(daoFilm,daoc,daor);
-            final ModeleComboBoxVIPAct CBVA=new ModeleComboBoxVIPAct(daoVip);
-            final ModeleComboBoxVIPReal CBVR=new ModeleComboBoxVIPReal(daoVip);
-            final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip,daoEvent);
-            final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip,daoEvent);
+            final ModeleComboBoxFilm CBVF = new ModeleComboBoxFilm(daoFilm, daoc, daor);
+            final ModeleComboBoxVIPAct CBVA = new ModeleComboBoxVIPAct(daoVip);
+            final ModeleComboBoxVIPReal CBVR = new ModeleComboBoxVIPReal(daoVip);
+            final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip, daoEvent);
+            final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip, daoEvent);
             final ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoGenre);
             final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
             final ModeleJTableFilm leModeleFilm = new ModeleJTableFilm(daoFilm);
-
+            final ModeleComboBoxVIP cbVip = new ModeleComboBoxVIP(daoVip);
 
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
 
-                    new FenetreApplication(leModele, crCB, csCB, paysCB,mvCB1M,mvCB2M,mvCBGenre,mvCBMar,leModelePhoto,leModeleFilm,daoEvent,daoVip,CBVF,CBVA,CBVR).setVisible(true);
+                    new FenetreApplication(leModele, crCB, paysCB, mvCB1M, mvCB2M, mvCBGenre, mvCBMar, leModelePhoto, leModeleFilm, daoEvent, daoVip, CBVF, CBVA, CBVR, cbVip).setVisible(true);
 
                 }
             });
@@ -132,7 +128,7 @@ public class Appli {
             JOptionPane.showMessageDialog(null, "Erreur:" + e.getMessage(),
                     "Erreur", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }
 
 }

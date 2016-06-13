@@ -3,6 +3,7 @@ package Model;
 import AccesDonnees.DaoEvent;
 import AccesDonnees.DaoVIP;
 import Metier.VIP;
+import java.sql.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -13,25 +14,24 @@ import javax.swing.DefaultComboBoxModel;
  */
 
 
-public class ModeleComboBoxVIPReal extends DefaultComboBoxModel<VIP> {
+public class ModeleComboBoxVIP extends DefaultComboBoxModel<VIP> {
 
     private List<VIP> listeItems;
     private String[] listeNoms ;
-    private DaoEvent daoEvent;
+    
       private DaoVIP daoVip;
    
     /**
      *Constructeur
      * @param daoVIP
+     * 
      * @throws Exception
      */
-    public ModeleComboBoxVIPReal(DaoVIP daoVIP)throws Exception{
+    public ModeleComboBoxVIP(DaoVIP daoVIP)throws Exception{
         super();
         
-        
-       
         this.daoVip=daoVIP;
-        listeItems=daoVip.SelectVIPReal();
+        this.listeItems=daoVip.SelectVip();
     }
 
     @Override
@@ -49,15 +49,16 @@ public class ModeleComboBoxVIPReal extends DefaultComboBoxModel<VIP> {
         return listeItems.size();
     }
     
+   
+    
     /**
-     *met a jour la combobox
+     *met a jour la combox box
      * @throws Exception
      */
     public void majBox()throws Exception{
         this.listeItems.clear();
-        this.listeItems=daoVip.SelectVIPNM();
+        this.listeItems=daoVip.SelectVip();
     }
-    
     
 
 }

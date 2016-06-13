@@ -12,7 +12,6 @@ import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxVIPAct;
 
 
-
 public class FenetreCasting extends javax.swing.JDialog {
     private Casting cas;
     private boolean etatSortie;
@@ -21,8 +20,15 @@ public class FenetreCasting extends javax.swing.JDialog {
     private int numVisa;
     private ModeleComboBoxVIPAct CBv;
     
-  
-    
+    /**
+     *Constructeur
+     * @param parent
+     * @param cas
+     * @param nomFilm
+     * @param numVisa
+     * @param CBv
+     * @param CBf
+     */
     public FenetreCasting(javax.swing.JDialog parent, Casting cas,String nomFilm,int numVisa,ModeleComboBoxVIPAct CBv,ModeleComboBoxFilm CBf) {
         super(parent, true);
         this.cas=cas;
@@ -31,11 +37,7 @@ public class FenetreCasting extends javax.swing.JDialog {
         this.numVisa=numVisa;
         this.nomFilm=nomFilm;
         this.CBf=CBf;
-        System.out.println(numVisa + " " + nomFilm);
-        
-     
-      
-        
+
         initComponents();
         
        jlblNomFilm.setText(nomFilm);
@@ -130,9 +132,7 @@ public class FenetreCasting extends javax.swing.JDialog {
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
         try{
-            
-    
-            
+            //recuperation des champ et mis a jour de l'objet cas
             cas.setNumVisa(numVisa);
             if(jcbAct.getSelectedItem().toString().isEmpty()){
                 throw new Exception("acteur");
@@ -152,6 +152,10 @@ public class FenetreCasting extends javax.swing.JDialog {
             
     }//GEN-LAST:event_jbtnQuitterActionPerformed
 
+    /**
+     *
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;

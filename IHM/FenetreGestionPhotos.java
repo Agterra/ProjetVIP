@@ -6,6 +6,7 @@
 package IHM;
 
 import Metier.Photo;
+import Model.ModeleComboBoxVIP;
 import Model.ModeleJTablePhotos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,19 +23,26 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private boolean etatSortie;
     private ModeleJTablePhotos leModelePhoto;
+   private ModeleComboBoxVIP cbVip;
 
-    public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto) {
+    /**
+     *Constructeur
+     * @param parent
+     * @param leModelePhoto
+     * @param cbVip
+     */
+    public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto,ModeleComboBoxVIP cbVip) {
 
         super(parent, true);
         try {
             this.etatSortie = false;
             this.leModelePhoto = leModelePhoto;
-
+            this.cbVip=cbVip;
             initComponents();
 
             leModelePhoto.lireLesPhotos();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
         }
     }
@@ -121,29 +129,24 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     private void jbnAjoutPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnAjoutPhotoActionPerformed
         try {
             Photo laPhoto = new Photo();
-            FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto);
+            FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto,cbVip);
             if (upload.doModal() == true) {
-                System.out.println(laPhoto.toString());
                 leModelePhoto.insererPhoto(laPhoto);
                 Properties props = new Properties();
                 FileInputStream fis = new FileInputStream("src/fpt.properties");
                 FileInputStream lienPhoto = new FileInputStream(laPhoto.getLien());
                 props.load(fis);
                 FTPSClient ftpClient = new FTPSClient();
-
+                //connexion au serveur
                 ftpClient.connect(props.getProperty("serveur"), Integer.parseInt(props.getProperty("port")));
                 ftpClient.login(props.getProperty("user"), props.getProperty("pwd"));
-
+                // transfert
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
                 ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
                 ftpClient.enterLocalPassiveMode();
-
+                //bar de  chargement
                 viewBar();
                 ftpClient.storeFile("public_html/VIP/asset/images/" + laPhoto.getIdPhoto(), lienPhoto);
-                
-                    
-             
-                System.out.println(ftpClient.getReplyString());
 
             }
 
@@ -152,7 +155,11 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
-public void viewBar() {
+
+    /**
+     *bar de progression
+     */
+    public void viewBar() {
 
   jProgressBar1.setStringPainted(true);
   jProgressBar1.setValue(0);
@@ -185,23 +192,25 @@ public void viewBar() {
                 
                 props.load(fis);
                 FTPSClient ftpClient = new FTPSClient();
-
+                //connexion au serveur
                 ftpClient.connect(props.getProperty("serveur"), Integer.parseInt(props.getProperty("port")));
                 ftpClient.login(props.getProperty("user"), props.getProperty("pwd"));
-
+                 // supression
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
                 ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
                 ftpClient.enterLocalPassiveMode();
-                System.out.println("public_html/VIP/asset/images/" + lienPhoto);
                 ftpClient.deleteFile("public_html/VIP/asset/images/" + lienPhoto);
                 
                 viewBar();
                 leModelePhoto.supprimerPhoto(ligne);
         } catch (Exception e) {
-            System.out.println("Exception à la suppression : " + e.getMessage());
-        }
+            JOptionPane.showMessageDialog(this,"Erreur gestion photos: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);        }
     }//GEN-LAST:event_jbnSupprActionPerformed
 
+    /**
+     *
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;

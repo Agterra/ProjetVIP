@@ -18,10 +18,14 @@ public class ModeleComboBoxGenre extends DefaultComboBoxModel<String> {
     private DaoGenre daoGenre;
    // 
 
+    /**
+     *Constructeur
+     * @param daoGenre
+     * @throws Exception
+     */
     public ModeleComboBoxGenre(DaoGenre daoGenre) throws Exception {
         super();
-        //pour test
-        daoGenre=daoGenre;
+        
         listeItems=daoGenre.SelectGenre();
        
     }

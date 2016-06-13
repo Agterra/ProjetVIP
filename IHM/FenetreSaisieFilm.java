@@ -10,14 +10,17 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxGenre;
 
 
-
 public class FenetreSaisieFilm extends javax.swing.JDialog {
     private Film film;
     private boolean etatSortie;
     private ModeleComboBoxGenre cfCB;
     
-  
-    
+    /**
+     *Constructeur
+     * @param parent
+     * @param film
+     * @param csCf
+     */
     public FenetreSaisieFilm(javax.swing.JDialog parent, Film film,ModeleComboBoxGenre csCf) {
         super(parent, true);
         this.film=film;
@@ -156,6 +159,10 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbGenreActionPerformed
 
+    /**
+     *gestion modal
+     * @return
+     */
     public boolean doModal() {
         setVisible(true);
         return etatSortie;

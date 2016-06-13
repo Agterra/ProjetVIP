@@ -9,17 +9,32 @@ package Metier;
 public class Pays {
     private String nom;
 
+    /**
+     *Constructeur
+     * @param nom
+     */
     public Pays(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *Constructeur
+     */
     public Pays() {
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }

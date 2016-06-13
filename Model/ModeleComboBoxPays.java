@@ -15,8 +15,12 @@ public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;
     private String[] noms ;
-   // private DaoPays daoPays;
 
+    /**
+     *Constructeur
+     * @param daoPays
+     * @throws Exception
+     */
     public ModeleComboBoxPays(DaoPays daoPays) throws Exception {
         super();
         //pour test

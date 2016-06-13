@@ -19,6 +19,10 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     private String[] titre;
     private DaoPhoto daoPhoto;
 
+    /**
+     *Constructeur
+     * @param daoPhoto
+     */
     public ModeleJTablePhotos(DaoPhoto daoPhoto) {
         this.leConteneur = new ArrayList<>();
         this.titre = new String[]{"idVip","idPhoto","datePhoto","lieu","lien"};
@@ -57,12 +61,22 @@ public class ModeleJTablePhotos extends AbstractTableModel {
         return titre[column];
     }
     
-     public void insererPhoto(Photo laPhoto) throws Exception {
+    /**
+     *appel inserer du dao
+     * @param laPhoto
+     * @throws Exception
+     */
+    public void insererPhoto(Photo laPhoto) throws Exception {
         daoPhoto.insererPhoto(laPhoto);
         leConteneur.add(laPhoto);
         this.fireTableDataChanged();
     }
 
+    /**
+     *appel la supression du dao
+     * @param ligne
+     * @throws Exception
+     */
     public void supprimerPhoto(int ligne) throws Exception {
         String idPhoto = getValueAt(ligne, 1).toString();
         daoPhoto.supprimerPhoto(idPhoto);
@@ -70,6 +84,10 @@ public class ModeleJTablePhotos extends AbstractTableModel {
         this.fireTableDataChanged();
     }
 
+    /**
+     *appel lecture du dao
+     * @throws Exception
+     */
     public void lireLesPhotos() throws Exception {
         this.leConteneur = new ArrayList<>();
         daoPhoto.lireLesPhotos(leConteneur);

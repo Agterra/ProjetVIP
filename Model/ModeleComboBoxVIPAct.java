@@ -18,9 +18,14 @@ public class ModeleComboBoxVIPAct extends DefaultComboBoxModel<VIP> {
     private String[] listeNoms ;
       private DaoVIP daoVip;
    
+    /**
+     *Constructeur
+     * @param daoVIP
+     * @throws Exception
+     */
     public ModeleComboBoxVIPAct(DaoVIP daoVIP)throws Exception{
         super();
-        //pour test
+        
         
         this.daoVip=daoVIP;
         listeItems=daoVip.SelectVIPACteur();
@@ -41,7 +46,12 @@ public class ModeleComboBoxVIPAct extends DefaultComboBoxModel<VIP> {
         return listeItems.size();
     }
    
+    /**
+     *met ajour la combo box
+     * @throws Exception
+     */
     public void majBox()throws Exception{
+        this.listeItems.clear();
         this.listeItems=daoVip.SelectVIPACteur();
     }
     

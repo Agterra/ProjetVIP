@@ -19,11 +19,21 @@ public class DaoPhoto {
     private final Connection connexion;
     private AccesDonnees.DaoVIP daoVip;
 
+    /**
+     *Constructeur
+     * @param connexion
+     * @throws SQLException
+     */
     public DaoPhoto(Connection connexion) throws SQLException {
         this.connexion = connexion;
     }
 
-     public void insererPhoto(Photo img) throws Exception {
+    /**
+     *insertion d'une image dans la base de donné
+     * @param img Photo
+     * @throws Exception
+     */
+    public void insererPhoto(Photo img) throws Exception {
          daoVip = new DaoVIP(connexion);
        
          if(this.existIDPhoto(img.getIdPhoto())==true){
@@ -42,6 +52,11 @@ public class DaoPhoto {
         pstmt.close();
     }
 
+    /**
+     *Supprimer Photo
+     * @param id int id de la photo
+     * @throws SQLException
+     */
     public void supprimerPhoto(String id) throws SQLException {
         String requete = "delete from Photo where idphoto = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -50,6 +65,12 @@ public class DaoPhoto {
         pstmt.close();
     }
 
+    /**
+     *L'id de la photo existe
+     * @param id int
+     * @return bool
+     * @throws SQLException
+     */
     public boolean existIDPhoto(String id) throws SQLException {
         int nb = 0;
         String requete = "select idphoto from Photo where idphoto=?";
@@ -65,6 +86,11 @@ public class DaoPhoto {
         return false;
     }
 
+    /**
+     *Lis tout les photo de la base
+     * @param lesPhotos List
+     * @throws SQLException
+     */
     public void lireLesPhotos(List<Photo> lesPhotos) throws SQLException {
         String requete = "select * from Photo";
         PreparedStatement pstmt = connexion.prepareStatement(requete);

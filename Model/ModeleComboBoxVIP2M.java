@@ -13,6 +13,8 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
+
+
 public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
 
     private List<VIP> listeItems;
@@ -20,6 +22,11 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
     private DaoEvent daoEvent;
      private DaoVIP daoVip;
 
+    /**
+     *
+     * @param daoVIP
+     * @throws Exception
+     */
     public ModeleComboBoxVIP2M(DaoVIP daoVIP) throws Exception {
         super();
         //pour test
@@ -27,6 +34,13 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
        this.daoVip=daoVIP;
        
     }
+
+    /**
+     *
+     * @param daoVIP
+     * @param daoEvent
+     * @throws Exception
+     */
     public ModeleComboBoxVIP2M(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
         super();
         //pour test
@@ -49,13 +63,14 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
     public int getSize() {
         return listeItems.size();
     }
-    public void addMariage(int numVip1, int numVip2, Date dateMariage, String lieuMariage)throws Exception{
-        
-        daoEvent.addMariage(numVip1, numVip2, dateMariage, lieuMariage);
-        
-    }
+
      
+    /**
+     *met a jour la combobox
+     * @throws Exception
+     */
     public void majBox()throws Exception{
+        this.listeItems.clear();
         this.listeItems=daoVip.SelectVIPNM();
     }
 

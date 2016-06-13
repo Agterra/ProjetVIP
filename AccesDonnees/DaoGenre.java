@@ -17,10 +17,21 @@ public class DaoGenre {
     private final Connection connexion;
      private List<String> LesGenre;
      
+    /**
+     *Constructeur
+     * @param connexion
+     * @throws SQLException
+     */
     public DaoGenre(Connection connexion) throws SQLException {
         this.connexion = connexion;     
     }
-     public List<String> SelectGenre() throws Exception {
+
+    /**
+     *Selection de la liste de Genre
+     * @return Liste de genre
+     * @throws Exception
+     */
+    public List<String> SelectGenre() throws Exception {
         LesGenre= new ArrayList();
         String requete = "Select * from genre";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);

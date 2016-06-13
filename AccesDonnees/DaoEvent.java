@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DaoEvent {
 
     private final Connection connexion;
@@ -21,13 +22,24 @@ public class DaoEvent {
     private final Date div = null;
     private List<Evenements> listeMar;
 
+    /**
+     *Constructeur
+     * @param connexion
+     * @throws SQLException
+     */
     public DaoEvent(Connection connexion) throws SQLException {
         this.connexion = connexion;
         daoVip=new DaoVIP(connexion);
     }
 
-
-
+    /**
+     *Insertion mariage
+     * @param numVip1 int
+     * @param numVip2 int
+     * @param dateMar Date
+     * @param Lieu String
+     * @throws Exception
+     */
     public void addMariage(int numVip1, int numVip2, Date dateMar, String Lieu) throws Exception {
         try {
         if (numVip1 == numVip2) {
@@ -43,6 +55,7 @@ public class DaoEvent {
              pstmt.setInt(4, numVip1);
             pstmt.executeUpdate();
             pstmt.close();
+            //Mise a jour des code statut
             daoVip.updateStatut(numVip2, 1);
             daoVip.updateStatut(numVip1, 1);
         } catch (Exception e) {
@@ -50,6 +63,14 @@ public class DaoEvent {
         }
     }
 
+    /**
+     * insertion Divorce
+     * @param numVip1 int
+     * @param numVip2 int
+     * @param dateDiv Date
+     * @param DateMar Date
+     * @throws Exception
+     */
     public void addDivorce(int numVip1, int numVip2, Date dateDiv,Date DateMar) throws Exception {
         
         if (DateMar.equals(div)) {
@@ -72,28 +93,34 @@ public class DaoEvent {
             pstmt.setDate(3, DateMar);
             pstmt.setDate(5, DateMar);
             pstmt.executeUpdate();
+            // mise a jour des codes satut
             daoVip.updateStatut(numVip2, -1);
             daoVip.updateStatut(numVip1, -1);
-             System.out.println(numVip2+" "+numVip1);
+           
             pstmt.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
     
-     public List<Evenements> SelectMarier() throws Exception {
+    /**
+     * selection les mariage en cours
+     * @return List Evenements
+     * @throws Exception
+     */
+    public List<Evenements> SelectMarier() throws Exception {
         listeMar= new ArrayList();
         String requete = "Select idVip,idVip2,dateMar from Event where dateDiv IS NULL";  
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery();
         
-       // System.out.println(rset);
+       
         while (rset.next()) {// traitement du résulat
             
            String nomvip1=daoVip.getNom(rset.getInt(1));
             Date date=rset.getDate(3);
             String nomvip2=daoVip.getNom(rset.getInt(2));
-           // System.out.println(idvip2);
+          
          
             Evenements temp = new Evenements(nomvip1,nomvip2,rset.getInt(1),rset.getInt(2),date);
             listeMar.add(temp);

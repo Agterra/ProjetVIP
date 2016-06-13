@@ -11,12 +11,17 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.VIP;
 
+
 public class ModelJTableVIP extends AbstractTableModel {
     
     private List<VIP> leConteneur;
     private String[] titre;
     private DaoVIP leDaoVIP;
     
+    /**
+     *Constructeur
+     * @param leDaoVIP
+     */
     public ModelJTableVIP(DaoVIP leDaoVIP){
         this.leConteneur = new ArrayList<>();
         this.titre = new String[]{"idVip","nomVIP","prenomVip","civilite","dateNaiss","lieuNaiss","codeRole","codeStatut","nomPays"};
@@ -83,6 +88,11 @@ public class ModelJTableVIP extends AbstractTableModel {
         return titre[column];
     }
 
+    /**
+     *appel inserer du dao
+     * @param leVip
+     * @throws SQLException
+     */
     public void insererVip(VIP leVip) throws SQLException {
         leDaoVIP.insererVip(leVip);
         
@@ -90,29 +100,44 @@ public class ModelJTableVIP extends AbstractTableModel {
          leDaoVIP.lireLesVip(leConteneur);
         this.fireTableDataChanged();
     }
+
+    /**
+     * appel get vip du doa
+     * @param leVip
+     * @return
+     * @throws SQLException
+     */
     public VIP getVip(int leVip) throws SQLException {
         VIP Vip=leDaoVIP.getVip(leVip);
         
           return Vip;
     }
 
-    public void supprimerVip(int ligne) throws SQLException {
-        int idVip = (int) getValueAt(ligne, 0);
-        leDaoVIP.supprimerVip(idVip);
-        leConteneur.remove(ligne);
-        this.fireTableDataChanged();
-    }
-
+    /**
+     *Appel lire des vip du dao
+     * @throws SQLException
+     */
     public void lireLesVip() throws SQLException {
         leDaoVIP.lireLesVip(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
-     public void updateTable() throws SQLException {
+
+    /**
+     *Mise a jour du conteneur par rapport a la base
+     * @throws SQLException
+     */
+    public void updateTable() throws SQLException {
          leConteneur.clear();
         leDaoVIP.lireLesVip(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
-      public void ModifierVip(VIP vip) throws SQLException {
+
+    /**
+     *appel la fonction de modifiacation des vip du dao
+     * @param vip
+     * @throws SQLException
+     */
+    public void ModifierVip(VIP vip) throws SQLException {
         // leConteneur.clear();
         leDaoVIP.ModVip(vip);
         updateTable();  // notification de modification des données à la vue
