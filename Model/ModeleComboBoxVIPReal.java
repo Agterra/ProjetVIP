@@ -55,7 +55,7 @@ public class ModeleComboBoxVIPReal extends DefaultComboBoxModel<VIP> {
      */
     public void majBox()throws Exception{
         this.listeItems.clear();
-        this.listeItems=daoVip.SelectVIPNM();
+        this.listeItems=daoVip.SelectVIPReal();
     }
     
     

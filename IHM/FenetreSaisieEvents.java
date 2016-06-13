@@ -40,7 +40,12 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         this.mvCB1M = mvCB1M;
         this.mvCB2M = mvCB2M;
         this.mvCBMar = mvCBMar;
+        
          initComponents();
+         //initialisation a l'item null les combobox
+         jcbVip1.setSelectedItem(null);
+         jcbVip2.setSelectedItem(null);
+         jcbVip1M.setSelectedItem(null);
     }
 
     /**

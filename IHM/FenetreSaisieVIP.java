@@ -183,7 +183,7 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
             }
             if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("acteur-rice")){
                 vip.setCodeRole(1);
-            }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Realisateur-trice")){
+            }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Réalisateur-trice")){
                 vip.setCodeRole(0);
             }else{
                 vip.setCodeRole(2);

@@ -247,13 +247,13 @@ public class FenetreApplication extends javax.swing.JFrame {
     private void btInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInsererActionPerformed
         try {
             VIP vip = new VIP();
+           
             FenetreSaisieVIP laSaisie = new FenetreSaisieVIP(this, vip, crCB, paysCB);
             if (laSaisie.doModal() == true) {
                 leModele.insererVip(vip);
-                mvCB1M.majBox();
-                mvCB2M.majBox();
-                CBVR.majBox();
+                
             }
+           
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erreur insertion VIP: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
@@ -270,29 +270,31 @@ public class FenetreApplication extends javax.swing.JFrame {
         try {
 
             Evenements eve = new Evenements();
+            //maj des combobox
+            mvCBMar.majBox();
+            mvCB2M.majBox();
+            mvCB1M.majBox();
             FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve, mvCB1M, mvCB2M, mvCBMar);
             if (laSaisie.doModal() == true) {
                 if (eve.getType() == -1) {
                     System.out.println("div");
                     mvCB1M.addDivorce(eve.getIdVip1(), eve.getIdVip2(), eve.getDateDiv(), eve.getDateMar());
-                } else if (eve.getType() == 1) {
+                }  else if (eve.getType() == 1) {
                     System.out.println("mar");
                     mvCB1M.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
                 } else {
-                    System.out.println("echec");
+                    JOptionPane.showMessageDialog(this, "Erreur gestion événement: Ce n'est ni un mariage ni un divorce", "Erreur", JOptionPane.WARNING_MESSAGE);
                 }
                 leModele.updateTable();
             }
-            mvCBMar.majBox();
-            mvCB2M.majBox();
-            mvCB1M.majBox();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erreur gestion événement: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        
         FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this, leModelePhoto, cbVip);
 
         if (gestionPhoto.doModal() == true) {

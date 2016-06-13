@@ -23,31 +23,19 @@ public class ModeleComboBoxVIP2M extends DefaultComboBoxModel<VIP> {
      private DaoVIP daoVip;
 
     /**
-     *
+     *Constructeur
      * @param daoVIP
      * @throws Exception
      */
     public ModeleComboBoxVIP2M(DaoVIP daoVIP) throws Exception {
         super();
-        //pour test
+        this.daoVip=daoVIP;
         listeItems=daoVIP.SelectVIPNM();
        this.daoVip=daoVIP;
        
     }
 
-    /**
-     *
-     * @param daoVIP
-     * @param daoEvent
-     * @throws Exception
-     */
-    public ModeleComboBoxVIP2M(DaoVIP daoVIP,DaoEvent daoEvent)throws Exception{
-        super();
-        //pour test
-        listeItems=daoVIP.SelectVIPNM();
-        this.daoEvent=daoEvent;
-        
-    }
+   
 
     @Override
     public void addElement(VIP uneChaine) {

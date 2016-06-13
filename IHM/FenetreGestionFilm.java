@@ -224,11 +224,11 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             //ajout d'un acting au film selectionné
             int ligne = jTableFilm.getSelectedRow();
             Casting cas = new Casting();
-            CBVA.majBox();
+            CBVA.majBox();//maj combobox
             FenetreCasting saise = new FenetreCasting(this, cas, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVA, CBVF);
             if (saise.doModal() == true) {
                 
-                CBVF.insererCast(cas);
+                
             }
 
         } catch (Exception e) {
@@ -241,11 +241,12 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             //ajouit d'un realisateur au film selectionné
             int ligne = jTableFilm.getSelectedRow();
             Real real = new Real();
+            CBVR.majBox();//maj combobox
             FenetreReal saise = new FenetreReal(this, real, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVF, CBVR);
             if (saise.doModal() == true) {
-                CBVF.insererReal(real);
+                
             }
-        
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,"Erreur gestion réal: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);

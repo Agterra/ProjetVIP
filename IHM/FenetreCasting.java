@@ -139,7 +139,7 @@ public class FenetreCasting extends javax.swing.JDialog {
             }
             cas.setIdVip(((VIP)jcbAct.getSelectedItem()).getIdVip());
            CBf.insererCast(cas);
-    
+           CBv.setSelectedItem(null);
         }catch(Exception e){
                     JOptionPane.showMessageDialog(this,"Erreur insertion casting: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         

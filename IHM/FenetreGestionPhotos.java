@@ -129,6 +129,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     private void jbnAjoutPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnAjoutPhotoActionPerformed
         try {
             Photo laPhoto = new Photo();
+            cbVip.majBox();
             FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto,cbVip);
             if (upload.doModal() == true) {
                 leModelePhoto.insererPhoto(laPhoto);

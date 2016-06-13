@@ -132,11 +132,12 @@ public class FenetreReal extends javax.swing.JDialog {
             //verrifie que les champs sont rempli et attribution du contenu dans l'oject Real
             real.setNumVisa(visaFilm);
             if (jcbReal.getSelectedItem().toString().isEmpty()) {
-                throw new Exception("acteur");
+                throw new Exception("realisateur");
             }
             real.setIdVip(((VIP) jcbReal.getSelectedItem()).getIdVip());
             etatSortie=true;
-            this.dispose();
+            CBv.setSelectedItem(null);
+           
         
 
         } catch (Exception e) {

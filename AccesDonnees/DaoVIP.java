@@ -250,7 +250,7 @@ public class DaoVIP {
         listeNomsIdVIP = new ArrayList();
         String requete = "Select * from vip where codeRole!=0";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        ResultSet rset = pstmt.executeQuery(requete);
+        ResultSet rset = pstmt.executeQuery();
 
         System.out.println(rset);
         while (rset.next()) {// traitement du résulat
@@ -281,7 +281,7 @@ public class DaoVIP {
         listeNomsIdVIP = new ArrayList();
         String requete = "Select * from vip where codeRole!=1";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        ResultSet rset = pstmt.executeQuery(requete);
+        ResultSet rset = pstmt.executeQuery();
 
         System.out.println(rset);
         while (rset.next()) {// traitement du résulat

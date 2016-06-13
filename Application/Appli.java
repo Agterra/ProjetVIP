@@ -95,18 +95,18 @@ public class Appli {
             daor = new DaoReal(laConnexion);
 
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
-            final ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
+             ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
 
-            final ModeleComboBoxCR crCB = new ModeleComboBoxCR();
-            final ModeleComboBoxPays paysCB = new ModeleComboBoxPays(leDaoPays);
+             ModeleComboBoxCR crCB = new ModeleComboBoxCR();
+             ModeleComboBoxPays paysCB = new ModeleComboBoxPays(leDaoPays);
 
-            final ModeleComboBoxFilm CBVF = new ModeleComboBoxFilm(daoFilm, daoc, daor);
-            final ModeleComboBoxVIPAct CBVA = new ModeleComboBoxVIPAct(daoVip);
-            final ModeleComboBoxVIPReal CBVR = new ModeleComboBoxVIPReal(daoVip);
-            final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip, daoEvent);
-            final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip, daoEvent);
-            final ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoGenre);
-            final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
+             ModeleComboBoxFilm CBVF = new ModeleComboBoxFilm(daoFilm, daoc, daor);
+             ModeleComboBoxVIPAct CBVA = new ModeleComboBoxVIPAct(daoVip);
+             ModeleComboBoxVIPReal CBVR = new ModeleComboBoxVIPReal(daoVip);
+             ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip, daoEvent);
+             ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip);
+             ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoGenre);
+             ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
             final ModeleJTableFilm leModeleFilm = new ModeleJTableFilm(daoFilm);
