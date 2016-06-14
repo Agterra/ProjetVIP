@@ -24,6 +24,7 @@ import Model.ModeleComboBoxVIPReal;
 import Model.ModeleJTableFilm;
 
 import Model.ModeleJTablePhotos;
+import Model.ModeleJTablePhotosFilms;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +46,7 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleComboBoxVIPAct CBVA;
     private ModeleComboBoxVIPReal CBVR;
     private ModeleComboBoxVIP cbVip;
+    private ModeleJTablePhotosFilms leModelePhotoFilm;
 
     /**
      * Constructeur
@@ -64,8 +66,9 @@ public class FenetreApplication extends javax.swing.JFrame {
      * @param CBVA
      * @param CBVR
      * @param cbVip
+     * @param leModelePhotoFilm
      */
-    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M, ModeleComboBoxVIP2M mvCB2M, ModeleComboBoxGenre mvCBGenre, ModeleComboBoxMarier mvCBMar, ModeleJTablePhotos leModelePhoto, ModeleJTableFilm leModeleFilm, DaoEvent daoEv, DaoVIP daoVIP, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR, ModeleComboBoxVIP cbVip) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M, ModeleComboBoxVIP2M mvCB2M, ModeleComboBoxGenre mvCBGenre, ModeleComboBoxMarier mvCBMar, ModeleJTablePhotos leModelePhoto, ModeleJTableFilm leModeleFilm, DaoEvent daoEv, DaoVIP daoVIP, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR, ModeleComboBoxVIP cbVip,ModeleJTablePhotosFilms leModelePhotoFilm) {
 
         this.leModele = leModele;
         this.crCB = crCB;
@@ -80,6 +83,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         this.CBVR = CBVR;
         this.leModelePhoto = leModelePhoto;
         this.leModeleFilm = leModeleFilm;
+        this.leModelePhotoFilm = leModelePhotoFilm;
 
         initComponents();
         try {
@@ -191,13 +195,13 @@ public class FenetreApplication extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtGestionEvents)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,8 +226,8 @@ public class FenetreApplication extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 49, Short.MAX_VALUE))))
         );
@@ -238,7 +242,7 @@ public class FenetreApplication extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -305,7 +309,7 @@ public class FenetreApplication extends javax.swing.JFrame {
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
         // TODO add your handling code here:
-        FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this, leModeleFilm, mvCBGenre, CBVF, CBVA, CBVR);
+        FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this, leModeleFilm, mvCBGenre, CBVF, CBVA, CBVR, leModelePhotoFilm);
 
         if (gestionfilm.doModal() == true) {
 

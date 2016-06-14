@@ -5,9 +5,8 @@
  */
 package IHM;
 
-import Metier.Photo;
-import Model.ModeleComboBoxVIP;
-import Model.ModeleJTablePhotos;
+import Metier.PhotoFilm;
+import Model.ModeleJTablePhotosFilms;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -19,28 +18,28 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPSClient;
 
 
-public class FenetreGestionPhotos extends javax.swing.JDialog {
+public class FenetreGestionPhotosFilms extends javax.swing.JDialog {
 
     private boolean etatSortie;
-    private ModeleJTablePhotos leModelePhoto;
-   private ModeleComboBoxVIP cbVip;
+    private ModeleJTablePhotosFilms leModelePhotoFilm;
+    private int numVisa;
 
     /**
      *Constructeur
      * @param parent
-     * @param leModelePhoto
-     * @param cbVip
+     * @param leModelePhotosFilms
      */
-    public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto,ModeleComboBoxVIP cbVip) {
+    public FenetreGestionPhotosFilms(java.awt.Dialog parent, ModeleJTablePhotosFilms leModelePhotoFilm, int numVisa) {
 
         super(parent, true);
         try {
             this.etatSortie = false;
-            this.leModelePhoto = leModelePhoto;
-            this.cbVip=cbVip;
+            this.leModelePhotoFilm = leModelePhotoFilm;
+            this.numVisa=numVisa;
+            
             initComponents();
 
-            leModelePhoto.lireLesPhotos();
+            leModelePhotoFilm.lireLesPhotos();
         } catch (Exception e) {
             
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
@@ -67,7 +66,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gestionnaire de photos");
+        jLabel1.setText("Gestionnaire de photos de films");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jbnAjoutPhoto.setText("Ajouter une photo");
@@ -84,7 +83,8 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
             }
         });
 
-        jTablePhoto.setModel(leModelePhoto);
+        jTablePhoto.setModel(leModelePhotoFilm
+        );
         jScrollPane1.setViewportView(jTablePhoto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -128,11 +128,12 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private void jbnAjoutPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnAjoutPhotoActionPerformed
         try {
-            Photo laPhoto = new Photo();
-            cbVip.majBox();
-            FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto,cbVip);
+            PhotoFilm laPhoto = new PhotoFilm();
+            FenetreUploadPhotoFilm upload = new FenetreUploadPhotoFilm(this, laPhoto);
+            laPhoto.setNumVisa(numVisa);
+            
             if (upload.doModal() == true) {
-                leModelePhoto.insererPhoto(laPhoto);
+                leModelePhotoFilm.insererPhoto(laPhoto);
                 Properties props = new Properties();
                 FileInputStream fis = new FileInputStream("src/fpt.properties");
                 FileInputStream lienPhoto = new FileInputStream(laPhoto.getLien());
@@ -147,7 +148,7 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
                 ftpClient.enterLocalPassiveMode();
                 //bar de  chargement
                 viewBar();
-                ftpClient.storeFile("public_html/VIP/asset/images/" + laPhoto.getIdPhoto(), lienPhoto);
+                ftpClient.storeFile("public_html/VIP/asset/images/" + laPhoto.getNomPhoto(), lienPhoto);
 
             }
 
@@ -183,11 +184,11 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
   jProgressBar1.setValue(jProgressBar1.getMinimum());
 }
     private void jbnSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSupprActionPerformed
-        try {
+            try {
             int ligne = jTablePhoto.getSelectedRow();
-            Photo laPhoto = new Photo();
-            String idPhoto = leModelePhoto.getValueAt(ligne, 1).toString();
-           
+            PhotoFilm laPhoto = new PhotoFilm();
+            String nomPhoto = leModelePhotoFilm.getValueAt(ligne, 2).toString();
+            System.out.println(nomPhoto);
              Properties props = new Properties();
              FileInputStream fis = new FileInputStream("src/fpt.properties");
                 
@@ -200,10 +201,10 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
                 ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
                 ftpClient.enterLocalPassiveMode();
-                ftpClient.deleteFile("public_html/VIP/asset/images/" + idPhoto);
+                ftpClient.deleteFile("public_html/VIP/asset/images/" + nomPhoto);
                 
                 viewBar();
-                leModelePhoto.supprimerPhoto(ligne);
+                leModelePhotoFilm.supprimerPhoto(ligne);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,"Erreur gestion photos: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);        }
     }//GEN-LAST:event_jbnSupprActionPerformed

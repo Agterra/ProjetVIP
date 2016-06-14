@@ -7,16 +7,17 @@ package IHM;
 
 import Metier.Casting;
 import Metier.Film;
+import Metier.PhotoFilm;
 import Metier.Real;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxGenre;
 import Model.ModeleComboBoxVIPAct;
 import Model.ModeleComboBoxVIPReal;
 import Model.ModeleJTableFilm;
+import Model.ModeleJTablePhotosFilms;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 
 public class FenetreGestionFilm extends javax.swing.JDialog {
 
@@ -27,17 +28,20 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     private ModeleComboBoxFilm CBVF;
     private ModeleComboBoxVIPAct CBVA;
     private ModeleComboBoxVIPReal CBVR;
+    private ModeleJTablePhotosFilms leModelePhotoFilm;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param leModeleFilm
      * @param csCf
      * @param CBVF
      * @param CBVA
      * @param CBVR
+     * @param leModelePhotoFilm
      */
-    public FenetreGestionFilm(java.awt.Frame parent, ModeleJTableFilm leModeleFilm, ModeleComboBoxGenre csCf, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR) {
+    public FenetreGestionFilm(java.awt.Frame parent, ModeleJTableFilm leModeleFilm, ModeleComboBoxGenre csCf, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR, ModeleJTablePhotosFilms leModelePhotoFilm) {
 
         super(parent, true);
         this.csCf = csCf;
@@ -45,14 +49,15 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         this.CBVA = CBVA;
         this.CBVR = CBVR;
         this.etatSortie = false;
-       
+
         this.leModeleFilm = leModeleFilm;
+        this.leModelePhotoFilm = leModelePhotoFilm;
 
         initComponents();
         try {
             leModeleFilm.lireLesFilm();
         } catch (Exception e) {
-            
+
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
         }
     }
@@ -77,6 +82,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jBCast = new javax.swing.JButton();
         jBReal = new javax.swing.JButton();
+        jbtnGEstionPhotosFilms = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -126,17 +132,25 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             }
         });
 
+        jbtnGEstionPhotosFilms.setText("Gestion Photo");
+        jbtnGEstionPhotosFilms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGEstionPhotosFilmsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBCast, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBCast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBReal))
+                    .addComponent(jBReal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnGEstionPhotosFilms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,6 +164,8 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
                 .addComponent(jBCast)
                 .addGap(18, 18, 18)
                 .addComponent(jBReal)
+                .addGap(18, 18, 18)
+                .addComponent(jbtnGEstionPhotosFilms)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -200,9 +216,9 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
                 //insertion
                 leModeleFilm.insererFilm(leFilm);
             }
-         
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur gestion film: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur gestion film: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
@@ -213,9 +229,9 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             int ligne = jTableFilm.getSelectedRow();
             CBVF.supprCast(Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()));
             leModeleFilm.supprimerFilm(ligne);
-            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur de suppression de film: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur de suppression de film: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbnSupprActionPerformed
 
@@ -227,12 +243,11 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             CBVA.majBox();//maj combobox
             FenetreCasting saise = new FenetreCasting(this, cas, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVA, CBVF);
             if (saise.doModal() == true) {
-                
-                
+
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur gestion casting: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur gestion casting: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jBCastActionPerformed
 
@@ -244,17 +259,30 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             CBVR.majBox();//maj combobox
             FenetreReal saise = new FenetreReal(this, real, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVF, CBVR);
             if (saise.doModal() == true) {
-                
+
             }
-            
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur gestion réal: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur gestion réal: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jBRealActionPerformed
 
+    private void jbtnGEstionPhotosFilmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGEstionPhotosFilmsActionPerformed
+        try {
+            //ajouit d'un realisateur au film selectionné
+            int ligne = jTableFilm.getSelectedRow();
+            FenetreGestionPhotosFilms saise = new FenetreGestionPhotosFilms(this, leModelePhotoFilm, Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()));
+            if (saise.doModal() == true) {
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur gestion Photos: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtnGEstionPhotosFilmsActionPerformed
+
     /**
-     * @return 
+     * @return
      */
     public boolean doModal() {
         setVisible(true);
@@ -273,5 +301,6 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     private javax.swing.JTable jTableFilm;
     private javax.swing.JButton jbnAjoutPhoto;
     private javax.swing.JButton jbnSuppr;
+    private javax.swing.JButton jbtnGEstionPhotosFilms;
     // End of variables declaration//GEN-END:variables
 }
