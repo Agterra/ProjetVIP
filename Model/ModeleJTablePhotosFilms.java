@@ -73,8 +73,8 @@ public class ModeleJTablePhotosFilms extends AbstractTableModel {
      * @throws Exception
      */
     public void supprimerPhoto(int ligne) throws Exception {
-        int numVisa = Integer.parseInt(getValueAt(ligne, 0).toString());
-        daoFilmPhoto.supprimerPhoto(numVisa);
+        String nom = getValueAt(ligne, 2).toString();
+        daoFilmPhoto.supprimerPhoto(nom);
         leConteneur.remove(ligne);
         this.fireTableDataChanged();
     }

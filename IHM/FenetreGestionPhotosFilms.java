@@ -188,7 +188,6 @@ public class FenetreGestionPhotosFilms extends javax.swing.JDialog {
             int ligne = jTablePhoto.getSelectedRow();
             PhotoFilm laPhoto = new PhotoFilm();
             String nomPhoto = leModelePhotoFilm.getValueAt(ligne, 2).toString();
-            System.out.println(nomPhoto);
              Properties props = new Properties();
              FileInputStream fis = new FileInputStream("src/fpt.properties");
                 

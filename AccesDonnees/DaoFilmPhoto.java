@@ -42,20 +42,20 @@ public class DaoFilmPhoto {
 
     /**
      *Supprimer Photo
-     * @param id int id de la photo
+     * @param nom String
      * @throws SQLException
      */
-    public void supprimerPhoto(int visa) throws SQLException {
-        String requete = "delete from PhotoFilm where numVisa = ?";
+    public void supprimerPhoto(String nom) throws SQLException {
+        String requete = "delete from PhotoFilm where nomPhoto = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, visa);
+        pstmt.setString(1, nom);
         pstmt.executeUpdate();
         pstmt.close();
     }
 
     /**
      *L'id de la photo existe
-     * @param id int
+     * @param Nom String 
      * @return bool
      * @throws SQLException
      */
