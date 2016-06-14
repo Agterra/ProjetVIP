@@ -10,16 +10,18 @@ package Metier;
  * @author Claire
  */
 public class Genre {
+
     private String libelle;
 
     /**
-     *Constructeur
+     * Constructeur
      */
     public Genre() {
     }
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param libelle
      */
     public Genre(String libelle) {
@@ -41,5 +43,5 @@ public class Genre {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
-    
+
 }

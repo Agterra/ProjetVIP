@@ -11,37 +11,38 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxVIPAct;
 
-
 public class FenetreCasting extends javax.swing.JDialog {
-    private Casting cas;
+
+    private Casting casting;
     private boolean etatSortie;
-    private ModeleComboBoxFilm CBf;
+    private ModeleComboBoxFilm modeleComboBoxFilms;
     private String nomFilm;
     private int numVisa;
-    private ModeleComboBoxVIPAct CBv;
-    
+    private ModeleComboBoxVIPAct modeleComboBoxActeur;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
-     * @param cas
+     * @param casting
      * @param nomFilm
      * @param numVisa
-     * @param CBv
-     * @param CBf
+     * @param modeleComboBoxActeur
+     * @param modeleComboBoxFilms
      */
-    public FenetreCasting(javax.swing.JDialog parent, Casting cas,String nomFilm,int numVisa,ModeleComboBoxVIPAct CBv,ModeleComboBoxFilm CBf) {
+    public FenetreCasting(javax.swing.JDialog parent, Casting casting, String nomFilm, int numVisa, ModeleComboBoxVIPAct modeleComboBoxActeur, ModeleComboBoxFilm modeleComboBoxFilms) {
         super(parent, true);
-        this.cas=cas;
-        etatSortie=false;
-        this.CBv=CBv;
-        this.numVisa=numVisa;
-        this.nomFilm=nomFilm;
-        this.CBf=CBf;
+        this.casting = casting;
+        etatSortie = false;
+        this.modeleComboBoxActeur = modeleComboBoxActeur;
+        this.numVisa = numVisa;
+        this.nomFilm = nomFilm;
+        this.modeleComboBoxFilms = modeleComboBoxFilms;
 
         initComponents();
-        
-       jlblNomFilm.setText(nomFilm);
-        
+
+        jlblNomFilm.setText(nomFilm);
+
     }
 
     /**
@@ -74,7 +75,7 @@ public class FenetreCasting extends javax.swing.JDialog {
             }
         });
 
-        jcbAct.setModel(CBv);
+        jcbAct.setModel(modeleComboBoxActeur);
 
         jlblNomFilm.setEditable(false);
 
@@ -120,7 +121,6 @@ public class FenetreCasting extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlblNomFilm)
                         .addGap(2, 2, 2)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnSoumettre)
                     .addComponent(jbtnQuitter))
@@ -131,25 +131,25 @@ public class FenetreCasting extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
-        try{
+        try {
             //recuperation des champ et mis a jour de l'objet cas
-            cas.setNumVisa(numVisa);
-            if(jcbAct.getSelectedItem().toString().isEmpty()){
+            casting.setNumVisa(numVisa);
+            if (jcbAct.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("acteur");
             }
-            cas.setIdVip(((VIP)jcbAct.getSelectedItem()).getIdVip());
-           CBf.insererCast(cas);
-           CBv.setSelectedItem(null);
-        }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"Erreur insertion casting: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
-        
+            casting.setIdVip(((VIP) jcbAct.getSelectedItem()).getIdVip());
+            modeleComboBoxFilms.insererCast(casting);
+            modeleComboBoxActeur.setSelectedItem(null);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur insertion casting: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
 
     private void jbtnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnQuitterActionPerformed
-            etatSortie=true;
-            this.dispose();
-            
+        etatSortie = true;
+        this.dispose();
+
     }//GEN-LAST:event_jbtnQuitterActionPerformed
 
     /**

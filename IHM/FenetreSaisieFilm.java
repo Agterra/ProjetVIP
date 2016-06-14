@@ -9,24 +9,25 @@ import Metier.Film;
 import javax.swing.JOptionPane;
 import Model.ModeleComboBoxGenre;
 
-
 public class FenetreSaisieFilm extends javax.swing.JDialog {
+
     private Film film;
     private boolean etatSortie;
-    private ModeleComboBoxGenre cfCB;
-    
+    private ModeleComboBoxGenre modeleComboBoxGenre;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param film
-     * @param csCf
+     * @param modeleComboBoxGenre
      */
-    public FenetreSaisieFilm(javax.swing.JDialog parent, Film film,ModeleComboBoxGenre csCf) {
+    public FenetreSaisieFilm(javax.swing.JDialog parent, Film film, ModeleComboBoxGenre modeleComboBoxGenre) {
         super(parent, true);
-        this.film=film;
-        etatSortie=false;
-        this.cfCB=csCf;
-            
+        this.film = film;
+        etatSortie = false;
+        this.modeleComboBoxGenre = modeleComboBoxGenre;
+
         initComponents();
 
     }
@@ -69,7 +70,7 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
             }
         });
 
-        jcbGenre.setModel(cfCB);
+        jcbGenre.setModel(modeleComboBoxGenre);
         jcbGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbGenreActionPerformed(evt);
@@ -127,31 +128,31 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
-        try{
-            if(txtVisa.getText().isEmpty()){
+        try {
+            if (txtVisa.getText().isEmpty()) {
                 throw new Exception("Champ Visa vide!");
             }
             film.setVisa(Integer.parseInt(txtVisa.getText()));
-            if(txtNomFilm.getText().isEmpty()){
+            if (txtNomFilm.getText().isEmpty()) {
                 throw new Exception("Champ Titre vide!");
             }
             film.setTitre(txtNomFilm.getText());
-            
-            if(txtAnnee.getText().isEmpty()){
+
+            if (txtAnnee.getText().isEmpty()) {
                 throw new Exception("Champ Annee vide!");
             }
             film.setAnnee(Integer.parseInt(txtAnnee.getText()));
-            
-            if(jcbGenre.getSelectedItem().toString().isEmpty()){
+
+            if (jcbGenre.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champ Genre vide!");
             }
-           film.setGenre(jcbGenre.getSelectedItem().toString());
-            etatSortie=true;
+            film.setGenre(jcbGenre.getSelectedItem().toString());
+            etatSortie = true;
             this.dispose();
-            
-        }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"Erreur insertion film: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
-        
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur insertion film: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
 
@@ -160,7 +161,8 @@ public class FenetreSaisieFilm extends javax.swing.JDialog {
     }//GEN-LAST:event_jcbGenreActionPerformed
 
     /**
-     *gestion modal
+     * gestion modal
+     *
      * @return
      */
     public boolean doModal() {

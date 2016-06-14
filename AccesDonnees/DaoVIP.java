@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DaoVIP {
 
     private final Connection connexion;
@@ -28,18 +27,14 @@ public class DaoVIP {
     public DaoVIP(Connection connexion) throws SQLException {
         this.connexion = connexion;
     }
-    
-    
-   
-    
-   
 
     /**
-     *selection dans un arraylist de tout les vip non marier
+     * selection dans un arraylist de tout les vip non marier
+     *
      * @return List de VIP
      * @throws Exception
      */
-        public List<VIP> SelectVIPNM() throws Exception {
+    public List<VIP> SelectVIPNM() throws Exception {
         listeNomsIdVIP = new ArrayList();
         String requete = "Select * from vip where codeStatut!=1 ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -63,14 +58,14 @@ public class DaoVIP {
         pstmt.close();
         return listeNomsIdVIP;
     }
-    
-     /**
-     *selection dans un array list de tout les vip
-     * 
+
+    /**
+     * selection dans un array list de tout les vip
+     *
      * @param lesVips liste de vip
      * @throws java.sql.SQLException
      */
-        public void lireLesVip(List<VIP> lesVips) throws SQLException {
+    public void lireLesVip(List<VIP> lesVips) throws SQLException {
         String requete = "select * from vip ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery();
@@ -92,14 +87,15 @@ public class DaoVIP {
         rset.close();
         pstmt.close();
     }
-        /**
-     *selection dans un array list de tout les vip a utiliser pour les combobox
-     * 
+
+    /**
+     * selection dans un array list de tout les vip a utiliser pour les combobox
+     *
      * @return lesVips liste de vip
      * @throws java.sql.SQLException
      */
-        public List<VIP> SelectVip() throws SQLException {
-         List<VIP> lesVips= new ArrayList();
+    public List<VIP> SelectVip() throws SQLException {
+        List<VIP> lesVips = new ArrayList();
         String requete = "select * from vip ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery();
@@ -122,16 +118,14 @@ public class DaoVIP {
         pstmt.close();
         return lesVips;
     }
-    
-    
-    
 
     /**
-     *insertion de vip qui prend en paramettre un vip
+     * insertion de vip qui prend en paramettre un vip
+     *
      * @param leVip VIP
      * @throws SQLException
      */
-        public void insererVip(VIP leVip) throws SQLException {
+    public void insererVip(VIP leVip) throws SQLException {
         String requete = "INSERT INTO `vip` ( `nomVIP` , `prenomVip` , `civilite` , `dateNaiss` , `lieuNaiss` , `codeRole` , `codeStatut` , `nomPays` )VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
 
@@ -146,14 +140,14 @@ public class DaoVIP {
         pstmt.executeUpdate();
         pstmt.close();
     }
-    
 
     /**
-     *modification d'un vip qui prend en paramettre un vip
+     * modification d'un vip qui prend en paramettre un vip
+     *
      * @param leVip VIP
      * @throws SQLException
      */
-        public void ModVip(VIP leVip) throws SQLException {
+    public void ModVip(VIP leVip) throws SQLException {
         String requete = "UPDATE `vip` SET `nomVIP`=?,`prenomVip`=?,`civilite`=?,`dateNaiss`=?,`lieuNaiss`=?,`codeRole`=?,`codeStatut`=?,`nomPays`=? where idVip=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
 
@@ -169,15 +163,15 @@ public class DaoVIP {
         pstmt.executeUpdate();
         pstmt.close();
     }
-     
 
     /**
      * Mis a jour du statut
+     *
      * @param numVip int
      * @param i int nouveau code satut
      * @throws SQLException
      */
-        public void updateStatut(int numVip, int i) throws SQLException {
+    public void updateStatut(int numVip, int i) throws SQLException {
         String requete = "update  vip set codeStatut=? where idVip=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(2, numVip);
@@ -187,7 +181,8 @@ public class DaoVIP {
     }
 
     /**
-     *retourne le nom d'un vip
+     * retourne le nom d'un vip
+     *
      * @param numVip int
      * @return
      * @throws SQLException
@@ -211,7 +206,8 @@ public class DaoVIP {
     }
 
     /**
-     * recupere un vip 
+     * recupere un vip
+     *
      * @param numVip int
      * @return
      * @throws SQLException
@@ -243,6 +239,7 @@ public class DaoVIP {
 
     /**
      * Selection des vip acteur
+     *
      * @return List de VIp
      * @throws Exception
      */
@@ -274,6 +271,7 @@ public class DaoVIP {
 
     /**
      * selection des realisateur
+     *
      * @return List VIP
      * @throws Exception
      */

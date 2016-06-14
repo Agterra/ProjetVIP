@@ -33,54 +33,54 @@ import javax.swing.JOptionPane;
 public class FenetreApplication extends javax.swing.JFrame {
 
     private ModelJTableVIP leModele;
-    private ModeleComboBoxCR crCB;
-    private ModeleComboBoxPays paysCB;
+    private ModeleComboBoxCR modeleComboBoxRole;
+    private ModeleComboBoxPays modeleComboBoxPays;
     private ModeleJTableFilm leModeleFilm;
 
-    private ModeleComboBoxVIP1M mvCB1M;
-    private ModeleComboBoxVIP2M mvCB2M;
-    private ModeleComboBoxMarier mvCBMar;
+    private ModeleComboBoxVIP1M modeleComboBoxVipUn;
+    private ModeleComboBoxVIP2M modeleComboBoxVipDeux;
+    private ModeleComboBoxMarier modeleComboBoxMariages;
     private ModeleJTablePhotos leModelePhoto;
-    private ModeleComboBoxGenre mvCBGenre;
-    private ModeleComboBoxFilm CBVF;
-    private ModeleComboBoxVIPAct CBVA;
-    private ModeleComboBoxVIPReal CBVR;
-    private ModeleComboBoxVIP cbVip;
+    private ModeleComboBoxGenre modeleComboBoxGenre;
+    private ModeleComboBoxFilm modeleComboBoxFilms;
+    private ModeleComboBoxVIPAct modeleComboBoxActeur;
+    private ModeleComboBoxVIPReal modeleComboBoxRealisateur;
+    private ModeleComboBoxVIP modeleComboBoxVip;
     private ModeleJTablePhotosFilms leModelePhotoFilm;
 
     /**
      * Constructeur
      *
      * @param leModele
-     * @param crCB
-     * @param paysCB
-     * @param mvCB1M
-     * @param mvCB2M
-     * @param mvCBGenre
-     * @param mvCBMar
+     * @param modeleComboBoxRole
+     * @param modeleComboBoxPays
+     * @param modeleComboBoxVipUn
+     * @param modeleComboBoxVipDeux
+     * @param modeleComboBoxGenre
+     * @param modeleComboBoxMariages
      * @param leModelePhoto
      * @param leModeleFilm
-     * @param daoEv
+     * @param daoEvent
      * @param daoVIP
-     * @param CBVF
-     * @param CBVA
-     * @param CBVR
-     * @param cbVip
+     * @param modeleComboBoxFilms
+     * @param modeleComboBoxActeur
+     * @param modeleComboBoxRealisateur
+     * @param modeleComboBoxVip
      * @param leModelePhotoFilm
      */
-    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR crCB, ModeleComboBoxPays paysCB, ModeleComboBoxVIP1M mvCB1M, ModeleComboBoxVIP2M mvCB2M, ModeleComboBoxGenre mvCBGenre, ModeleComboBoxMarier mvCBMar, ModeleJTablePhotos leModelePhoto, ModeleJTableFilm leModeleFilm, DaoEvent daoEv, DaoVIP daoVIP, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR, ModeleComboBoxVIP cbVip,ModeleJTablePhotosFilms leModelePhotoFilm) {
+    public FenetreApplication(ModelJTableVIP leModele, ModeleComboBoxCR modeleComboBoxRole, ModeleComboBoxPays modeleComboBoxPays, ModeleComboBoxVIP1M modeleComboBoxVipUn, ModeleComboBoxVIP2M modeleComboBoxVipDeux, ModeleComboBoxGenre modeleComboBoxGenre, ModeleComboBoxMarier modeleComboBoxMariages, ModeleJTablePhotos leModelePhoto, ModeleJTableFilm leModeleFilm, DaoEvent daoEvent, DaoVIP daoVIP, ModeleComboBoxFilm modeleComboBoxFilms, ModeleComboBoxVIPAct modeleComboBoxActeur, ModeleComboBoxVIPReal modeleComboBoxRealisateur, ModeleComboBoxVIP modeleComboBoxVip, ModeleJTablePhotosFilms leModelePhotoFilm) {
 
         this.leModele = leModele;
-        this.crCB = crCB;
-        this.paysCB = paysCB;
-        this.cbVip = cbVip;
-        this.mvCB1M = mvCB1M;
-        this.mvCB2M = mvCB2M;
-        this.mvCBMar = mvCBMar;
-        this.mvCBGenre = mvCBGenre;
-        this.CBVF = CBVF;
-        this.CBVA = CBVA;
-        this.CBVR = CBVR;
+        this.modeleComboBoxRole = modeleComboBoxRole;
+        this.modeleComboBoxPays = modeleComboBoxPays;
+        this.modeleComboBoxVip = modeleComboBoxVip;
+        this.modeleComboBoxVipUn = modeleComboBoxVipUn;
+        this.modeleComboBoxVipDeux = modeleComboBoxVipDeux;
+        this.modeleComboBoxMariages = modeleComboBoxMariages;
+        this.modeleComboBoxGenre = modeleComboBoxGenre;
+        this.modeleComboBoxFilms = modeleComboBoxFilms;
+        this.modeleComboBoxActeur = modeleComboBoxActeur;
+        this.modeleComboBoxRealisateur = modeleComboBoxRealisateur;
         this.leModelePhoto = leModelePhoto;
         this.leModeleFilm = leModeleFilm;
         this.leModelePhotoFilm = leModelePhotoFilm;
@@ -251,13 +251,13 @@ public class FenetreApplication extends javax.swing.JFrame {
     private void btInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInsererActionPerformed
         try {
             VIP vip = new VIP();
-           
-            FenetreSaisieVIP laSaisie = new FenetreSaisieVIP(this, vip, crCB, paysCB);
+
+            FenetreSaisieVIP laSaisie = new FenetreSaisieVIP(this, vip, modeleComboBoxRole, modeleComboBoxPays);
             if (laSaisie.doModal() == true) {
                 leModele.insererVip(vip);
-                
+
             }
-           
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erreur insertion VIP: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
@@ -275,31 +275,31 @@ public class FenetreApplication extends javax.swing.JFrame {
 
             Evenements eve = new Evenements();
             //maj des combobox
-            mvCBMar.majBox();
-            mvCB2M.majBox();
-            mvCB1M.majBox();
-            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve, mvCB1M, mvCB2M, mvCBMar);
+            modeleComboBoxMariages.majBox();
+            modeleComboBoxVipDeux.majBox();
+            modeleComboBoxVipUn.majBox();
+            FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve, modeleComboBoxVipUn, modeleComboBoxVipDeux, modeleComboBoxMariages);
             if (laSaisie.doModal() == true) {
                 if (eve.getType() == -1) {
                     System.out.println("div");
-                    mvCB1M.addDivorce(eve.getIdVip1(), eve.getIdVip2(), eve.getDateDiv(), eve.getDateMar());
-                }  else if (eve.getType() == 1) {
+                    modeleComboBoxVipUn.addDivorce(eve.getIdVip1(), eve.getIdVip2(), eve.getDateDiv(), eve.getDateMar());
+                } else if (eve.getType() == 1) {
                     System.out.println("mar");
-                    mvCB1M.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
+                    modeleComboBoxVipUn.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
                 } else {
                     JOptionPane.showMessageDialog(this, "Erreur gestion événement: Ce n'est ni un mariage ni un divorce", "Erreur", JOptionPane.WARNING_MESSAGE);
                 }
                 leModele.updateTable();
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erreur gestion événement: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbtGestionEventsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this, leModelePhoto, cbVip);
+
+        FenetreGestionPhotos gestionPhoto = new FenetreGestionPhotos(this, leModelePhoto, modeleComboBoxVip);
 
         if (gestionPhoto.doModal() == true) {
 
@@ -309,7 +309,7 @@ public class FenetreApplication extends javax.swing.JFrame {
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
         // TODO add your handling code here:
-        FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this, leModeleFilm, mvCBGenre, CBVF, CBVA, CBVR, leModelePhotoFilm);
+        FenetreGestionFilm gestionfilm = new FenetreGestionFilm(this, leModeleFilm, modeleComboBoxGenre, modeleComboBoxFilms, modeleComboBoxActeur, modeleComboBoxRealisateur, leModelePhotoFilm);
 
         if (gestionfilm.doModal() == true) {
 
@@ -320,7 +320,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         try {
             int ligne = laTable.getSelectedRow();
             VIP vip = leModele.getVip(Integer.parseInt(leModele.getValueAt(ligne, 0).toString()));
-            FenetreModVip laSaisie = new FenetreModVip(this, vip, crCB, paysCB);
+            FenetreModVip laSaisie = new FenetreModVip(this, vip, modeleComboBoxRole, modeleComboBoxPays);
             if (laSaisie.doModal() == true) {
                 leModele.ModifierVip(vip);
             }

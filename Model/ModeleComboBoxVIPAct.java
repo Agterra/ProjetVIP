@@ -10,25 +10,23 @@ import javax.swing.DefaultComboBoxModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 public class ModeleComboBoxVIPAct extends DefaultComboBoxModel<VIP> {
 
     private List<VIP> listeItems;
-    private String[] listeNoms ;
-      private DaoVIP daoVip;
-   
+    private String[] listeNoms;
+    private DaoVIP daoVip;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param daoVIP
      * @throws Exception
      */
-    public ModeleComboBoxVIPAct(DaoVIP daoVIP)throws Exception{
+    public ModeleComboBoxVIPAct(DaoVIP daoVIP) throws Exception {
         super();
-        
-        
-        this.daoVip=daoVIP;
-        listeItems=daoVip.SelectVIPACteur();
+
+        this.daoVip = daoVIP;
+        listeItems = daoVip.SelectVIPACteur();
     }
 
     @Override
@@ -45,18 +43,15 @@ public class ModeleComboBoxVIPAct extends DefaultComboBoxModel<VIP> {
     public int getSize() {
         return listeItems.size();
     }
-   
+
     /**
-     *met ajour la combo box
+     * met ajour la combo box
+     *
      * @throws Exception
      */
-    public void majBox()throws Exception{
+    public void majBox() throws Exception {
         this.listeItems.clear();
-        this.listeItems=daoVip.SelectVIPACteur();
+        this.listeItems = daoVip.SelectVIPACteur();
     }
-    
-    
 
 }
-
-

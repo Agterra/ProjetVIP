@@ -14,38 +14,38 @@ import Model.ModeleComboBoxVIP2M;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
-
 public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private boolean etatSortie;
     private Evenements evenement;
-   
-    private ModeleComboBoxVIP1M mvCB1M;
-    private ModeleComboBoxVIP2M mvCB2M;
-    private ModeleComboBoxMarier mvCBMar;
+
+    private ModeleComboBoxVIP1M modeleComboBoxVipUn;
+    private ModeleComboBoxVIP2M modeleComboBoxVipDeux;
+    private ModeleComboBoxMarier modeleComboBoxMariages;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param evenement
-     * @param mvCB1M
-     * @param mvCB2M
-     * @param mvCBMar
+     * @param modeleComboBoxVipUn
+     * @param modeleComboBoxVipDeux
+     * @param modeleComboBoxMariages
      */
-    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1M mvCB1M,ModeleComboBoxVIP2M mvCB2M,ModeleComboBoxMarier mvCBMar) {
+    public FenetreSaisieEvents(java.awt.Frame parent, Evenements evenement, ModeleComboBoxVIP1M modeleComboBoxVipUn, ModeleComboBoxVIP2M modeleComboBoxVipDeux, ModeleComboBoxMarier modeleComboBoxMariages) {
         super(parent, true);
         this.etatSortie = false;
         this.evenement = evenement;
-       
-        this.mvCB1M = mvCB1M;
-        this.mvCB2M = mvCB2M;
-        this.mvCBMar = mvCBMar;
-        
-         initComponents();
-         //initialisation a l'item null les combobox
-         jcbVip1.setSelectedItem(null);
-         jcbVip2.setSelectedItem(null);
-         jcbVip1M.setSelectedItem(null);
+
+        this.modeleComboBoxVipUn = modeleComboBoxVipUn;
+        this.modeleComboBoxVipDeux = modeleComboBoxVipDeux;
+        this.modeleComboBoxMariages = modeleComboBoxMariages;
+
+        initComponents();
+        //initialisation a l'item null les combobox
+        jcbVip1.setSelectedItem(null);
+        jcbVip2.setSelectedItem(null);
+        jcbVip1M.setSelectedItem(null);
     }
 
     /**
@@ -78,14 +78,14 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jcbVip1.setModel(mvCB1M);
+        jcbVip1.setModel(modeleComboBoxVipUn);
         jcbVip1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVip1ActionPerformed(evt);
             }
         });
 
-        jcbVip2.setModel(mvCB2M);
+        jcbVip2.setModel(modeleComboBoxVipDeux);
         jcbVip2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVip2ActionPerformed(evt);
@@ -166,7 +166,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Mariage", jpMariage);
 
-        jcbVip1M.setModel( mvCBMar);
+        jcbVip1M.setModel( modeleComboBoxMariages);
         jcbVip1M.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVip1MActionPerformed(evt);
@@ -258,12 +258,12 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
             if (jcbVip1.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
-            int idVip1 = ((VIP)jcbVip1.getSelectedItem()).getIdVip();
+            int idVip1 = ((VIP) jcbVip1.getSelectedItem()).getIdVip();
             if (jcbVip2.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 2 vide!");
             }
-            int idVip2 = ((VIP)jcbVip2.getSelectedItem()).getIdVip();
-            if (jDateM.getDate()==null) {
+            int idVip2 = ((VIP) jcbVip2.getSelectedItem()).getIdVip();
+            if (jDateM.getDate() == null) {
                 throw new Exception("Champs Date Mariage vide!");
             }
             Date dateMariage = new java.sql.Date(jDateM.getDate().getTime());
@@ -271,18 +271,18 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 throw new Exception("Champs Lieu Mariage");
             }
             String lieuMariage = jtxtLieuMariage.getText();
-            
-           System.out.println(idVip1+" "+idVip2);
+
+            System.out.println(idVip1 + " " + idVip2);
             evenement.setIdVip1(idVip1);
             evenement.setIdVip2(idVip2);
             evenement.setDateMar(dateMariage);
             evenement.setLieuMariage(lieuMariage);
             evenement.setType(1);
             etatSortie = true;
-           
+
             this.dispose();
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(this, "Erreur Marriage: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur Marriage: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbtValiderMariageActionPerformed
 
@@ -292,27 +292,27 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private void jbnDivorceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnDivorceActionPerformed
         try {
-             //verrifie que les champs sont rempli et attribution du contenu dans l'oject evenements
-           if (jcbVip1M.getSelectedItem().toString().isEmpty()) {
+            //verrifie que les champs sont rempli et attribution du contenu dans l'oject evenements
+            if (jcbVip1M.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs Vip 1 vide!");
             }
-           Evenements eve = ((Evenements)jcbVip1M.getSelectedItem());
-            
-            if (jDateD.getDate()==null) {
+            Evenements eve = ((Evenements) jcbVip1M.getSelectedItem());
+
+            if (jDateD.getDate() == null) {
                 throw new Exception("Champs Date Mariage vide!");
             }
             Date dateDivorce = new java.sql.Date(jDateD.getDate().getTime());
-          
+
             evenement.setIdVip1(eve.getIdVip1());
             evenement.setIdVip2(eve.getIdVip2());
-            evenement.setDateMar(eve.getDateMar());       
+            evenement.setDateMar(eve.getDateMar());
             evenement.setDateDiv(dateDivorce);
             evenement.setType(-1);
             etatSortie = true;
-           
+
             this.dispose();
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(this, "Erreur Divorce: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur Divorce: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbnDivorceActionPerformed
 
@@ -323,9 +323,10 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
     private void jcbVip1MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVip1MActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbVip1MActionPerformed
-    
+
     /**
-     *gestion modal
+     * gestion modal
+     *
      * @return
      */
     public boolean doModal() {

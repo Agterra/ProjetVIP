@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Model;
 
 import AccesDonnees.DaoFilmPhoto;
@@ -12,7 +11,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.PhotoFilm;
 
-
 public class ModeleJTablePhotosFilms extends AbstractTableModel {
 
     private List<PhotoFilm> leConteneur;
@@ -20,12 +18,13 @@ public class ModeleJTablePhotosFilms extends AbstractTableModel {
     private DaoFilmPhoto daoFilmPhoto;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param daoPhoto
      */
     public ModeleJTablePhotosFilms(DaoFilmPhoto daoFilmPhoto) {
         this.leConteneur = new ArrayList<>();
-        this.titre = new String[]{"numVisa","lien","nomPhoto"};
+        this.titre = new String[]{"numVisa", "lien", "nomPhoto"};
         this.daoFilmPhoto = daoFilmPhoto;
     }
 
@@ -42,22 +41,23 @@ public class ModeleJTablePhotosFilms extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int column) {
         PhotoFilm laPhoto = leConteneur.get(row);
-            if (column == 0) {
+        if (column == 0) {
             return laPhoto.getNumVisa();
-        }else if (column == 1){
-            return laPhoto.getLien();          
-        }else{
-              return laPhoto.getNomPhoto();
+        } else if (column == 1) {
+            return laPhoto.getLien();
+        } else {
+            return laPhoto.getNomPhoto();
         }
     }
-    
+
     @Override
     public String getColumnName(int column) {
         return titre[column];
     }
-    
+
     /**
-     *appel inserer du dao
+     * appel inserer du dao
+     *
      * @param laPhoto
      * @throws Exception
      */
@@ -68,7 +68,8 @@ public class ModeleJTablePhotosFilms extends AbstractTableModel {
     }
 
     /**
-     *appel la supression du dao
+     * appel la supression du dao
+     *
      * @param ligne
      * @throws Exception
      */
@@ -80,7 +81,8 @@ public class ModeleJTablePhotosFilms extends AbstractTableModel {
     }
 
     /**
-     *appel lecture du dao
+     * appel lecture du dao
+     *
      * @throws Exception
      */
     public void lireLesPhotos() throws Exception {

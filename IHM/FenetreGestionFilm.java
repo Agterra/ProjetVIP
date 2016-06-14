@@ -24,10 +24,10 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
     private boolean etatSortie;
     private Film film;
     private ModeleJTableFilm leModeleFilm;
-    private ModeleComboBoxGenre csCf;
-    private ModeleComboBoxFilm CBVF;
-    private ModeleComboBoxVIPAct CBVA;
-    private ModeleComboBoxVIPReal CBVR;
+    private ModeleComboBoxGenre modeleComboBoxGenre;
+    private ModeleComboBoxFilm modeleComboBoxFilms;
+    private ModeleComboBoxVIPAct modeleComboBoxActeur;
+    private ModeleComboBoxVIPReal modeleComboBoxRealisateur;
     private ModeleJTablePhotosFilms leModelePhotoFilm;
 
     /**
@@ -35,19 +35,19 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
      *
      * @param parent
      * @param leModeleFilm
-     * @param csCf
-     * @param CBVF
-     * @param CBVA
-     * @param CBVR
+     * @param modeleComboBoxGenre
+     * @param modeleComboBoxFilms
+     * @param modeleComboBoxActeur
+     * @param modeleComboBoxRealisateur
      * @param leModelePhotoFilm
      */
-    public FenetreGestionFilm(java.awt.Frame parent, ModeleJTableFilm leModeleFilm, ModeleComboBoxGenre csCf, ModeleComboBoxFilm CBVF, ModeleComboBoxVIPAct CBVA, ModeleComboBoxVIPReal CBVR, ModeleJTablePhotosFilms leModelePhotoFilm) {
+    public FenetreGestionFilm(java.awt.Frame parent, ModeleJTableFilm leModeleFilm, ModeleComboBoxGenre modeleComboBoxGenre, ModeleComboBoxFilm modeleComboBoxFilms, ModeleComboBoxVIPAct modeleComboBoxActeur, ModeleComboBoxVIPReal modeleComboBoxRealisateur, ModeleJTablePhotosFilms leModelePhotoFilm) {
 
         super(parent, true);
-        this.csCf = csCf;
-        this.CBVF = CBVF;
-        this.CBVA = CBVA;
-        this.CBVR = CBVR;
+        this.modeleComboBoxGenre = modeleComboBoxGenre;
+        this.modeleComboBoxFilms = modeleComboBoxFilms;
+        this.modeleComboBoxActeur = modeleComboBoxActeur;
+        this.modeleComboBoxRealisateur = modeleComboBoxRealisateur;
         this.etatSortie = false;
 
         this.leModeleFilm = leModeleFilm;
@@ -211,7 +211,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         try {
             Film leFilm = new Film();
             //instantiation fenetre de saisie
-            FenetreSaisieFilm saise = new FenetreSaisieFilm(this, leFilm, csCf);
+            FenetreSaisieFilm saise = new FenetreSaisieFilm(this, leFilm, modeleComboBoxGenre);
             if (saise.doModal() == true) {
                 //insertion
                 leModeleFilm.insererFilm(leFilm);
@@ -227,7 +227,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         try {
             //supretion d'un film selectionné
             int ligne = jTableFilm.getSelectedRow();
-            CBVF.supprCast(Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()));
+            modeleComboBoxFilms.supprCast(Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()));
             leModeleFilm.supprimerFilm(ligne);
 
         } catch (Exception e) {
@@ -239,9 +239,9 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
         try {
             //ajout d'un acting au film selectionné
             int ligne = jTableFilm.getSelectedRow();
-            Casting cas = new Casting();
-            CBVA.majBox();//maj combobox
-            FenetreCasting saise = new FenetreCasting(this, cas, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVA, CBVF);
+            Casting casting = new Casting();
+            modeleComboBoxActeur.majBox();//maj combobox
+            FenetreCasting saise = new FenetreCasting(this, casting, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), modeleComboBoxActeur, modeleComboBoxFilms);
             if (saise.doModal() == true) {
 
             }
@@ -256,8 +256,8 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             //ajouit d'un realisateur au film selectionné
             int ligne = jTableFilm.getSelectedRow();
             Real real = new Real();
-            CBVR.majBox();//maj combobox
-            FenetreReal saise = new FenetreReal(this, real, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), CBVF, CBVR);
+            modeleComboBoxRealisateur.majBox();//maj combobox
+            FenetreReal saise = new FenetreReal(this, real, leModeleFilm.getValueAt(ligne, 1).toString(), Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()), modeleComboBoxFilms, modeleComboBoxRealisateur);
             if (saise.doModal() == true) {
 
             }

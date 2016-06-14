@@ -137,7 +137,7 @@
             <Component class="javax.swing.JComboBox" name="jcbVip1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="mvCB1M" type="code"/>
+                  <Connection code="modeleComboBoxVipUn" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -147,7 +147,7 @@
             <Component class="javax.swing.JComboBox" name="jcbVip2">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="mvCB2M" type="code"/>
+                  <Connection code="modeleComboBoxVipDeux" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -250,7 +250,7 @@
             <Component class="javax.swing.JComboBox" name="jcbVip1M">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code=" mvCBMar" type="code"/>
+                  <Connection code=" modeleComboBoxMariages" type="code"/>
                 </Property>
               </Properties>
               <Events>

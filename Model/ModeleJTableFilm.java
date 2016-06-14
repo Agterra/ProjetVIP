@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Model;
 
 import AccesDonnees.DaoFilm;
@@ -12,7 +11,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.Film;
 
-
 public class ModeleJTableFilm extends AbstractTableModel {
 
     private List<Film> leConteneur;
@@ -20,12 +18,13 @@ public class ModeleJTableFilm extends AbstractTableModel {
     private DaoFilm daoFilm;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param daoFilm
      */
     public ModeleJTableFilm(DaoFilm daoFilm) {
         this.leConteneur = new ArrayList<>();
-        this.titre = new String[]{"Visa","Titre","Annee","Genre"};
+        this.titre = new String[]{"Visa", "Titre", "Annee", "Genre"};
         this.daoFilm = daoFilm;
     }
 
@@ -42,24 +41,25 @@ public class ModeleJTableFilm extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int column) {
         Film leFilm = leConteneur.get(row);
-            if (column == 0) {
+        if (column == 0) {
             return leFilm.getVisa();
-        }else if (column == 1){
+        } else if (column == 1) {
             return leFilm.getTitre();
-        }else if (column == 2){
+        } else if (column == 2) {
             return leFilm.getAnnee();
-        }else {
+        } else {
             return leFilm.getGenre();
         }
     }
-    
+
     @Override
     public String getColumnName(int column) {
         return titre[column];
     }
-    
+
     /**
-     *appel inserer du dao
+     * appel inserer du dao
+     *
      * @param laFilm
      * @throws Exception
      */
@@ -70,7 +70,8 @@ public class ModeleJTableFilm extends AbstractTableModel {
     }
 
     /**
-     *appel supression du dao
+     * appel supression du dao
+     *
      * @param ligne
      * @throws Exception
      */
@@ -82,11 +83,12 @@ public class ModeleJTableFilm extends AbstractTableModel {
     }
 
     /**
-     *appel lireLesfilm du dao
+     * appel lireLesfilm du dao
+     *
      * @throws Exception
      */
     public void lireLesFilm() throws Exception {
-        leConteneur=daoFilm.SelectFilm();
+        leConteneur = daoFilm.SelectFilm();
         fireTableDataChanged();  // notification de modification des données à la vue
     }
 }

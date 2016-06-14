@@ -9,24 +9,23 @@ import Metier.PhotoFilm;
 import java.io.File;
 import javax.swing.JOptionPane;
 
-
 public class FenetreUploadPhotoFilm extends javax.swing.JDialog {
 
     private boolean etatSortie;
     private PhotoFilm laPhoto;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param laPhoto
-     * @param cbVip
      */
     public FenetreUploadPhotoFilm(javax.swing.JDialog parent, PhotoFilm laPhoto) {
         super(parent, true);
         this.etatSortie = false;
         this.laPhoto = laPhoto;
         initComponents();
-        
+
     }
 
     /**
@@ -83,21 +82,22 @@ public class FenetreUploadPhotoFilm extends javax.swing.JDialog {
             File f = jfcPhoto.getSelectedFile();
             laPhoto.setLien(f.getAbsolutePath());
             //test de si c'est un format autoriser
-            if(!f.getName().endsWith(".jpg") && !f.getName().endsWith(".bmp") && !f.getName().endsWith(".png")){
+            if (!f.getName().endsWith(".jpg") && !f.getName().endsWith(".bmp") && !f.getName().endsWith(".png")) {
                 throw new Exception("Type de fichier incorrect!");
             }
-            
+
             laPhoto.setNomPhoto(f.getName());
-            etatSortie=true;
+            etatSortie = true;
             this.dispose();
-            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur d'upload: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur d'upload: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jfcPhotoActionPerformed
 
     /**
-     *gestion modal
+     * gestion modal
+     *
      * @return
      */
     public boolean doModal() {

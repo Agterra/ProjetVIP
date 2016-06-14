@@ -19,17 +19,19 @@ import java.util.List;
  * @author Agterra
  */
 public class DaoFilmPhoto {
+
     private final Connection connexion;
     private AccesDonnees.DaoFilm daoFilm;
 
     public DaoFilmPhoto(Connection connexion) {
         this.connexion = connexion;
     }
+
     public void insererPhoto(PhotoFilm img) throws Exception {
-      
-         if(this.existNomPhoto(img.getNomPhoto())==true){
-             throw new Exception("La photo existe deja");
-         }
+
+        if (this.existNomPhoto(img.getNomPhoto()) == true) {
+            throw new Exception("La photo existe deja");
+        }
         String requete = "insert into PhotoFilm values(?,?,?)";
 
         PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -41,7 +43,8 @@ public class DaoFilmPhoto {
     }
 
     /**
-     *Supprimer Photo
+     * Supprimer Photo
+     *
      * @param nom String
      * @throws SQLException
      */
@@ -54,8 +57,9 @@ public class DaoFilmPhoto {
     }
 
     /**
-     *L'id de la photo existe
-     * @param Nom String 
+     * Vérification de l'existance de la photo
+     *
+     * @param Nom String
      * @return bool
      * @throws SQLException
      */
@@ -75,7 +79,8 @@ public class DaoFilmPhoto {
     }
 
     /**
-     *Lis toutes les photos de la base
+     * Lecture de toutes les photos de films de la base
+     *
      * @param lesPhotos List
      * @throws SQLException
      */
@@ -88,7 +93,7 @@ public class DaoFilmPhoto {
             int numVisa = rset.getInt(1);
             String lien = rset.getString(2);
             String nomPhoto = rset.getString(3);
-            
+
             PhotoFilm temp = new PhotoFilm(numVisa, lien, nomPhoto);
             lesPhotos.add(temp);
         }

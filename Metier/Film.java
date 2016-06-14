@@ -5,21 +5,22 @@
  */
 package Metier;
 
-
 public class Film {
+
     private int Annee;
     private String Titre;
     private int Visa;
     private String Genre;
 
     /**
-     *Constructeur
+     * Constructeur
      */
     public Film() {
     }
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param visa
      * @param Titre
      * @param annee
@@ -98,8 +99,7 @@ public class Film {
 
     @Override
     public String toString() {
-        return   Titre ;
+        return Titre;
     }
-    
-    
+
 }

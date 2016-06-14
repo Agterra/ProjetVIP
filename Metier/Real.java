@@ -5,13 +5,14 @@
  */
 package Metier;
 
-
 public class Real {
+
     private int numVisa;
     private int idVip;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param numVisa
      * @param idVip
      */
@@ -21,7 +22,7 @@ public class Real {
     }
 
     /**
-     *Constructeur vide
+     * Constructeur vide
      */
     public Real() {
     }
@@ -57,6 +58,5 @@ public class Real {
     public void setIdVip(int idVip) {
         this.idVip = idVip;
     }
-    
-    
+
 }

@@ -5,12 +5,13 @@
  */
 package Metier;
 
-
 public class Pays {
+
     private String nom;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param nom
      */
     public Pays(String nom) {
@@ -18,7 +19,7 @@ public class Pays {
     }
 
     /**
-     *Constructeur
+     * Constructeur
      */
     public Pays() {
     }
@@ -38,5 +39,5 @@ public class Pays {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
+
 }

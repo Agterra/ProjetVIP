@@ -12,13 +12,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.PasswordAuthentication;
 
-
 public class FenetreIdentification extends javax.swing.JDialog {
 
-    private String memoId=" ";
+    private String memoId = " ";
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      */
     public FenetreIdentification(javax.swing.JFrame parent) {
@@ -28,9 +28,8 @@ public class FenetreIdentification extends javax.swing.JDialog {
             File f = new File("memo.txt");
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            
-                memoId=ois.readObject().toString();
-                 
+
+            memoId = ois.readObject().toString();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -38,15 +37,16 @@ public class FenetreIdentification extends javax.swing.JDialog {
 
         initComponents();
         //si l'id pre enregistré n'est pas vide alors on l'affiche
-        if(!memoId.equalsIgnoreCase(" ")){
-          jtxtIdAdmin.setText("p"+memoId);
-          jckMemo.setSelected(true);
+        if (!memoId.equalsIgnoreCase(" ")) {
+            jtxtIdAdmin.setText("p" + memoId);
+            jckMemo.setSelected(true);
         }
 
     }
 
     /**
-     *gestion identifiant
+     * gestion identifiant
+     *
      * @return
      */
     public PasswordAuthentication identifier() {
@@ -183,14 +183,14 @@ public class FenetreIdentification extends javax.swing.JDialog {
                 FileOutputStream fos = new FileOutputStream(f);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(Integer.parseInt(jtxtIdAdmin.getText().substring(1)));
-            }else{//sinon on ecrit uniquement un espace
+            } else {//sinon on ecrit uniquement un espace
                 File f = new File("memo.txt");
                 FileOutputStream fos = new FileOutputStream(f);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(" ");
             }
         } catch (Exception e) {
-                System.out.println("Erreur de sauvegarde de mot de passe: "+e.getMessage());
+            System.out.println("Erreur de sauvegarde de mot de passe: " + e.getMessage());
         }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

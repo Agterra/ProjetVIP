@@ -18,31 +18,31 @@ import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPSClient;
 
-
 public class FenetreGestionPhotos extends javax.swing.JDialog {
 
     private boolean etatSortie;
     private ModeleJTablePhotos leModelePhoto;
-   private ModeleComboBoxVIP cbVip;
+    private ModeleComboBoxVIP modeleComboBoxVip;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param leModelePhoto
-     * @param cbVip
+     * @param modeleComboBoxVip
      */
-    public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto,ModeleComboBoxVIP cbVip) {
+    public FenetreGestionPhotos(java.awt.Frame parent, ModeleJTablePhotos leModelePhoto, ModeleComboBoxVIP modeleComboBoxVip) {
 
         super(parent, true);
         try {
             this.etatSortie = false;
             this.leModelePhoto = leModelePhoto;
-            this.cbVip=cbVip;
+            this.modeleComboBoxVip = modeleComboBoxVip;
             initComponents();
 
             leModelePhoto.lireLesPhotos();
         } catch (Exception e) {
-            
+
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, e);
         }
     }
@@ -129,8 +129,8 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
     private void jbnAjoutPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnAjoutPhotoActionPerformed
         try {
             Photo laPhoto = new Photo();
-            cbVip.majBox();
-            FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto,cbVip);
+            modeleComboBoxVip.majBox();
+            FenetreUploadPhoto upload = new FenetreUploadPhoto(this, laPhoto, modeleComboBoxVip);
             if (upload.doModal() == true) {
                 leModelePhoto.insererPhoto(laPhoto);
                 Properties props = new Properties();
@@ -152,60 +152,62 @@ public class FenetreGestionPhotos extends javax.swing.JDialog {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur gestion photos: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur gestion photos: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jbnAjoutPhotoActionPerformed
 
     /**
-     *bar de progression
+     * bar de progression
      */
     public void viewBar() {
 
-  jProgressBar1.setStringPainted(true);
-  jProgressBar1.setValue(0);
+        jProgressBar1.setStringPainted(true);
+        jProgressBar1.setValue(0);
 
-  int timerDelay = 10;
-  new javax.swing.Timer(timerDelay , new ActionListener() {
-     private int index = 0;
-     private int maxIndex = 100;
-     public void actionPerformed(ActionEvent e) {
-        if (index < maxIndex) {
-           jProgressBar1.setValue(index);
-           index++;
-        } else {
-           jProgressBar1.setValue(maxIndex);
-           ((javax.swing.Timer)e.getSource()).stop(); // stop the timer
-        }
-     }
-  }).start();
+        int timerDelay = 10;
+        new javax.swing.Timer(timerDelay, new ActionListener() {
+            private int index = 0;
+            private int maxIndex = 100;
 
-  jProgressBar1.setValue(jProgressBar1.getMinimum());
-}
+            public void actionPerformed(ActionEvent e) {
+                if (index < maxIndex) {
+                    jProgressBar1.setValue(index);
+                    index++;
+                } else {
+                    jProgressBar1.setValue(maxIndex);
+                    ((javax.swing.Timer) e.getSource()).stop(); // stop the timer
+                }
+            }
+        }).start();
+
+        jProgressBar1.setValue(jProgressBar1.getMinimum());
+    }
     private void jbnSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSupprActionPerformed
         try {
             int ligne = jTablePhoto.getSelectedRow();
             Photo laPhoto = new Photo();
             String idPhoto = leModelePhoto.getValueAt(ligne, 1).toString();
-           
-             Properties props = new Properties();
-             FileInputStream fis = new FileInputStream("src/fpt.properties");
-                
-                props.load(fis);
-                FTPSClient ftpClient = new FTPSClient();
-                //connexion au serveur
-                ftpClient.connect(props.getProperty("serveur"), Integer.parseInt(props.getProperty("port")));
-                ftpClient.login(props.getProperty("user"), props.getProperty("pwd"));
-                 // supression
-                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-                ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
-                ftpClient.enterLocalPassiveMode();
-                ftpClient.deleteFile("public_html/VIP/asset/images/" + idPhoto);
-                
-                viewBar();
-                leModelePhoto.supprimerPhoto(ligne);
+
+            Properties props = new Properties();
+            FileInputStream fis = new FileInputStream("src/fpt.properties");
+
+            props.load(fis);
+            FTPSClient ftpClient = new FTPSClient();
+            //connexion au serveur
+            ftpClient.connect(props.getProperty("serveur"), Integer.parseInt(props.getProperty("port")));
+            ftpClient.login(props.getProperty("user"), props.getProperty("pwd"));
+            // supression
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+            ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
+            ftpClient.enterLocalPassiveMode();
+            ftpClient.deleteFile("public_html/VIP/asset/images/" + idPhoto);
+
+            viewBar();
+            leModelePhoto.supprimerPhoto(ligne);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur gestion photos: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);        }
+            JOptionPane.showMessageDialog(this, "Erreur gestion photos: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jbnSupprActionPerformed
 
     /**

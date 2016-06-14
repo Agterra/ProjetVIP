@@ -15,31 +15,29 @@ import javax.swing.DefaultComboBoxModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
 
     private List<Film> listeItems;
-    private String[] listeNoms ;
-    private DaoCast daoc;
-     private DaoReal daor;
-      private DaoFilm daof;
-   
+    private String[] listeNoms;
+    private DaoCast daoCasting;
+    private DaoReal daoRealisateur;
+    private DaoFilm daoFilm;
+
     /**
      *
-     * @param daof
-     * @param daoc
-     * @param daor
+     * @param daoFilm
+     * @param daoCasting
+     * @param daoRealisateur
      * @throws Exception
      */
-    public  ModeleComboBoxFilm(DaoFilm daof,DaoCast daoc,DaoReal daor)throws Exception{
+    public ModeleComboBoxFilm(DaoFilm daoFilm, DaoCast daoCasting, DaoReal daoRealisateur) throws Exception {
         super();
         //pour test
-        
-        this.daof=daof;
-        this.daoc=daoc;
-        this.daor=daor;
-        listeItems=daof.SelectFilm();
+
+        this.daoFilm = daoFilm;
+        this.daoCasting = daoCasting;
+        this.daoRealisateur = daoRealisateur;
+        listeItems = daoFilm.SelectFilm();
     }
 
     @Override
@@ -56,35 +54,35 @@ public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
     public int getSize() {
         return listeItems.size();
     }
-    
+
     /**
-     *appel insertCast du dao Casting
+     * appel insertCast du dao Casting
+     *
      * @param cast
      * @throws SQLException
      */
-    public void insererCast(Casting cast) throws SQLException{
-       daoc.insertCast(cast.getIdVip(), cast.getNumVisa());
-   }
+    public void insererCast(Casting cast) throws SQLException {
+        daoCasting.insertCast(cast.getIdVip(), cast.getNumVisa());
+    }
 
     /**
-     *appel insertRel du dao realise
+     * appel insertRel du dao realise
+     *
      * @param rel
      * @throws SQLException
      */
-    public void insererReal(Real rel) throws SQLException{
-       daor.insertReal(rel.getIdVip(), rel.getNumVisa());
-   }
-    
+    public void insererReal(Real rel) throws SQLException {
+        daoRealisateur.insertReal(rel.getIdVip(), rel.getNumVisa());
+    }
+
     /**
-     *appel supprCAst du dao casting
+     * appel supprCAst du dao casting
+     *
      * @param visa
      * @throws SQLException
      */
-    public void supprCast(int visa)throws SQLException{
-      daoc.supprCasting(visa);
-  }
-    
+    public void supprCast(int visa) throws SQLException {
+        daoCasting.supprCasting(visa);
+    }
 
 }
-
-

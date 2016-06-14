@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Model;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import javax.swing.table.AbstractTableModel;
 import AccesDonnees.DaoPhoto;
 import Metier.Photo;
 
-
 public class ModeleJTablePhotos extends AbstractTableModel {
 
     private List<Photo> leConteneur;
@@ -20,12 +18,13 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     private DaoPhoto daoPhoto;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param daoPhoto
      */
     public ModeleJTablePhotos(DaoPhoto daoPhoto) {
         this.leConteneur = new ArrayList<>();
-        this.titre = new String[]{"idVip","idPhoto","datePhoto","lieu","lien"};
+        this.titre = new String[]{"idVip", "idPhoto", "datePhoto", "lieu", "lien"};
         this.daoPhoto = daoPhoto;
     }
 
@@ -42,27 +41,28 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int column) {
         Photo laPhoto = leConteneur.get(row);
-            if (column == 0) {
+        if (column == 0) {
             return laPhoto.getIdVip();
-        }else if (column == 1){
+        } else if (column == 1) {
             return laPhoto.getIdPhoto();
-        }else if (column == 2){
-            return  String.valueOf(laPhoto.getLaDate());
-        }else if (column == 3){
+        } else if (column == 2) {
+            return String.valueOf(laPhoto.getLaDate());
+        } else if (column == 3) {
             return laPhoto.getLieu();
-          
-        }else{
-              return laPhoto.getLien();
+
+        } else {
+            return laPhoto.getLien();
         }
     }
-    
+
     @Override
     public String getColumnName(int column) {
         return titre[column];
     }
-    
+
     /**
-     *appel inserer du dao
+     * appel inserer du dao
+     *
      * @param laPhoto
      * @throws Exception
      */
@@ -73,7 +73,8 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     }
 
     /**
-     *appel la supression du dao
+     * appel la supression du dao
+     *
      * @param ligne
      * @throws Exception
      */
@@ -85,7 +86,8 @@ public class ModeleJTablePhotos extends AbstractTableModel {
     }
 
     /**
-     *appel lecture du dao
+     * appel lecture du dao
+     *
      * @throws Exception
      */
     public void lireLesPhotos() throws Exception {

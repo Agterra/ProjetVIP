@@ -9,16 +9,13 @@ import javax.swing.DefaultComboBoxModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-
 public class ModeleComboBoxCR extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;
-    private String[] noms = {"Acteur-rice", "Realisateur-trice","Les Deux"};
-    
+    private String[] noms = {"Acteur-rice", "Realisateur-trice", "Les Deux"};
+
     /**
-     *Constructeur
+     * Constructeur
      */
     public ModeleComboBoxCR() {
         super();
@@ -40,5 +37,3 @@ public class ModeleComboBoxCR extends DefaultComboBoxModel<String> {
     }
 
 }
-
-

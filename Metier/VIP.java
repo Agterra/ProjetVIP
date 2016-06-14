@@ -7,10 +7,9 @@ package Metier;
 
 import java.sql.Date;
 
-
 public class VIP {
-    
-    private static int incrIdVip=0;
+
+    private static int incrIdVip = 0;
     private int idVip;
     private String nomVip;
     private String prenomVip;
@@ -20,16 +19,17 @@ public class VIP {
     private int codeRole;//rea,act
     private int codeStatut;//mar,ceb,div
     private String nomPays;
-    
+
     /**
-     *Constructeur vide
+     * Constructeur vide
      */
-    public VIP(){
-        
+    public VIP() {
+
     }
 
     /**
      * Constructeur
+     *
      * @param id
      * @param nomVIP
      * @param prenomVip
@@ -40,7 +40,7 @@ public class VIP {
      * @param codeStatut
      * @param nomPays
      */
-    public VIP(int id,String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
+    public VIP(int id, String nomVIP, String prenomVip, String civilite, Date dateNaiss, String lieuNaiss, int codeRole, int codeStatut, String nomPays) {
         this.idVip = id;
         this.nomVip = nomVIP;
         this.prenomVip = prenomVip;
@@ -199,9 +199,7 @@ public class VIP {
 
     @Override
     public String toString() {
-        return  nomVip ;
+        return nomVip;
     }
-    
-    
-    
+
 }

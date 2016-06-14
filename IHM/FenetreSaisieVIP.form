@@ -157,14 +157,14 @@
     <Component class="javax.swing.JComboBox" name="jcbCodeRole">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="crCB" type="code"/>
+          <Connection code="modeleComboBoxRole" type="code"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbPays">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="paysCB" type="code"/>
+          <Connection code="modeleComboBoxPays" type="code"/>
         </Property>
       </Properties>
       <Events>

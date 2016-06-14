@@ -7,28 +7,29 @@ package Metier;
 
 import java.sql.Date;
 
-
 public class Photo {
+
     private int idVip;
     private String idPhoto;
     private String lien;
     private String lieu;
     private Date laDate;
-    
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param idVip
      * @param idPhoto
      * @param laDate
      * @param lieu
      * @param lien
      */
-    public Photo(int idVip, String idPhoto,Date laDate,String lieu,String lien) {
+    public Photo(int idVip, String idPhoto, Date laDate, String lieu, String lien) {
         this.idVip = idVip;
         this.idPhoto = idPhoto;
         this.lien = lien;
-        this.lieu=lieu;
-        this.laDate=laDate;
+        this.lieu = lieu;
+        this.laDate = laDate;
     }
 
     /**
@@ -119,8 +120,7 @@ public class Photo {
 
     @Override
     public String toString() {
-        return "Photo{" + "idVip=" + idVip + ", idPhoto=" + idPhoto + ", laDate=" + laDate+ ", lieu=" + lieu+ ", lien=" + lien  + '}';
+        return "Photo{" + "idVip=" + idVip + ", idPhoto=" + idPhoto + ", laDate=" + laDate + ", lieu=" + lieu + ", lien=" + lien + '}';
     }
-    
-    
+
 }

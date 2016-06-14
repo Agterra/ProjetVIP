@@ -11,25 +11,26 @@ import Model.ModeleComboBoxVIP;
 import java.io.File;
 import javax.swing.JOptionPane;
 
-
 public class FenetreUploadPhoto extends javax.swing.JDialog {
-    private ModeleComboBoxVIP cbVip;
+
+    private ModeleComboBoxVIP modeleComboBoxVip;
     private boolean etatSortie;
     private Photo laPhoto;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param laPhoto
-     * @param cbVip
+     * @param modeleComboBoxVip
      */
-    public FenetreUploadPhoto(javax.swing.JDialog parent, Photo laPhoto,ModeleComboBoxVIP cbVip) {
+    public FenetreUploadPhoto(javax.swing.JDialog parent, Photo laPhoto, ModeleComboBoxVIP modeleComboBoxVip) {
         super(parent, true);
         this.etatSortie = false;
         this.laPhoto = laPhoto;
-        this.cbVip=cbVip;
+        this.modeleComboBoxVip = modeleComboBoxVip;
         initComponents();
-        
+
     }
 
     /**
@@ -69,7 +70,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxVip.setModel(cbVip);
+        jComboBoxVip.setModel(modeleComboBoxVip);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,7 +86,7 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
                                 .addComponent(jtxtLieuPhoto, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jtxtDatePhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
-                        .addContainerGap(9, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,35 +160,36 @@ public class FenetreUploadPhoto extends javax.swing.JDialog {
             laPhoto.setIdPhoto(f.getName());
             laPhoto.setLien(f.getAbsolutePath());
             //test de si c'est un format autoriser
-            if(!f.getName().endsWith(".jpg") && !f.getName().endsWith(".bmp") && !f.getName().endsWith(".png")){
+            if (!f.getName().endsWith(".jpg") && !f.getName().endsWith(".bmp") && !f.getName().endsWith(".png")) {
                 throw new Exception("Type de fichier incorrect!");
             }
             //verrifie que les champs sont rempli et attribution du contenu dans l'oject photo
             if (jComboBoxVip.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champs IdVip vide!");
             }
-            laPhoto.setIdVip(((VIP)jComboBoxVip.getSelectedItem()).getIdVip());
-            
-            if (jtxtDatePhoto.getDate()==null) {
+            laPhoto.setIdVip(((VIP) jComboBoxVip.getSelectedItem()).getIdVip());
+
+            if (jtxtDatePhoto.getDate() == null) {
                 throw new Exception("Champs Date vide!");
             }
             laPhoto.setLaDate(new java.sql.Date(jtxtDatePhoto.getDate().getTime()));
-            
+
             if (jtxtLieuPhoto.getText().isEmpty()) {
                 throw new Exception("Champs Lieu vide!");
             }
             laPhoto.setLieu(jtxtLieuPhoto.getText());
-            
-            etatSortie=true;
+
+            etatSortie = true;
             this.dispose();
-            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur d'upload: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur d'upload: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jfcPhotoActionPerformed
 
     /**
-     *gestion modal
+     * gestion modal
+     *
      * @return
      */
     public boolean doModal() {

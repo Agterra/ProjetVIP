@@ -13,28 +13,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DaoFilm {
-     private final Connection connexion;
-     private List<Film> ListeFilm;
-   
+
+    private final Connection connexion;
+    private List<Film> ListeFilm;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param connexion
      * @throws SQLException
      */
     public DaoFilm(Connection connexion) throws SQLException {
-        this.connexion = connexion;     
+        this.connexion = connexion;
     }
 
     /**
-     *Inserer un Film
+     * Inserer un Film
+     *
      * @param film Film
      * @throws Exception
      */
     public void insererFilm(Film film) throws Exception {
-       
-         
+
         String requete = "insert into Film values(?,?,?,?)";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setInt(1, film.getVisa());
@@ -44,9 +45,10 @@ public class DaoFilm {
         pstmt.executeUpdate();
         pstmt.close();
     }
-       
+
     /**
-     *Sjupprimer un Film
+     * Supprimer un Film
+     *
      * @param film int le visa du film
      * @throws SQLException
      */
@@ -60,30 +62,29 @@ public class DaoFilm {
 
     /**
      *
-     * Selectionne tout les film
+     * Selectionne tous les films
+     *
      * @return List de film
      * @throws Exception
      */
     public List<Film> SelectFilm() throws Exception {
-        ListeFilm= new ArrayList();
-        String requete = "Select * from Film ";  
+        ListeFilm = new ArrayList();
+        String requete = "Select * from Film ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery();
 
         while (rset.next()) {// traitement du résulat
             int visa = rset.getInt(1);
             String titre = rset.getString(2);
-             int Annee = rset.getInt(3);
+            int Annee = rset.getInt(3);
             String Genre = rset.getString(4);
-           
-         
-            Film temp = new Film(visa,titre, Annee, Genre);
+
+            Film temp = new Film(visa, titre, Annee, Genre);
             ListeFilm.add(temp);
         }
         rset.close();
         pstmt.close();
         return ListeFilm;
-     }
-     
-     
+    }
+
 }

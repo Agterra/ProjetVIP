@@ -10,33 +10,31 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxPays;
 
-
 public class FenetreSaisieVIP extends javax.swing.JDialog {
+
     private VIP vip;
-    private boolean etatSortie; 
-    private ModeleComboBoxCR crCB;
-    private ModeleComboBoxPays paysCB;
-  
+    private boolean etatSortie;
+    private ModeleComboBoxCR modeleComboBoxRole;
+    private ModeleComboBoxPays modeleComboBoxPays;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param vip
      * @param csCB
-     * @param crCB
-     * @param paysCB
+     * @param modeleComboBoxRole
+     * @param modeleComboBoxPays
      */
-    public FenetreSaisieVIP(java.awt.Frame parent, VIP vip,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
+    public FenetreSaisieVIP(java.awt.Frame parent, VIP vip, ModeleComboBoxCR modeleComboBoxRole, ModeleComboBoxPays modeleComboBoxPays) {
         super(parent, true);
-        this.vip=vip;
-        etatSortie=false;
-        this.crCB=crCB;
-        this.paysCB=paysCB;
-      
-        
+        this.vip = vip;
+        etatSortie = false;
+        this.modeleComboBoxRole = modeleComboBoxRole;
+        this.modeleComboBoxPays = modeleComboBoxPays;
+
         initComponents();
-        
-    
-        
+
     }
 
     /**
@@ -88,9 +86,9 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
             }
         });
 
-        jcbCodeRole.setModel(crCB);
+        jcbCodeRole.setModel(modeleComboBoxRole);
 
-        jcbPays.setModel(paysCB);
+        jcbPays.setModel(modeleComboBoxPays);
         jcbPays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbPaysActionPerformed(evt);
@@ -172,57 +170,58 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
     }//GEN-LAST:event_jcbPaysActionPerformed
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
-        try{
-             //verrifie que les champs sont rempli et attribution du contenu dans l'oject VIP
-            if(txtCivVIP.getText().isEmpty()){
+        try {
+            //verrifie que les champs sont rempli et attribution du contenu dans l'oject VIP
+            if (txtCivVIP.getText().isEmpty()) {
                 throw new Exception("Champ civilité vide!");
             }
             vip.setCivilite(txtCivVIP.getText());
-            if(jcbCodeRole.getSelectedItem().toString().isEmpty()){
+            if (jcbCodeRole.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champ code rôle vide!");
             }
-            if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("acteur-rice")){
+            if (jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("acteur-rice")) {
                 vip.setCodeRole(1);
-            }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Réalisateur-trice")){
+            } else if (jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Réalisateur-trice")) {
                 vip.setCodeRole(0);
-            }else{
+            } else {
                 vip.setCodeRole(2);
             }
-            if(jDateN.getDate()==null){
+            if (jDateN.getDate() == null) {
                 throw new Exception("Champ date de naissance vide!");
             }
             vip.setDateNaiss(new java.sql.Date(jDateN.getDate().getTime()));
-            if(txtLieuNaiss.getText().isEmpty()){
+            if (txtLieuNaiss.getText().isEmpty()) {
                 throw new Exception("Champ lieu de naissance vide!");
             }
             vip.setLieuNaiss(txtLieuNaiss.getText());
-            if(txtNomVIP.getText().isEmpty()){
+            if (txtNomVIP.getText().isEmpty()) {
                 throw new Exception("Champ nom vide!");
             }
             vip.setNomVIP(txtNomVIP.getText());
 
-            if(jcbPays.getSelectedItem().toString().isEmpty()){
+            if (jcbPays.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champ pays vide!");
             }
 
             vip.setNomPays(jcbPays.getSelectedItem().toString());
-            if(txtPrenomVIP.getText().isEmpty()){
+            if (txtPrenomVIP.getText().isEmpty()) {
                 throw new Exception("Champ prénom vide!");
             }
             vip.setPrenomVip(txtPrenomVIP.getText());
             vip.setCodeStatut(0);
 
-            etatSortie=true;
+            etatSortie = true;
             this.dispose();
 
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Erreur insertion VIP: "+e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur insertion VIP: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
 
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
 
     /**
-     *gestion modal
+     * gestion modal
+     *
      * @return
      */
     public boolean doModal() {

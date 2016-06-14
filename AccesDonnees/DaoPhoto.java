@@ -13,14 +13,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-
 public class DaoPhoto {
 
     private final Connection connexion;
     private AccesDonnees.DaoVIP daoVip;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param connexion
      * @throws SQLException
      */
@@ -29,16 +29,17 @@ public class DaoPhoto {
     }
 
     /**
-     *insertion d'une image dans la base de donné
+     * Insertion d'une image dans la base de données
+     *
      * @param img Photo
      * @throws Exception
      */
     public void insererPhoto(Photo img) throws Exception {
-         daoVip = new DaoVIP(connexion);
-       
-         if(this.existIDPhoto(img.getIdPhoto())==true){
-             throw new Exception("La photo existe deja");
-         }
+        daoVip = new DaoVIP(connexion);
+
+        if (this.existIDPhoto(img.getIdPhoto()) == true) {
+            throw new Exception("La photo existe deja");
+        }
         String requete = "insert into Photo values(?,?,?,?,?)";
 
         PreparedStatement pstmt = connexion.prepareStatement(requete);
@@ -53,7 +54,8 @@ public class DaoPhoto {
     }
 
     /**
-     *Supprimer Photo
+     * Supprimer une photo
+     *
      * @param id int id de la photo
      * @throws SQLException
      */
@@ -66,7 +68,8 @@ public class DaoPhoto {
     }
 
     /**
-     *L'id de la photo existe
+     * Vérification existence photo
+     *
      * @param id int
      * @return bool
      * @throws SQLException
@@ -87,7 +90,8 @@ public class DaoPhoto {
     }
 
     /**
-     *Lis tout les photo de la base
+     * lecture de toutes les photos de la base
+     *
      * @param lesPhotos List
      * @throws SQLException
      */
@@ -102,8 +106,8 @@ public class DaoPhoto {
             Date datePdv = rset.getDate(3);
             String lieu = rset.getString(4);
             String lien = rset.getString(5);
-            
-            Photo temp = new Photo(numVip, idPhoto,datePdv, lieu, lien);
+
+            Photo temp = new Photo(numVip, idPhoto, datePdv, lieu, lien);
             lesPhotos.add(temp);
         }
         rset.close();

@@ -10,11 +10,13 @@ package Metier;
  * @author Claire
  */
 public class Casting {
+
     private int numVisa;
     private int idVip;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param numVisa
      * @param idVip
      */
@@ -24,7 +26,7 @@ public class Casting {
     }
 
     /**
-     *Constructeur
+     * Constructeur
      */
     public Casting() {
     }
@@ -60,6 +62,5 @@ public class Casting {
     public void setIdVip(int idVip) {
         this.idVip = idVip;
     }
-    
-    
+
 }

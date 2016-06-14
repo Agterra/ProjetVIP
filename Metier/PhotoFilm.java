@@ -20,9 +20,9 @@ public class PhotoFilm {
         this.lien = lien;
         this.nomPhoto = nomPhoto;
     }
-    
-    public PhotoFilm(){
-        
+
+    public PhotoFilm() {
+
     }
 
     public int getNumVisa() {

@@ -53,8 +53,8 @@ public class Appli {
     private static DaoPhoto daoPhoto;
     private static DaoFilm daoFilm;
     private static DaoGenre daoGenre;
-    private static DaoCast daoc;
-    private static DaoReal daor;
+    private static DaoCast daoCasting;
+    private static DaoReal daoRealisateur;
     private static DaoFilmPhoto daoFilmPhoto;
     public static String memoId = "none";
 
@@ -94,27 +94,27 @@ public class Appli {
             daoPhoto = new DaoPhoto(laConnexion);
             daoFilm = new DaoFilm(laConnexion);
             daoGenre = new DaoGenre(laConnexion);
-            daoc = new DaoCast(laConnexion);
-            daor = new DaoReal(laConnexion);
+            daoCasting = new DaoCast(laConnexion);
+            daoRealisateur = new DaoReal(laConnexion);
             daoFilmPhoto = new DaoFilmPhoto(laConnexion);
-            
+
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModelJTableVIP leModele = new ModelJTableVIP(daoVip);
 
-            final ModeleComboBoxCR crCB = new ModeleComboBoxCR();
-            final ModeleComboBoxPays paysCB = new ModeleComboBoxPays(leDaoPays);
+            final ModeleComboBoxCR modeleComboBoxRole = new ModeleComboBoxCR();
+            final ModeleComboBoxPays modeleComboBoxPays = new ModeleComboBoxPays(leDaoPays);
 
-            final ModeleComboBoxFilm CBVF = new ModeleComboBoxFilm(daoFilm, daoc, daor);
-            final ModeleComboBoxVIPAct CBVA = new ModeleComboBoxVIPAct(daoVip);
-            final ModeleComboBoxVIPReal CBVR = new ModeleComboBoxVIPReal(daoVip);
-            final ModeleComboBoxVIP1M mvCB1M = new ModeleComboBoxVIP1M(daoVip, daoEvent);
-            final ModeleComboBoxVIP2M mvCB2M = new ModeleComboBoxVIP2M(daoVip);
-            final ModeleComboBoxGenre mvCBGenre = new ModeleComboBoxGenre(daoGenre);
-            final ModeleComboBoxMarier mvCBMar = new ModeleComboBoxMarier(daoEvent);
+            final ModeleComboBoxFilm modeleComboBoxFilms = new ModeleComboBoxFilm(daoFilm, daoCasting, daoRealisateur);
+            final ModeleComboBoxVIPAct modeleComboBoxActeur = new ModeleComboBoxVIPAct(daoVip);
+            final ModeleComboBoxVIPReal modeleComboBoxRealisateur = new ModeleComboBoxVIPReal(daoVip);
+            final ModeleComboBoxVIP1M modeleComboBoxVipUn = new ModeleComboBoxVIP1M(daoVip, daoEvent);
+            final ModeleComboBoxVIP2M modeleComboBoxVipDeux = new ModeleComboBoxVIP2M(daoVip);
+            final ModeleComboBoxGenre modeleComboBoxGenre = new ModeleComboBoxGenre(daoGenre);
+            final ModeleComboBoxMarier modeleComboBoxMariages = new ModeleComboBoxMarier(daoEvent);
 
             final ModeleJTablePhotos leModelePhoto = new ModeleJTablePhotos(daoPhoto);
             final ModeleJTableFilm leModeleFilm = new ModeleJTableFilm(daoFilm);
-            final ModeleComboBoxVIP cbVip = new ModeleComboBoxVIP(daoVip);
+            final ModeleComboBoxVIP modeleComboBoxVip = new ModeleComboBoxVIP(daoVip);
             final ModeleJTablePhotosFilms leModelePhotoFilm = new ModeleJTablePhotosFilms(daoFilmPhoto);
 
             // la fenetre principale de l'application qui tourne dans l'EDT
@@ -122,7 +122,7 @@ public class Appli {
                 @Override
                 public void run() {
 
-                    new FenetreApplication(leModele, crCB, paysCB, mvCB1M, mvCB2M, mvCBGenre, mvCBMar, leModelePhoto, leModeleFilm, daoEvent, daoVip, CBVF, CBVA, CBVR, cbVip, leModelePhotoFilm).setVisible(true);
+                    new FenetreApplication(leModele, modeleComboBoxRole, modeleComboBoxPays, modeleComboBoxVipUn, modeleComboBoxVipDeux, modeleComboBoxGenre, modeleComboBoxMariages, leModelePhoto, leModeleFilm, daoEvent, daoVip, modeleComboBoxFilms, modeleComboBoxActeur, modeleComboBoxRealisateur, modeleComboBoxVip, leModelePhotoFilm).setVisible(true);
 
                 }
             });

@@ -15,31 +15,32 @@ public class FenetreReal extends javax.swing.JDialog {
 
     private Real real;
     private boolean etatSortie;
-    private ModeleComboBoxFilm CBf;
-    private ModeleComboBoxVIPReal CBv;
+    private ModeleComboBoxFilm modeleComboBoxFilms;
+    private ModeleComboBoxVIPReal modeleComboBoxRealisateur;
     private String nomFilm;
     private int visaFilm;
 
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param real
      * @param nomFilm
      * @param visaFilm
-     * @param CBf
-     * @param CBv
+     * @param modeleComboBoxFilms
+     * @param modeleComboBoxRealisateur
      */
-    public FenetreReal(javax.swing.JDialog parent, Real real, String nomFilm, int visaFilm, ModeleComboBoxFilm CBf, ModeleComboBoxVIPReal CBv) {
+    public FenetreReal(javax.swing.JDialog parent, Real real, String nomFilm, int visaFilm, ModeleComboBoxFilm modeleComboBoxFilms, ModeleComboBoxVIPReal modeleComboBoxRealisateur) {
         super(parent, true);
         this.real = real;
         etatSortie = false;
-        this.CBv = CBv;
-        this.CBf = CBf;
+        this.modeleComboBoxRealisateur = modeleComboBoxRealisateur;
+        this.modeleComboBoxFilms = modeleComboBoxFilms;
         this.visaFilm = visaFilm;
         this.nomFilm = nomFilm;
 
         initComponents();
-        
+
         jlblNomFilm.setText(this.nomFilm);
 
     }
@@ -74,7 +75,7 @@ public class FenetreReal extends javax.swing.JDialog {
             }
         });
 
-        jcbReal.setModel(CBv);
+        jcbReal.setModel(modeleComboBoxRealisateur);
 
         jlblNomFilm.setEditable(false);
 
@@ -135,20 +136,18 @@ public class FenetreReal extends javax.swing.JDialog {
                 throw new Exception("realisateur");
             }
             real.setIdVip(((VIP) jcbReal.getSelectedItem()).getIdVip());
-            etatSortie=true;
-            CBv.setSelectedItem(null);
-           
-        
+            etatSortie = true;
+            modeleComboBoxRealisateur.setSelectedItem(null);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Erreur gestion réal: "+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur gestion réal: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
 
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          etatSortie = true;
-            this.dispose();
+        etatSortie = true;
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

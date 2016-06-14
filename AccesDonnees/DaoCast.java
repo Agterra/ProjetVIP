@@ -9,61 +9,65 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 public class DaoCast {
-     private final Connection connexion;
-     
+
+    private final Connection connexion;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param connexion
      * @throws SQLException
      */
     public DaoCast(Connection connexion) throws SQLException {
         this.connexion = connexion;
-        
+
     }
-       
+
     /**
-     *insertion d'un casting 
+     * insertion d'un casting
+     *
      * @param id int id de l'acteur
      * @param visa int nulmero visa
      * @throws SQLException
      */
-    public void insertCast (int id, int visa) throws SQLException{
+    public void insertCast(int id, int visa) throws SQLException {
         String requete = "insert into Casting values(?,?);";
-            PreparedStatement pstmt = connexion.prepareStatement(requete);
-             pstmt.setInt(1,id );
-            
-             pstmt.setInt(2, visa);
-            pstmt.executeUpdate();
-            pstmt.close();
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, id);
+
+        pstmt.setInt(2, visa);
+        pstmt.executeUpdate();
+        pstmt.close();
     }
 
     /**
+     * Suppression d'un Acteur
      *
      * @param id
      * @param visa
      * @throws SQLException
      */
-    public void supprActeur(int id, int visa) throws SQLException{
+    public void supprActeur(int id, int visa) throws SQLException {
         String requete = "delete from Casting where idVip=? and numVisa=? ";
-            PreparedStatement pstmt = connexion.prepareStatement(requete);
-             pstmt.setInt(1,id );
-            
-             pstmt.setInt(2, visa);
-            pstmt.executeUpdate();
-            pstmt.close();
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, id);
+
+        pstmt.setInt(2, visa);
+        pstmt.executeUpdate();
+        pstmt.close();
     }
-    
+
     /**
+     * Suppression d'un Casting
      *
      * @param visa
      * @throws SQLException
      */
-    public void supprCasting(int visa) throws SQLException{
+    public void supprCasting(int visa) throws SQLException {
         String requete = "delete from Casting where numVisa=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1,visa);
+        pstmt.setInt(1, visa);
         pstmt.executeUpdate();
         pstmt.close();
     }

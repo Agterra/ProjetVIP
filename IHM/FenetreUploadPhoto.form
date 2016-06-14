@@ -85,7 +85,7 @@
                                   <Component id="jtxtDatePhoto" alignment="0" pref="126" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -144,7 +144,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxVip">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="cbVip" type="code"/>
+              <Connection code="modeleComboBoxVip" type="code"/>
             </Property>
           </Properties>
         </Component>

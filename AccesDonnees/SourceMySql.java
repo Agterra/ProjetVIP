@@ -11,9 +11,9 @@ import java.net.PasswordAuthentication;
 import java.util.Properties;
 import javax.sql.DataSource;
 
-
 public class SourceMySql {
-     public static DataSource getSource(PasswordAuthentication login) throws Exception {
+
+    public static DataSource getSource(PasswordAuthentication login) throws Exception {
         // récupération des informations d'authentification
         String user = login.getUserName();
         String pwd = new String(login.getPassword());
@@ -28,7 +28,7 @@ public class SourceMySql {
         ds.setServerName(props.getProperty("serveur"));
         ds.setUser(user);
         ds.setPassword(pwd);
-        System.out.println("Connecté(e)"+ds);
+        System.out.println("Connecté(e)" + ds);
         return ds;
     }
 }

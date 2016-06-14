@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
+
 import AccesDonnees.DaoVIP;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,31 +12,31 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.VIP;
 
-
 public class ModelJTableVIP extends AbstractTableModel {
-    
+
     private List<VIP> leConteneur;
     private String[] titre;
     private DaoVIP leDaoVIP;
-    
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param leDaoVIP
      */
-    public ModelJTableVIP(DaoVIP leDaoVIP){
+    public ModelJTableVIP(DaoVIP leDaoVIP) {
         this.leConteneur = new ArrayList<>();
-        this.titre = new String[]{"idVip","nomVIP","prenomVip","civilite","dateNaiss","lieuNaiss","codeRole","codeStatut","nomPays"};
+        this.titre = new String[]{"idVip", "nomVIP", "prenomVip", "civilite", "dateNaiss", "lieuNaiss", "codeRole", "codeStatut", "nomPays"};
         this.leDaoVIP = leDaoVIP;
-        
+
     }
-    
+
     @Override
-    public int getRowCount(){
+    public int getRowCount() {
         return leConteneur.size();
     }
-    
+
     @Override
-     public int getColumnCount() {
+    public int getColumnCount() {
         return 9;
     }
 
@@ -44,43 +45,42 @@ public class ModelJTableVIP extends AbstractTableModel {
         VIP leVip = leConteneur.get(row);
         if (column == 0) {
             return leVip.getIdVip();
-        }else if (column == 1){
+        } else if (column == 1) {
             return leVip.getNomVip();
-        }else if (column == 2){
+        } else if (column == 2) {
             return leVip.getPrenomVip();
-        }else if (column == 3){
+        } else if (column == 3) {
             return leVip.getCivilite();
-        }else if(column == 4){
+        } else if (column == 4) {
             return String.valueOf(leVip.getDateNaiss());
-        }else if(column == 5){
+        } else if (column == 5) {
             return leVip.getLieuNaiss();
-        }else if(column ==6){
-             if( leVip.getCodeRole()==0){
+        } else if (column == 6) {
+            if (leVip.getCodeRole() == 0) {
                 return "Réalisateur";
-            }else if( leVip.getCodeRole()==1){
+            } else if (leVip.getCodeRole() == 1) {
                 return "Acteur";
-            }else{
+            } else {
                 return "Acteur-Réalisateur";
             }
-        }else if(column == 7){
-            if( leVip.getCodeStatut()==-1){
+        } else if (column == 7) {
+            if (leVip.getCodeStatut() == -1) {
                 return "Divorcé";
-            }else if( leVip.getCodeStatut()==1){
-                if(leVip.getCivilite().equalsIgnoreCase("Mr")){
-                     return "Marié";
-                }else{
-                     return "Mariée";
+            } else if (leVip.getCodeStatut() == 1) {
+                if (leVip.getCivilite().equalsIgnoreCase("Mr")) {
+                    return "Marié";
+                } else {
+                    return "Mariée";
                 }
-               
-            }else{
+
+            } else {
                 return "Célibataire";
-                
+
             }
-        }else {
+        } else {
             return leVip.getNomPays();
         }
-         
-        
+
     }
 
     @Override
@@ -89,32 +89,35 @@ public class ModelJTableVIP extends AbstractTableModel {
     }
 
     /**
-     *appel inserer du dao
+     * appel inserer du dao
+     *
      * @param leVip
      * @throws SQLException
      */
     public void insererVip(VIP leVip) throws SQLException {
         leDaoVIP.insererVip(leVip);
-        
-          leConteneur.clear();
-         leDaoVIP.lireLesVip(leConteneur);
+
+        leConteneur.clear();
+        leDaoVIP.lireLesVip(leConteneur);
         this.fireTableDataChanged();
     }
 
     /**
      * appel get vip du doa
+     *
      * @param leVip
      * @return
      * @throws SQLException
      */
     public VIP getVip(int leVip) throws SQLException {
-        VIP Vip=leDaoVIP.getVip(leVip);
-        
-          return Vip;
+        VIP Vip = leDaoVIP.getVip(leVip);
+
+        return Vip;
     }
 
     /**
-     *Appel lire des vip du dao
+     * Appel lire des vip du dao
+     *
      * @throws SQLException
      */
     public void lireLesVip() throws SQLException {
@@ -123,17 +126,19 @@ public class ModelJTableVIP extends AbstractTableModel {
     }
 
     /**
-     *Mise a jour du conteneur par rapport a la base
+     * Mise a jour du conteneur par rapport a la base
+     *
      * @throws SQLException
      */
     public void updateTable() throws SQLException {
-         leConteneur.clear();
+        leConteneur.clear();
         leDaoVIP.lireLesVip(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
 
     /**
-     *appel la fonction de modifiacation des vip du dao
+     * appel la fonction de modifiacation des vip du dao
+     *
      * @param vip
      * @throws SQLException
      */
@@ -142,5 +147,5 @@ public class ModelJTableVIP extends AbstractTableModel {
         leDaoVIP.ModVip(vip);
         updateTable();  // notification de modification des données à la vue
     }
-     
+
 }

@@ -11,29 +11,29 @@ import Model.ModeleComboBoxCR;
 
 import Model.ModeleComboBoxPays;
 
-
 public class FenetreModVip extends javax.swing.JDialog {
+
     private VIP vip;
     private boolean etatSortie;
-    private ModeleComboBoxCR crCB;
-    private ModeleComboBoxPays paysCB;
-  
+    private ModeleComboBoxCR modeleComboBoxRole;
+    private ModeleComboBoxPays modeleComboBoxPays;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param parent
      * @param vip
      * @param csCB
-     * @param crCB
-     * @param paysCB
+     * @param modeleComboBoxRole
+     * @param modeleComboBoxPays
      */
-    public FenetreModVip(java.awt.Frame parent, VIP vip,ModeleComboBoxCR crCB,ModeleComboBoxPays paysCB) {
+    public FenetreModVip(java.awt.Frame parent, VIP vip, ModeleComboBoxCR modeleComboBoxRole, ModeleComboBoxPays modeleComboBoxPays) {
         super(parent, true);
-        this.vip=vip;
-        etatSortie=false;
-        this.crCB=crCB;
-        this.paysCB=paysCB;
-        
-        
+        this.vip = vip;
+        etatSortie = false;
+        this.modeleComboBoxRole = modeleComboBoxRole;
+        this.modeleComboBoxPays = modeleComboBoxPays;
+
         initComponents();
         //initialisation des champs en fonction du vip a modifier
         txtNomVIP.setText(vip.getNomVip());
@@ -41,17 +41,17 @@ public class FenetreModVip extends javax.swing.JDialog {
         txtCivVIP.setText(vip.getCivilite());
         jDateN.setDate(vip.getDateNaiss());
         txtLieuNaiss.setText(vip.getLieuNaiss());
-        jcbPays.setSelectedItem((Object)vip.getNomPays());
+        jcbPays.setSelectedItem((Object) vip.getNomPays());
         String role;
-        if(vip.getCodeRole()==1){
-                role="Acteur-rice";
-            }else if(vip.getCodeRole()==0){
-                
-                role="Realisateur-trice";
-            }else{
-                    role="Les Deux";
-            }
-        jcbCodeRole.setSelectedItem((Object)role);
+        if (vip.getCodeRole() == 1) {
+            role = "Acteur-rice";
+        } else if (vip.getCodeRole() == 0) {
+
+            role = "Realisateur-trice";
+        } else {
+            role = "Les Deux";
+        }
+        jcbCodeRole.setSelectedItem((Object) role);
     }
 
     /**
@@ -103,9 +103,9 @@ public class FenetreModVip extends javax.swing.JDialog {
             }
         });
 
-        jcbCodeRole.setModel(crCB);
+        jcbCodeRole.setModel(modeleComboBoxRole);
 
-        jcbPays.setModel(paysCB);
+        jcbPays.setModel(modeleComboBoxPays);
         jcbPays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbPaysActionPerformed(evt);
@@ -183,52 +183,52 @@ public class FenetreModVip extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSoumettreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSoumettreActionPerformed
-        try{
+        try {
             //verrifie que les champs sont rempli et attribution du contenu dans l'oject vip
-            if(txtCivVIP.getText().isEmpty()){
+            if (txtCivVIP.getText().isEmpty()) {
                 throw new Exception("Champ civilité vide!");
             }
             vip.setCivilite(txtCivVIP.getText());
-            if(jcbCodeRole.getSelectedItem().toString().isEmpty()){
+            if (jcbCodeRole.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champ code rôle vide!");
             }
-            if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Acteur-rice")){
+            if (jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Acteur-rice")) {
                 vip.setCodeRole(1);
-            }else if(jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Realisateur-trice")){
+            } else if (jcbCodeRole.getSelectedItem().toString().equalsIgnoreCase("Realisateur-trice")) {
                 vip.setCodeRole(0);
-            }else{
-                  vip.setCodeRole(2);
+            } else {
+                vip.setCodeRole(2);
             }
-            if(jDateN.getDate()==null){
+            if (jDateN.getDate() == null) {
                 throw new Exception("Champ date de naissance vide!");
             }
             vip.setDateNaiss(new java.sql.Date(jDateN.getDate().getTime()));
-            if(txtLieuNaiss.getText().isEmpty()){
+            if (txtLieuNaiss.getText().isEmpty()) {
                 throw new Exception("Champ lieu de naissance vide!");
             }
             vip.setLieuNaiss(txtLieuNaiss.getText());
-            if(txtNomVIP.getText().isEmpty()){
+            if (txtNomVIP.getText().isEmpty()) {
                 throw new Exception("Champ nom vide!");
             }
             vip.setNomVIP(txtNomVIP.getText());
-            
-            if(jcbPays.getSelectedItem().toString().isEmpty()){
+
+            if (jcbPays.getSelectedItem().toString().isEmpty()) {
                 throw new Exception("Champ pays vide!");
             }
-            
+
             vip.setNomPays(jcbPays.getSelectedItem().toString());
-            if(txtPrenomVIP.getText().isEmpty()){
+            if (txtPrenomVIP.getText().isEmpty()) {
                 throw new Exception("Champ prénom vide!");
             }
             vip.setPrenomVip(txtPrenomVIP.getText());
-      vip.setCodeStatut(vip.getCodeStatut());
-   
-            etatSortie=true;
+            vip.setCodeStatut(vip.getCodeStatut());
+
+            etatSortie = true;
             this.dispose();
-            
-        }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"Erreur modification VIP: "+ e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
-        
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur modification VIP: " + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+
         }
     }//GEN-LAST:event_jbtnSoumettreActionPerformed
 
@@ -237,7 +237,8 @@ public class FenetreModVip extends javax.swing.JDialog {
     }//GEN-LAST:event_jcbPaysActionPerformed
 
     /**
-     *gestion modal
+     * gestion modal
+     *
      * @return
      */
     public boolean doModal() {

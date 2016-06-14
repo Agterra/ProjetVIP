@@ -9,50 +9,53 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 public class DaoReal {
-     private final Connection connexion;
-     
+
+    private final Connection connexion;
+
     /**
-     *Constructeur
+     * Constructeur
+     *
      * @param connexion
      * @throws SQLException
      */
     public DaoReal(Connection connexion) throws SQLException {
         this.connexion = connexion;
-        
+
     }
-       
+
     /**
-     *insertion d'u couple film realisateur
+     * insertion d'un couple film realisateur
+     *
      * @param id int id du vip
      * @param visa int visa du film
      * @throws SQLException
      */
-    public void insertReal (int id, int visa) throws SQLException{
+    public void insertReal(int id, int visa) throws SQLException {
         String requete = "insert into Realise values(?,?);";
-            PreparedStatement pstmt = connexion.prepareStatement(requete);
-             pstmt.setInt(1,id );
-            
-             pstmt.setInt(2, visa);
-            pstmt.executeUpdate();
-            pstmt.close();
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, id);
+
+        pstmt.setInt(2, visa);
+        pstmt.executeUpdate();
+        pstmt.close();
     }
 
     /**
-     *suppression d'un couple film realisateur
+     * suppression d'un couple film realisateur
+     *
      * @param id int
      * @param visa int
      * @throws SQLException
      */
-    public void SupprtReal (int id, int visa) throws SQLException{
+    public void SupprtReal(int id, int visa) throws SQLException {
         String requete = "delete from Realise where idVip=? and numVisa=? ";
-            PreparedStatement pstmt = connexion.prepareStatement(requete);
-             pstmt.setInt(1,id );
-            
-             pstmt.setInt(2, visa);
-            pstmt.executeUpdate();
-            pstmt.close();
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, id);
+
+        pstmt.setInt(2, visa);
+        pstmt.executeUpdate();
+        pstmt.close();
     }
-    
+
 }
