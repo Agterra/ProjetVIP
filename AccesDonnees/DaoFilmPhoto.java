@@ -27,7 +27,7 @@ public class DaoFilmPhoto {
     }
     public void insererPhoto(PhotoFilm img) throws Exception {
       
-         if(this.existNumVisa(img.getNumVisa())==true){
+         if(this.existNomPhoto(img.getNomPhoto())==true){
              throw new Exception("La photo existe deja");
          }
         String requete = "insert into PhotoFilm values(?,?,?)";
@@ -59,11 +59,11 @@ public class DaoFilmPhoto {
      * @return bool
      * @throws SQLException
      */
-    public boolean existNumVisa(int visa) throws SQLException {
+    public boolean existNomPhoto(String Nom) throws SQLException {
         int nb = 0;
-        String requete = "select numVisa from PhotoFilm where numVisa=?";
+        String requete = "select numVisa from PhotoFilm where nomPhoto=?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, visa);
+        pstmt.setString(1, Nom);
         ResultSet rset = pstmt.executeQuery();
         while (rset.next()) {
             nb++;
