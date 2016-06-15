@@ -281,10 +281,10 @@ public class FenetreApplication extends javax.swing.JFrame {
             FenetreSaisieEvents laSaisie = new FenetreSaisieEvents(this, eve, modeleComboBoxVipUn, modeleComboBoxVipDeux, modeleComboBoxMariages);
             if (laSaisie.doModal() == true) {
                 if (eve.getType() == -1) {
-                    System.out.println("div");
+                    
                     modeleComboBoxVipUn.addDivorce(eve.getIdVip1(), eve.getIdVip2(), eve.getDateDiv(), eve.getDateMar());
                 } else if (eve.getType() == 1) {
-                    System.out.println("mar");
+                    
                     modeleComboBoxVipUn.addMariage(eve.getIdVip1(), eve.getIdVip2(), eve.getDateMar(), eve.getLieuMariage());
                 } else {
                     JOptionPane.showMessageDialog(this, "Erreur gestion événement: Ce n'est ni un mariage ni un divorce", "Erreur", JOptionPane.WARNING_MESSAGE);

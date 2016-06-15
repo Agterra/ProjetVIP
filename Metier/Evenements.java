@@ -38,34 +38,8 @@ public class Evenements {
 
     }
 
-    /**
-     * Constructeur Mariage
-     *
-     * @param idVip1
-     * @param idVip2
-     * @param lieuMariage
-     * @param dateMar
-     */
-    public Evenements(int idVip1, int idVip2, String lieuMariage, Date dateMar) {
-        this.idVip1 = idVip1;
-        this.idVip2 = idVip2;
-        this.lieuMariage = lieuMariage;
-        this.dateMar = dateMar;
-    }
-
-    /**
-     * Constructeur divorce
-     *
-     * @param idVip1
-     * @param idVip2
-     * @param dateDiv
-     */
-    public Evenements(int idVip1, int idVip2, Date dateDiv) {
-        this.idVip1 = idVip1;
-        this.idVip2 = idVip2;
-        this.dateDiv = dateDiv;
-    }
-
+  
+   
     /**
      * Constructeur avec nom
      *
