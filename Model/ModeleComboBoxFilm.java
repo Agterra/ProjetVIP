@@ -84,5 +84,14 @@ public class ModeleComboBoxFilm extends DefaultComboBoxModel<Film> {
     public void supprCast(int visa) throws SQLException {
         daoCasting.supprCasting(visa);
     }
+    /**
+     * appel supprreal du dao casting
+     *
+     * @param visa
+     * @throws SQLException
+     */
+    public void supprReal(int visa) throws SQLException {
+        daoRealisateur.SupprtReal(visa);
+    }
 
 }

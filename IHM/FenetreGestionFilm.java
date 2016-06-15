@@ -229,6 +229,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             //supretion d'un film selectionné
             int ligne = jTableFilm.getSelectedRow();
             modeleComboBoxFilms.supprCast(Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()));
+            modeleComboBoxFilms.supprReal(Integer.parseInt(leModeleFilm.getValueAt(ligne, 0).toString()));
             leModeleFilm.supprimerFilm(ligne);
 
         } catch (Exception e) {

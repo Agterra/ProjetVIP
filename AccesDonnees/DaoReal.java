@@ -48,12 +48,11 @@ public class DaoReal {
      * @param visa int
      * @throws SQLException
      */
-    public void SupprtReal(int id, int visa) throws SQLException {
-        String requete = "delete from Realise where idVip=? and numVisa=? ";
+    public void SupprtReal( int visa) throws SQLException {
+        String requete = "delete from Realise where  numVisa=? ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, id);
-
-        pstmt.setInt(2, visa);
+        
+        pstmt.setInt(1, visa);
         pstmt.executeUpdate();
         pstmt.close();
     }
