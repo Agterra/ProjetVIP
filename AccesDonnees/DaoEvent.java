@@ -78,9 +78,7 @@ public class DaoEvent {
         if (DateMar.equals(div)) {
             throw new Exception("On ne peut divorcer le même jour!");
         }
-        if (DateMar == null) {
-            throw new Exception("Les VIP ne sont pas mariés!");
-        }
+       
         if (DateMar.after(dateDiv) == true) {
             System.out.println(dateDiv + " " + DateMar);
             throw new Exception("Il faut se marier avant de pouvoir divorcer!");
