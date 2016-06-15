@@ -62,7 +62,7 @@ public class FenetreReal extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Saisie d'un VIP");
+        setTitle("Saisie du réalisateur");
 
         jlbNomVIP.setText("Film");
 

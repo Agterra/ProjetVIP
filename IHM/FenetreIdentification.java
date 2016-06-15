@@ -73,6 +73,7 @@ public class FenetreIdentification extends javax.swing.JDialog {
         jckMemo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Connexion");
         setBackground(new java.awt.Color(255, 153, 51));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {

@@ -62,7 +62,7 @@ public class FenetreCasting extends javax.swing.JDialog {
         jbtnQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Saisie d'un VIP");
+        setTitle("Saisie du casting");
 
         jlbNomVIP.setText("Film");
 

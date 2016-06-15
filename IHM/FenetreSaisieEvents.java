@@ -77,6 +77,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
         jlbTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestionnaire d'événements");
 
         jcbVip1.setModel(modeleComboBoxVipUn);
         jcbVip1.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +237,7 @@ public class FenetreSaisieEvents extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlbTitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
