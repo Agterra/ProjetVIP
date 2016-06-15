@@ -41,6 +41,21 @@ public class DaoReal {
         pstmt.close();
     }
 
-    
+    /**
+     * suppression d'un couple film realisateur
+     *
+     * @param id int
+     * @param visa int
+     * @throws SQLException
+     */
+    public void SupprtReal(int id, int visa) throws SQLException {
+        String requete = "delete from Realise where idVip=? and numVisa=? ";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setInt(1, id);
+
+        pstmt.setInt(2, visa);
+        pstmt.executeUpdate();
+        pstmt.close();
+    }
 
 }
