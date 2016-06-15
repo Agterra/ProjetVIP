@@ -133,7 +133,7 @@ public class FenetreGestionFilm extends javax.swing.JDialog {
             }
         });
 
-        jbtnGEstionPhotosFilms.setText("Gestion Photo");
+        jbtnGEstionPhotosFilms.setText("Gestion Photos");
         jbtnGEstionPhotosFilms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnGEstionPhotosFilmsActionPerformed(evt);
