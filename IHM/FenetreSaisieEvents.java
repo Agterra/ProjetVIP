@@ -14,6 +14,10 @@ import Model.ModeleComboBoxVIP2M;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreSaisieEvents extends javax.swing.JDialog {
 
     private boolean etatSortie;

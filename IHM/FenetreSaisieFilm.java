@@ -9,6 +9,10 @@ import Metier.Film;
 import javax.swing.JOptionPane;
 import Model.ModeleComboBoxGenre;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreSaisieFilm extends javax.swing.JDialog {
 
     private Film film;

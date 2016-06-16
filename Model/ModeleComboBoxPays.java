@@ -10,7 +10,10 @@ import javax.swing.DefaultComboBoxModel;
  * and open the template in the editor.
  */
 
-
+/**
+ *
+ * @author Claire et louis
+ */
 public class ModeleComboBoxPays extends DefaultComboBoxModel<String> {
 
     private List<String> listeItems;

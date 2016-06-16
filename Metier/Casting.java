@@ -7,7 +7,7 @@ package Metier;
 
 /**
  *
- * @author Claire
+ * @author Claire et louis
  */
 public class Casting {
 

@@ -5,6 +5,10 @@
  */
 package Metier;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class Pays {
 
     private String nom;

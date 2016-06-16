@@ -11,6 +11,12 @@ import javax.swing.DefaultComboBoxModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/**
+ *
+ * @author Claire et louis
+ */
+
 public class ModeleComboBoxMarier extends DefaultComboBoxModel<Evenements> {
 
     private List<Evenements> listeItems;

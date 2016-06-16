@@ -12,6 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class DaoPays {
 
     private final Connection connexion;

@@ -12,6 +12,10 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.VIP;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class ModelJTableVIP extends AbstractTableModel {
 
     private List<VIP> leConteneur;

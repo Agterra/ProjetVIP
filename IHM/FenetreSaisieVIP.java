@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxCR;
 import Model.ModeleComboBoxPays;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreSaisieVIP extends javax.swing.JDialog {
 
     private VIP vip;
@@ -22,7 +26,6 @@ public class FenetreSaisieVIP extends javax.swing.JDialog {
      *
      * @param parent
      * @param vip
-     * @param csCB
      * @param modeleComboBoxRole
      * @param modeleComboBoxPays
      */

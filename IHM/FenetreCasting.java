@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxVIPAct;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreCasting extends javax.swing.JDialog {
 
     private Casting casting;

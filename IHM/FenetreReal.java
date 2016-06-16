@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
 import Model.ModeleComboBoxFilm;
 import Model.ModeleComboBoxVIPReal;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreReal extends javax.swing.JDialog {
 
     private Real real;

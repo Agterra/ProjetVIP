@@ -9,6 +9,10 @@ import Metier.PhotoFilm;
 import java.io.File;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreUploadPhotoFilm extends javax.swing.JDialog {
 
     private boolean etatSortie;

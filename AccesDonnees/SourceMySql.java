@@ -11,8 +11,18 @@ import java.net.PasswordAuthentication;
 import java.util.Properties;
 import javax.sql.DataSource;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class SourceMySql {
 
+    /**
+     *
+     * @param login
+     * @return
+     * @throws Exception
+     */
     public static DataSource getSource(PasswordAuthentication login) throws Exception {
         // récupération des informations d'authentification
         String user = login.getUserName();

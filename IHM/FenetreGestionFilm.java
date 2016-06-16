@@ -19,6 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreGestionFilm extends javax.swing.JDialog {
 
     private boolean etatSortie;

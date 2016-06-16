@@ -11,6 +11,10 @@ import Model.ModeleComboBoxVIP;
 import java.io.File;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreUploadPhoto extends javax.swing.JDialog {
 
     private ModeleComboBoxVIP modeleComboBoxVip;

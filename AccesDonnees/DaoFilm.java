@@ -13,6 +13,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class DaoFilm {
 
     private final Connection connexion;

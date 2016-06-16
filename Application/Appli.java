@@ -43,6 +43,10 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class Appli {
 
     private static DataSource laSourceDeDonnees;
@@ -56,6 +60,10 @@ public class Appli {
     private static DaoCast daoCasting;
     private static DaoReal daoRealisateur;
     private static DaoFilmPhoto daoFilmPhoto;
+
+    /**
+     *
+     */
     public static String memoId = "none";
 
     /**

@@ -11,6 +11,10 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.Film;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class ModeleJTableFilm extends AbstractTableModel {
 
     private List<Film> leConteneur;

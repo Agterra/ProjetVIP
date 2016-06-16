@@ -5,6 +5,10 @@
  */
 package Metier;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class Real {
 
     private int numVisa;

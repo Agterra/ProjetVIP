@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPSClient;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreGestionPhotosFilms extends javax.swing.JDialog {
 
     private boolean etatSortie;
@@ -27,7 +31,8 @@ public class FenetreGestionPhotosFilms extends javax.swing.JDialog {
      * Constructeur
      *
      * @param parent
-     * @param leModelePhotosFilms
+     * @param leModelePhotoFilm
+     * @param numVisa
      */
     public FenetreGestionPhotosFilms(java.awt.Dialog parent, ModeleJTablePhotosFilms leModelePhotoFilm, int numVisa) {
 

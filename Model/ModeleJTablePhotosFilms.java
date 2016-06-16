@@ -11,6 +11,10 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Metier.PhotoFilm;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class ModeleJTablePhotosFilms extends AbstractTableModel {
 
     private List<PhotoFilm> leConteneur;
@@ -20,7 +24,7 @@ public class ModeleJTablePhotosFilms extends AbstractTableModel {
     /**
      * Constructeur
      *
-     * @param daoPhoto
+     * @param daoFilmPhoto
      */
     public ModeleJTablePhotosFilms(DaoFilmPhoto daoFilmPhoto) {
         this.leConteneur = new ArrayList<>();

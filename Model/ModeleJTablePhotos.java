@@ -11,6 +11,10 @@ import javax.swing.table.AbstractTableModel;
 import AccesDonnees.DaoPhoto;
 import Metier.Photo;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class ModeleJTablePhotos extends AbstractTableModel {
 
     private List<Photo> leConteneur;

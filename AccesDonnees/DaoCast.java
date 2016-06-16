@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class DaoCast {
 
     private final Connection connexion;

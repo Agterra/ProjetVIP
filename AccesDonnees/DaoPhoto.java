@@ -13,6 +13,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class DaoPhoto {
 
     private final Connection connexion;

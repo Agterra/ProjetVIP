@@ -12,6 +12,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.PasswordAuthentication;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class FenetreIdentification extends javax.swing.JDialog {
 
     private String memoId = " ";

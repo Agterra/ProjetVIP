@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Claire et louis
+ */
 public class DaoReal {
 
     private final Connection connexion;
@@ -44,7 +48,6 @@ public class DaoReal {
     /**
      * suppression d'un couple film realisateur
      *
-     * @param id int
      * @param visa int
      * @throws SQLException
      */

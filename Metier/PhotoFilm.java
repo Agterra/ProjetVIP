@@ -7,7 +7,7 @@ package Metier;
 
 /**
  *
- * @author Agterra
+ * @author Claire et louis
  */
 public class PhotoFilm {
 
@@ -15,36 +15,69 @@ public class PhotoFilm {
     private String lien;
     private String nomPhoto;
 
+    /**
+     *
+     * @param numVisa
+     * @param lien
+     * @param nomPhoto
+     */
     public PhotoFilm(int numVisa, String lien, String nomPhoto) {
         this.numVisa = numVisa;
         this.lien = lien;
         this.nomPhoto = nomPhoto;
     }
 
+    /**
+     *
+     */
     public PhotoFilm() {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumVisa() {
         return numVisa;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLien() {
         return lien;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNomPhoto() {
         return nomPhoto;
     }
 
+    /**
+     *
+     * @param numVisa
+     */
     public void setNumVisa(int numVisa) {
         this.numVisa = numVisa;
     }
 
+    /**
+     *
+     * @param lien
+     */
     public void setLien(String lien) {
         this.lien = lien;
     }
 
+    /**
+     *
+     * @param nomPhoto
+     */
     public void setNomPhoto(String nomPhoto) {
         this.nomPhoto = nomPhoto;
     }

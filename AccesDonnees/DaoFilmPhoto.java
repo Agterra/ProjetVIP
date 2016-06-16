@@ -16,17 +16,26 @@ import java.util.List;
 
 /**
  *
- * @author Agterra
+ * @author Claire et louis
  */
 public class DaoFilmPhoto {
 
     private final Connection connexion;
     private AccesDonnees.DaoFilm daoFilm;
 
+    /**
+     *
+     * @param connexion
+     */
     public DaoFilmPhoto(Connection connexion) {
         this.connexion = connexion;
     }
 
+    /**
+     *
+     * @param img
+     * @throws Exception
+     */
     public void insererPhoto(PhotoFilm img) throws Exception {
 
         if (this.existNomPhoto(img.getNomPhoto()) == true) {
