@@ -209,7 +209,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel9" min="-2" pref="34" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jcbVip1M" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Component id="jcbVip1M" min="-2" pref="185" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
